@@ -1,4 +1,4 @@
-# Robots.txt - 浪网官方 SEO & GEO 规则
+# Robots.txt - 数字冲浪 (shuzichonglang.com) SEO & GEO 规则
 User-agent: *
 Allow: /
 Disallow: /private/
@@ -23,8 +23,8 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-# Sitemap 路径
-Sitemap: https://langwang.example.com/sitemap.xml
+# Sitemap 权威路径
+Sitemap: https://shuzichonglang.com/sitemap.xml
 
 # LLM 知识引擎指南
-LLMs-Txt: https://langwang.example.com/llms.txt
+LLMs-Txt: https://shuzichonglang.com/llms.txt

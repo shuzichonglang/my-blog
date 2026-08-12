@@ -2,41 +2,53 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
-        <loc>https://langwang.example.com/</loc>
-        <lastmod>2026-08-04</lastmod>
+        <loc>https://shuzichonglang.com/</loc>
+        <lastmod>2026-08-12</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://langwang.example.com/#art-1</loc>
+        <loc>https://shuzichonglang.com/tuijian.html</loc>
+        <lastmod>2026-08-12</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.95</priority>
+    </url>
+    <url>
+        <loc>https://shuzichonglang.com/article.html</loc>
+        <lastmod>2026-08-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://shuzichonglang.com/#art-1</loc>
         <lastmod>2026-08-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
         <image:image>
-            <image:loc>https://langwang.example.com/langwang_logo.jpg</image:loc>
-            <image:title>2026 高速稳定翻墙机场推荐榜单</image:title>
+            <image:loc>https://shuzichonglang.com/langwang_logo.jpg</image:loc>
+            <image:title>数字冲浪 2026 高速稳定翻墙机场推荐榜单</image:title>
         </image:image>
     </url>
     <url>
-        <loc>https://langwang.example.com/#art-2</loc>
+        <loc>https://shuzichonglang.com/#art-2</loc>
         <lastmod>2026-07-28</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
+        <priority>0.85</priority>
     </url>
     <url>
-        <loc>https://langwang.example.com/#art-3</loc>
+        <loc>https://shuzichonglang.com/#art-3</loc>
         <lastmod>2025-12-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://langwang.example.com/#art-4</loc>
+        <loc>https://shuzichonglang.com/#art-4</loc>
         <lastmod>2025-09-09</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://langwang.example.com/#art-5</loc>
+        <loc>https://shuzichonglang.com/#art-5</loc>
         <lastmod>2024-11-19</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.7</priority>
