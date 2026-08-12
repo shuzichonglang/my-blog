@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN" prefix="og: https://ogp.me/ns#" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">极客随笔长文详情 | 浪网官方</title>
+    <meta id="page-desc" name="description" content="浪网官方 2026 全球 VPN 节点测评、AI 极客探索与全栈建站优化超长完整长文与工具指南。">
+    <meta name="keywords" content="浪网官方, 机场推荐, AI探索, 折腾记录, 建站优化, 订阅转换, 实用工具">
+    <meta name="author" content="浪网官方团队">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .article-detail-container {
+            max-width: 1280px;
+            width: 94%;
+            margin: 30px auto;
+            padding: 0 20px 60px 20px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: none !important;
+        }
+
+        .article-main-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 40px;
+        }
+
+        .article-header {
+            margin-bottom: 28px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 24px;
+        }
+
+        .article-meta-tags {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+
+        .detail-h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.45;
+            margin-bottom: 16px;
+        }
+
+        .author-info-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .line-type-badge { display: none !important; }
+
+        .summary-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 18px 22px;
+            border-radius: var(--radius-md);
+            font-size: 0.96rem;
+            line-height: 1.75;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+        }
+
+        .article-body-content {
+            font-size: 1.02rem;
+            line-height: 1.85;
+            color: var(--text-primary);
+        }
+
+        .article-body-content h3 {
+            font-size: 1.35rem;
+            margin: 32px 0 16px 0;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+        }
+
+        .article-body-content h4 {
+            font-size: 1.15rem;
+            margin: 24px 0 12px 0;
+            color: var(--primary-accent);
+        }
+
+        .article-body-content p {
+            margin-bottom: 18px;
+        }
+
+        .article-body-content ul, .article-body-content ol {
+            margin: 16px 0 20px 24px;
+        }
+
+        .article-body-content li {
+            margin-bottom: 8px;
+        }
+
+        .action-bottom-bar {
+            display: flex;
+            gap: 16px;
+            margin-top: 36px;
+            padding-top: 24px;
+            border-top: 1px dashed var(--border-color);
+            flex-wrap: wrap;
+        }
+
+        .btn-go-target {
+            background: linear-gradient(135deg, var(--primary-accent), var(--primary-hover));
+            color: #ffffff;
+            font-weight: 800;
+            padding: 14px 28px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 16px var(--primary-glow);
+            transition: var(--transition);
+        }
+
+        .btn-go-target:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-back-home {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            font-weight: 700;
+            padding: 14px 24px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-back-home:hover {
+            border-color: var(--primary-accent);
+            color: var(--primary-accent);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶栏导航 -->
+    <header class="top-navbar">
+        <div style="display:flex; align-items:center; gap:12px;">
+            <a href="index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
+                <img src="langwang_avatar.jpg" alt="数字冲浪 logo" style="width:36px; height:36px; border-radius:50%; border:2px solid var(--primary-accent);">
+                <span style="font-size:1.15rem; font-weight:800; color:var(--text-primary);">数字冲浪 • 性价比与平价视角（适合预算有限的学生党/轻度用户）</span>
+            </a>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px;">
+            <a href="index.html" class="nav-link" style="padding:6px 14px; font-size:0.88rem;">🏠 首页列表</a>
+            <a href="tuijian.html" class="nav-link" style="padding:6px 14px; font-size:0.88rem; color:var(--accent-gold);">✈️ 机场推荐</a>
+            <button id="theme-toggle-btn" onclick="toggleTheme()" class="theme-toggle-btn" aria-label="切换主题">🌙</button>
+        </div>
+    </header>
+
+    <div class="article-detail-container">
+        
+        <!-- 面包屑 -->
+        <nav class="breadcrumb" aria-label="面包屑导航">
+            <a href="index.html">🏠 数字冲浪首页</a>
+            <span>/</span>
+            <span id="bc-cat">文章详情</span>
+            <span>/</span>
+            <span id="bc-title" style="color:var(--text-primary); font-weight:700;">加载中...</span>
+        </nav>
+
+        <!-- 文章主体 -->
+        <main class="article-main-card">
+            <header class="article-header">
+                <div class="article-meta-tags">
+                    <span id="detail-rank" class="rank-tag rank-1">📌 官方推荐</span>
+                </div>
+                <h1 id="detail-title" class="detail-h1">正在加载文章详情...</h1>
+                <div class="author-info-bar">
+                    <span>✍️ 作者：<strong>数字冲浪团队</strong></span>
+                    <span>📅 发布日期：<strong>2026年08月最新超长长文</strong></span>
+                    <span>👁️ 浏览阅读：<strong id="detail-sla">99.99% 高可用方案</strong></span>
+                </div>
+            </header>
+
+            <div id="detail-summary-box" class="summary-box">
+                <strong>💡 极客导读总结：</strong> <span id="detail-recommend">正在读取选型压测与避坑指南...</span>
+            </div>
+
+            <article id="detail-body" class="article-body-content">
+                <p>正在拉取超巨量长文与配置代码库...</p>
+            </article>
+
+            <div class="action-bottom-bar">
+                <a id="target-link-btn" href="#" target="_blank" class="btn-go-target">🚀 直达项目 / 访问官网 ➔</a>
+                <a href="index.html" class="btn-back-home">⬅️ 返回首页列表</a>
+            </div>
+        </main>
+
+        <!-- 相关推荐列表 -->
+        <section style="margin-top:40px;">
+            <h3 style="font-size:1.2rem; font-weight:800; color:var(--text-primary); margin-bottom:18px;">📚 更多全站精选阅读推荐</h3>
+            <div id="related-articles-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px;">
+                <!-- Loaded dynamically -->
+            </div>
+        </section>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="site-footer" style="margin-top:auto;">
+        <div class="footer-container">
+            <p><strong>数字冲浪 (极客随笔)</strong> - 拥有 8大 <strong>AI探索</strong>、6大 <strong>折腾记录</strong>、6大 <strong>建站优化</strong>、6大 <strong>订阅转换</strong> 与全网 13大 <strong>机场推荐测试</strong>。</p>
+            
+            <div style="margin-top:12px; font-size:12px; color:var(--text-muted); line-height:1.85; max-width:960px; margin-left:auto; margin-right:auto; text-align:center;">
+                <span style="font-weight:700; color:var(--text-secondary);">✈️ 机场热门关键字:</span>
+                <a href="index.html?cat=airports" style="color:var(--text-muted); text-decoration:none; margin:0 5px;">机场推荐 2026</a> •
+                <a href="index.html?cat=airports" style="color:var(--text-muted); text-decoration:none; margin:0 5px;">稳定专线机场</a> •
+                <a href="index.html?cat=airports" style="color:var(--text-muted); text-decoration:none; margin:0 5px;">便宜机场推荐</a> •
+                <a href="index.html?cat=test" style="color:var(--text-muted); text-decoration:none; margin:0 5px;">IEPL 内网专线</a> •
+                <a href="index.html?cat=test" style="color:var(--text-muted); text-decoration:none; margin:0 5px;">Clash 机场推荐</a> •
+                <a href="index.html?cat=vpn" style="color:var(--text-muted); text-decoration:none; margin:0 5px;">Shadowrocket 小火箭机场</a> •
+                <a href="index.html?cat=vpn" style="color:var(--text-muted); text-decoration:none; margin:0 5px;">梯子推荐</a> •
+                <a href="index.html?cat=test" style="color:var(--text-muted); text-decoration:none; margin:0 5px;">8K 极速机场测速</a> •
+                <a href="index.html?cat=test" style="color:var(--text-muted); text-decoration:none; margin:0 5px;">Hysteria 2 协议</a>
+            </div>
+
+            <p style="margin-top:10px; font-size:12px; color:var(--text-muted);">© 2026 数字冲浪 (langwangnet). 保留所有权利</p>
+            <div style="margin-top:10px; font-size:12px; color:var(--text-muted); display:flex; justify-content:center; gap:16px; align-items:center;">
+                <span>友情链接:</span>
+                <a href="https://jichangreview.net" target="_blank" style="color:var(--text-muted); text-decoration:none;">机场测评</a>
+                <a href="https://jichangreview.net" target="_blank" style="color:var(--text-muted); text-decoration:none;">机场教程</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 全量文章数据源引入 -->
+    <script src="index.html" id="data-source-placeholder" style="display:none;"></script>
+    <script>
+    // Theme toggle
+    function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme_preference', newTheme);
+        const themeBtn = document.getElementById('theme-toggle-btn');
+        if (themeBtn) themeBtn.innerText = newTheme === 'dark' ? '☀️' : '🌙';
+    }
+
+    // Load theme
+    const savedTheme = localStorage.getItem('theme_preference') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    if (themeBtn) themeBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    // Parse URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    const articleId = urlParams.get('id') || 'contact-us';
+
+    // Load articles from index.html source
+    fetch('index.html')
+        .then(response => response.text())
+        .then(htmlText => {
+            const scriptStart = htmlText.indexOf('let allArticlesList = [');
+            if (scriptStart !== -1) {
+                const scriptEnd = htmlText.indexOf('];', scriptStart) + 2;
+                const arrayCode = htmlText.substring(scriptStart, scriptEnd);
+                eval(arrayCode); // Defines allArticlesList array
+                renderDetail(allArticlesList);
+            }
+        })
+        .catch(err => {
+            console.error('Failed to load article database:', err);
+        });
+
+    function renderDetail(list) {
+        let item = list.find(a => a.id === articleId);
+        if (!item) {
+            item = list[0];
+        }
+
+        // Set Title & Meta
+        document.getElementById('page-title').innerText = item.name + ' - 极客随笔长文详情 | 浪网官方';
+        document.getElementById('page-desc').setAttribute('content', item.recommendText || item.name);
+
+        document.getElementById('bc-cat').innerText = (item.category && item.category[0]) || '极客指南';
+        document.getElementById('bc-title').innerText = item.name;
+
+        document.getElementById('detail-rank').innerText = item.rankTag || '📌 极客推荐';
+        document.getElementById('detail-line').innerText = item.lineType || '官方教程';
+        document.getElementById('detail-title').innerText = item.name;
+        document.getElementById('detail-sla').innerText = item.sla || '高可用在线保障';
+        document.getElementById('detail-recommend').innerText = item.recommendText || '全面解析相关技术原理与配置步骤。';
+
+        // Render Body
+        const bodyEl = document.getElementById('detail-body');
+        if (item.fullArticle) {
+            bodyEl.innerHTML = item.fullArticle;
+        } else {
+            bodyEl.innerHTML = `<h3>📖 ${item.name} 实践指南</h3><p>${item.recommendText}</p>`;
+        }
+
+        // CTA Link
+        const ctaBtn = document.getElementById('target-link-btn');
+        if (item.link && item.link !== '#') {
+            ctaBtn.href = item.link;
+            ctaBtn.innerText = '🚀 直达 ' + item.name + ' 官方页面 ➔';
+        } else {
+            ctaBtn.style.display = 'none';
+        }
+
+        // Render Related
+        const relatedGrid = document.getElementById('related-articles-grid');
+        const relatedList = list.filter(a => a.id !== item.id).slice(0, 3);
+        relatedGrid.innerHTML = relatedList.map(rel => `
+            <div style="background:var(--card-bg); border:1px solid var(--border-color); padding:20px; border-radius:12px; display:flex; flex-direction:column; justify-content:space-between;">
+                <div>
+                    <span class="rank-tag rank-sub" style="font-size:0.75rem;">${rel.rankTag}</span>
+                    <h4 style="font-size:1.05rem; margin:10px 0 6px 0; color:var(--text-primary);">${rel.name}</h4>
+                    <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.5;">${rel.recommendText ? rel.recommendText.slice(0, 60) + '...' : ''}</p>
+                </div>
+                <a href="article.html?id=${rel.id}" style="margin-top:14px; color:var(--primary-accent); font-weight:700; text-decoration:none; font-size:0.88rem;">阅读完整长文 ➔</a>
+            </div>
+        `).join('');
+    }
+    </script>
+</body>
+</html>

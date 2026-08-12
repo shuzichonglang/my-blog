@@ -1,0 +1,30 @@
+# Robots.txt - 浪网官方 SEO & GEO 规则
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+
+# AI & LLM 搜索引擎爬虫 (GEO 优化)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap 路径
+Sitemap: https://langwang.example.com/sitemap.xml
+
+# LLM 知识引擎指南
+LLMs-Txt: https://langwang.example.com/llms.txt

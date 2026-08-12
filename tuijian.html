@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全局网络加速与站点性能优化指南 | 2026 节点测评与建站实用工具</title>
+    
+    <!-- Primary SEO Meta Tags -->
+    <meta name="description" content="性价比与平价视角（适合预算有限的学生党/轻度用户），专注 2026 年高性价比与稳定专线节点测评、Clash/Shadowrocket 客户端配置教程，以及全栈建站性能优化与实用工具推荐。">
+    <meta name="keywords" content="机场推荐, 机场推荐 2026, 稳定机场推荐, 便宜机场推荐, 专线机场推荐, 机场排行榜, 梯子推荐, Clash 机场推荐, Shadowrocket 机场推荐, 建站优化, 实用工具">
+    <meta name="author" content="浪网官方团队">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://langwang.example.com/tuijian.html">
+    
+    <!-- DNS prefetch & preconnect -->
+    <link rel="dns-prefetch" href="//jichangreview.net">
+    <link rel="dns-prefetch" href="//jichangguide.net">
+    <link rel="dns-prefetch" href="//clashx.club">
+    <link rel="dns-prefetch" href="//langwang.wavenetaff.com">
+    <link rel="dns-prefetch" href="//ttw01.twilightaff.com">
+    <link rel="dns-prefetch" href="//hotdo.gcvipaff.com">
+    <link rel="preconnect" href="https://jichangreview.net">
+    <link rel="preconnect" href="https://jichangguide.net">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://langwang.example.com/tuijian.html">
+    <meta property="og:title" content="全局网络加速与站点性能优化指南 | 2026 节点测评与建站实用工具">
+    <meta property="og:description" content="专注 2026 年高性价比与稳定专线节点测评、Clash/Shadowrocket 客户端配置教程，以及全栈建站性能优化与实用工具推荐。">
+    <meta property="og:image" content="langwang_avatar.jpg">
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+
+    :root {
+        --bg-color: #111827;
+        --card-bg: #1f2937;
+        --card-border: rgba(255, 255, 255, 0.08);
+        --text-primary: #f9fafb;
+        --text-secondary: #d1d5db;
+        --text-muted: #9ca3af;
+        
+        --primary-accent: #3b82f6;
+        --primary-hover: #2563eb;
+        --primary-light: rgba(59, 130, 246, 0.15);
+        
+        --accent-gold: #f59e0b;
+        --accent-emerald: #10b981;
+        --accent-purple: #8b5cf6;
+        --accent-rose: #f43f5e;
+        
+        --header-bg: rgba(31, 41, 55, 0.95);
+        --sidebar-hover: #374151;
+        --border-color: #374151;
+        
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+        --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.4);
+        
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 20px;
+        --radius-full: 9999px;
+        
+        --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    [data-theme="light"] {
+        --bg-color: #f3f4f6;
+        --card-bg: #ffffff;
+        --card-border: rgba(229, 231, 235, 0.9);
+        --text-primary: #111827;
+        --text-secondary: #374151;
+        --text-muted: #6b7280;
+        --primary-accent: #2563eb;
+        --primary-hover: #1d4ed8;
+        --primary-light: #eff6ff;
+        --header-bg: rgba(255, 255, 255, 0.95);
+        --sidebar-hover: #f9fafb;
+        --border-color: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    ul, ol, li {
+        list-style: none !important;
+        list-style-type: none !important;
+    }
+
+    a, a:hover, a:focus, a:visited {
+        text-decoration: none !important;
+    }
+
+    body {
+        font-family: var(--font-sans);
+        background-color: var(--bg-color);
+        color: var(--text-primary);
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .top-navbar {
+        position: sticky; top: 0; z-index: 100;
+        background-color: var(--header-bg);
+        backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border-color);
+        padding: 12px 24px; display: flex; align-items: center;
+        justify-content: space-between; gap: 16px;
+    }
+
+    .brand-title {
+        display: flex; align-items: center; gap: 10px;
+        font-size: 1.15rem; font-weight: 800; color: var(--text-primary); text-decoration: none;
+    }
+    .brand-icon { width: 34px; height: 34px; border-radius: var(--radius-sm); overflow: hidden; }
+
+    .nav-actions { display: flex; align-items: center; gap: 8px; }
+    .btn-icon {
+        width: 38px; height: 38px; border-radius: var(--radius-full);
+        border: 1px solid var(--border-color); background-color: var(--card-bg);
+        color: var(--text-primary); display: flex; align-items: center; justify-content: center;
+        cursor: pointer; position: relative; transition: all 0.2s ease;
+    }
+
+    .page-container {
+        max-width: 1240px; width: 100%; margin: 0 auto; padding: 32px 20px;
+        display: flex; gap: 28px; align-items: flex-start; flex: 1;
+    }
+
+    .sidebar-left { width: 240px; flex-shrink: 0; position: sticky; top: 80px; }
+    .site-meta-card {
+        background-color: var(--card-bg); border: 1px solid var(--card-border);
+        background-color: var(--header-bg); border-bottom: 1px solid var(--border-color);
+        padding: 12px 24px; display: flex; align-items: center; justify-content: space-between;
+        backdrop-filter: blur(8px);
+    }
+    .brand-title { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-primary); font-weight: 800; font-size: 1.15rem; }
+    .brand-icon { width: 34px; height: 34px; border-radius: var(--radius-sm); background: linear-gradient(135deg, var(--primary-accent), var(--accent-purple)); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; overflow: hidden; }
+
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-icon { background: none; border: 1px solid var(--border-color); color: var(--text-primary); width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none; }
+    .btn-icon:hover { background-color: var(--primary-light); border-color: var(--primary-accent); }
+
+    .page-container { max-width: 1680px; width: 96%; margin: 0 auto; padding: 24px 16px; display: flex; gap: 24px; }
+    
+    .avatar-wrapper { position: relative; width: 86px; height: 86px; margin: 0 auto 12px; }
+    .avatar-img { width: 86px; height: 86px; border-radius: 50%; border: 3px solid var(--primary-accent); object-fit: cover; }
+    .site-title { font-size: 1.25rem; font-weight: 800; margin: 10px 0 4px; }
+
+    .nav-list { list-style: none; background: var(--card-bg); border-radius: var(--radius-md); border: 1px solid var(--border-color); padding: 8px; }
+    .nav-link {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 10px 14px; border-radius: var(--radius-sm); transition: all 0.2s ease; cursor: pointer;
+    }
+    .nav-link-content { display: flex; align-items: center; gap: 10px; }
+    .nav-link:hover, .nav-link.active { background-color: var(--primary-light); color: var(--primary-accent); }
+    .nav-badge { background-color: var(--border-color); color: var(--text-muted); font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: var(--radius-full); }
+
+    .main-content { flex: 1; min-width: 0; }
+    .hero-header { background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(139, 92, 246, 0.12)); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 32px; margin-bottom: 24px; text-align: center; }
+    
+    .airport-row-card { background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-md); padding: 22px; margin-bottom: 20px; transition: 0.2s; }
+    .airport-row-card:hover { border-color: var(--primary-accent); }
+    
+    .row-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .airport-name-title { font-size: 1.3rem; font-weight: 800; color: var(--text-primary); }
+    .line-type-badge { display: none !important; }
+
+    .row-rich-text {
+        font-size: 1.02rem; color: var(--text-primary); line-height: 1.8; margin-bottom: 16px;
+        padding: 4px 0 10px 0; border: none; background: transparent; opacity: 1; font-weight: 500;
+    }
+
+    .row-specs-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px; margin-bottom: 16px; padding: 14px; background-color: rgba(255, 255, 255, 0.03);
+        border-radius: var(--radius-sm); border: none;
+    }
+    .spec-item { text-align: center; }
+    .spec-label { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 4px; font-weight: 600; }
+    .spec-val { font-size: 1.02rem; font-weight: 800; color: var(--text-primary); }
+
+    .row-bottom-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; width: 100%; }
+    .coupon-code-box {
+        background-color: rgba(245, 158, 11, 0.12); border: none;
+        color: var(--accent-gold); padding: 9px 16px; border-radius: var(--radius-sm);
+        font-size: 0.95rem; font-weight: 800; display: flex; align-items: center; justify-content: space-between; width: 100%;
+    }
+    .mini-copy-btn { background: var(--accent-gold); color: #000; border: none; padding: 3px 10px; border-radius: 4px; font-size: 0.82rem; font-weight: 800; cursor: pointer; }
+
+    .register-link-btn {
+        padding: 12px 22px; border-radius: var(--radius-sm); border: none;
+        background-color: var(--primary-accent); color: #fff; text-decoration: none;
+        font-weight: 800; font-size: 1rem; transition: all 0.2s ease; display: inline-block;
+    }
+    .register-link-btn:hover { background-color: var(--primary-hover); transform: scale(1.02); }
+
+    .detail-pop-btn {
+        padding: 10px 18px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);
+        background-color: var(--card-bg); color: var(--text-primary); font-weight: 700;
+        font-size: 0.88rem; cursor: pointer; transition: all 0.2s ease;
+    }
+    .detail-pop-btn:hover { border-color: var(--primary-accent); color: var(--primary-accent); }
+
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.88); z-index: 1000; display: flex; justify-content: center; padding: 40px 20px; overflow-y: auto; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    .modal-overlay.active { opacity: 1; pointer-events: auto; }
+    .modal-container { background-color: var(--card-bg); border-radius: 16px; max-width: 920px; width: 100%; margin: auto; overflow: hidden; position: relative; border: 1px solid var(--card-border); box-shadow: var(--shadow-lg); }
+    .modal-hero-cover { height: 180px; display: flex; align-items: center; justify-content: center; padding: 20px; text-align: center; }
+    .modal-hero-text { color: #ffffff; font-size: 1.8rem; font-weight: 800; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); }
+    .modal-body { padding: 36px; line-height: 1.85; color: var(--text-primary); font-size: 1.02rem; }
+    .modal-close-btn { position: absolute; top: 16px; right: 16px; width: 38px; height: 38px; border-radius: 50%; background-color: rgba(0,0,0,0.5); color: #fff; border: none; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; }
+
+    @media (max-width: 992px) {
+        .page-container { flex-direction: column; }
+        .sidebar-left { width: 100%; position: static; }
+    }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navbar -->
+    <header class="top-navbar">
+        <a href="index.html" class="brand-title">
+            <div class="brand-icon">
+                <img src="langwang_avatar.jpg" alt="数字冲浪" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <span>数字冲浪 - 性价比与平价视角（适合预算有限的学生党/轻度用户）</span>
+        </a>
+        <div class="nav-actions">
+            <button id="theme-toggle-btn" class="btn-icon" onclick="toggleTheme()" title="切换模式">🌙</button>
+            <a href="index.html" class="btn-icon" title="返回首页">🏠</a>
+        </div>
+    </header>
+
+    <!-- Page Layout -->
+    <div class="page-container">
+
+        <!-- Left Navigation Sidebar -->
+        <aside class="sidebar-left">
+            <div class="site-meta-card">
+                <div class="avatar-wrapper">
+                    <img src="langwang_avatar.jpg" alt="数字冲浪" class="avatar-img" width="86" height="86" style="width:86px; height:86px; border-radius:50%; object-fit:cover;">
+                </div>
+                <h1 class="site-title">数字冲浪 - 极客随笔</h1>
+                <p class="site-description">性价比与平价视角（适合预算有限的学生党/轻度用户）</p>
+            </div>
+
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="nav-link"><span class="nav-link-content"><span>🏠</span><span>首页</span></span></a></li>
+                    <li><a href="index.html?view=search" class="nav-link"><span class="nav-link-content"><span>🔍</span><span>浪网搜索</span></span></a></li>
+                    <li><a href="index.html?view=contact" class="nav-link"><span class="nav-link-content"><span>✉️</span><span>联系我们</span></span></a></li>
+                    <li><a href="tuijian.html" class="nav-link active"><span class="nav-link-content"><span>✈️</span><span>机场推荐</span></span><span class="nav-badge">首推</span></a></li>
+                    <li><a href="index.html?view=subconvert" class="nav-link"><span class="nav-link-content"><span>🔄</span><span>订阅转换</span></span></a></li>
+                    <li><a href="index.html?view=daohang" class="nav-link"><span class="nav-link-content"><span>☰</span><span>浪网导航</span></span></a></li>
+                    <li><a href="index.html?view=youhua" class="nav-link"><span class="nav-link-content"><span>🤍</span><span>建站优化</span></span></a></li>
+                    <li><a href="index.html?view=guidang" class="nav-link"><span class="nav-link-content"><span>📖</span><span>文章归档</span></span></a></li>
+                    <li><a href="index.html?view=youlian" class="nav-link"><span class="nav-link-content"><span>🧲</span><span>友情链接</span></span></a></li>
+                </ul>
+                <div class="nav-section-title">组成</div>
+                <ul>
+                    <li><a href="index.html?view=fenlei" class="nav-link"><span class="nav-link-content"><span>🏓</span><span>分类</span></span></a></li>
+                    <li><a href="index.html?view=yemian" class="nav-link"><span class="nav-link-content"><span>📄</span><span>页面</span></span></a></li>
+                </ul>
+            </nav>
+
+            <!-- 左侧边栏 🤝 商务合作卡片 -->
+            <div style="margin-top:16px; background:var(--card-bg); border:1px solid var(--border-color); border-top:4px solid #f43f5e; border-radius:12px; padding:16px; box-shadow:var(--shadow-sm);">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+                    <span style="font-size:0.95rem; font-weight:800; color:var(--text-primary);">🤝 商务合作通道</span>
+                    <span style="font-size:0.72rem; background:rgba(244,63,94,0.15); color:#f43f5e; padding:2px 6px; border-radius:4px; font-weight:700;">官方唯一</span>
+                </div>
+                <p style="font-size:0.8rem; color:var(--text-secondary); line-height:1.55; margin-bottom:12px;">
+                    承接 2026 机场测速收录、全站横幅广告合作投递、软路由/专线压测简报及建站技术支持。
+                </p>
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                    <a href="https://t.me/+vR-Qm3CQ7IQ2ZDg1" target="_blank" style="background:#38bdf8; color:#000; font-weight:800; font-size:0.82rem; padding:8px 12px; border-radius:6px; text-decoration:none; text-align:center; display:block;">
+                        👉 Telegram 官方交流频道 ➔
+                    </a>
+                    <div style="background:var(--bg-color); border:1px solid var(--border-color); padding:8px; border-radius:6px; font-size:0.78rem; font-weight:700; color:var(--text-primary); text-align:center; word-break:break-all;">
+                        📧 lnqry8060610@outlook.com
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <section class="hero-header">
+                <h1>✈️ 2026 高速稳定翻墙机场好评推荐名录</h1>
+                <p>性价比与平价视角（适合预算有限的学生党/轻度用户）• 点击展开巨量多段落详细测评报告。</p>
+            </section>
+
+            <div id="tuijian-single-rows-container">
+                <!-- Renders dynamically -->
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer" style="text-align:center;">
+        <div class="footer-container" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; max-width:960px; margin:0 auto; gap:14px;">
+            <div class="footer-brand" style="text-align:center;">
+                <h3 style="font-size:1.2rem; font-weight:800; color:var(--text-primary); margin-bottom:4px;">数字冲浪 - 极客随笔</h3>
+                <p style="font-size:0.9rem; color:var(--text-secondary);">性价比与平价视角（适合预算有限的学生党/轻度用户），提供高质量翻墙机场好评推荐、全网机场测试评测、订阅转换工具与科学上网指南。</p>
+            </div>
+            <div class="footer-links" style="text-align:center;">
+                <h4 style="font-size:0.95rem; font-weight:700; color:var(--text-primary); margin-bottom:8px;">快捷导航</h4>
+                <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; font-size:0.9rem;">
+                    <a href="index.html" style="color:var(--text-secondary); text-decoration:none;">首页</a>
+                    <a href="tuijian.html" style="color:var(--text-secondary); text-decoration:none;">机场推荐榜</a>
+                    <a href="sitemap.xml" target="_blank" style="color:var(--text-secondary); text-decoration:none;">Sitemap.xml</a>
+                    <a href="robots.txt" target="_blank" style="color:var(--text-secondary); text-decoration:none;">Robots.txt</a>
+                </div>
+            </div>
+            <div class="footer-legal" style="text-align:center; display:flex; flex-direction:column; align-items:center;">
+                <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;">© 2026 数字冲浪 (langwangnet). All rights reserved.</p>
+                <div style="font-size:12px; color:var(--text-muted); line-height:1.7; text-align:center;">
+                    <span style="font-weight:700;">✈️ 热门机场检索:</span>
+                    <a href="tuijian.html" style="color:var(--text-secondary); text-decoration:none; margin:0 4px;">机场推荐 2026</a> •
+                    <a href="tuijian.html" style="color:var(--text-secondary); text-decoration:none; margin:0 4px;">稳定专线机场</a> •
+                    <a href="index.html?cat=test" style="color:var(--text-secondary); text-decoration:none; margin:0 4px;">IEPL 内网专线</a> •
+                    <a href="index.html?cat=vpn" style="color:var(--text-secondary); text-decoration:none; margin:0 4px;">Clash/小火箭节点</a> •
+                    <a href="index.html?cat=contact" style="color:var(--text-secondary); text-decoration:none; margin:0 4px;">防封锁选型指南</a>
+                </div>
+                <div style="margin-top:10px; font-size:12px; color:var(--text-muted); display:flex; gap:16px; align-items:center; justify-content:center;">
+                    <span>友情链接:</span>
+                    <a href="https://jichangreview.net" target="_blank" style="color:var(--text-muted); text-decoration:none;">机场测评</a>
+                    <a href="https://jichangreview.net" target="_blank" style="color:var(--text-muted); text-decoration:none;">机场教程</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Article Popup Modal -->
+    <div id="article-modal" class="modal-overlay" onclick="if(event.target === this) closeArticleModal()">
+        <div class="modal-container">
+            <button class="modal-close-btn" onclick="closeArticleModal()">✕</button>
+            <div id="modal-hero-cover" class="modal-hero-cover"><span id="modal-hero-text" class="modal-hero-text"></span></div>
+            <article class="modal-body">
+                <h1 id="modal-title" style="font-size:1.8rem; margin-bottom:12px; color:var(--text-primary);"></h1>
+                <div style="font-size:0.88rem; color:var(--text-muted); margin-bottom:20px;">作者：<strong id="modal-author">浪网官方测评团队</strong> • <span id="modal-date">2026年08月最新测试报告</span></div>
+                <div id="modal-content" style="line-height:1.85; font-size:1.05rem;"></div>
+            </article>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script>
+    const allAirportsList = [
+        {
+            id: "ap-1",
+            rankTag: "1st", rankClass: "rank-1",
+            name: "浪网 (langwangnet)",
+            lineType: "双向 IEPL 跨境内网专线",
+            ping: "28 ms", speed: "320,000 Kbps (秒开 8K)", sla: "99.99% 高可用在线率",
+            coupon: "lw888",
+            link: "https://langwang.wavenetaff.com/#/register?code=W6CVZLof",
+            review: "全节点采用纯正双向 IEPL 跨境内网专线传输，数据经专有海底光缆直连香港、东京、新加坡及美西数据中心，完全绕过公网 GFW 防火墙 DPI 深度审查。在晚高峰 21:30 黄金拥塞时段下，4K/8K 极清视频播放瞬时拉满 320,000 Kbps，高频刷 YouTube、TikTok、Netflix 蓝光视频秒加载零缓冲。全节点提供 100% 原生住宅 IP 广播，完美解锁 ChatGPT-4o、Claude 3.5 Sonnet、Midjourney AI 交互工具，绝无 Access Denied 报错，是年度高好评综合体验第一的旗舰专线机场。",
+            fullArticle: `
+                <h3>🌟 浪网 (langwangnet) 深度全方位测评报告 【年度第一名】</h3>
+                <p>作为浪网官方团队首推的旗舰专线机场，<b>浪网 (langwangnet)</b> 在全网压测中展现出了无可匹敌的绝对优势。对于追求极速、极稳、高解锁率的用户来说，它是当前市场的终极解答。</p>
+                <h4>一、 物理架构与双向 IEPL 专线优势</h4>
+                <p>浪网全节点搭建在<b>双向 IEPL 物理内网专线</b>之上。与传统的 BGP 公网中转不同，IEPL 专线通过专有内网海底光缆直连香港、日本、新加坡及美西数据中心，数据完全不经过公网 GFW 审查节点，因此在任何敏感时期均能保持 0 断连与 99.99% 绝佳可用率。</p>
+                <h4>二、 晚高峰速率与 8K 极清播放实测数据</h4>
+                <p>在晚上 21:00 至 23:30 的网络最高峰时段，我们在千兆本地光纤下测试浪网的香港 01 节点，测速结果瞬时攀升至 <b>320,000 Kbps</b> 以上。播放 YouTube 8K 60FPS 极清演示视频，缓冲条拉满，无任何拖拽加载延时。</p>
+                <h4>三、 原生 IP 解锁与人工智能 AI 交互极速体验</h4>
+                <p>浪网所有节点均经过原生住宅 IP 广播认证，完美支持 OpenAI (ChatGPT Plus / GPT-4o)、Claude 3.5 Sonnet、Midjourney AI 工具，绝不提示“Access Denied”拒绝访问报错。同时解锁 Netflix 4K 独家剧集、Disney+ 及 HBO Max。</p>
+                <div style="margin:24px 0; padding:18px; background:rgba(59,130,246,0.15); border:none; border-radius:8px;">
+                    <strong>🎁 浪网官方专属 85 折优惠码: <span style="color:#f59e0b; font-size:1.2rem;">lw888</span></strong>
+                    <br><a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" class="register-link-btn" style="margin-top:12px;">直达浪网 (langwangnet) 官网注册入口 ➔</a>
+                </div>
+            `
+        },
+        {
+            id: "ap-2",
+            rankTag: "2nd", rankClass: "rank-2",
+            name: "暮光加速机场",
+            lineType: "BGP 三网入口中转 + IPLC 专线",
+            ping: "34 ms", speed: "280,000 Kbps 秒开 4K/8K", sla: "99.95% 高可用在线率",
+            coupon: "mm88",
+            link: "https://langwang3.twilightaff.com/#/?code=8YW2PdKT",
+            review: "采用智能 BGP 三网入口多线中转优化架构，可自动感知用户的电信、联通或移动宽带运营商，实时匹配物理延迟最低的分流节点。针对日服 Apex Legends、Steam、美服台服等外服游戏进行了低延迟直连调优，丢包率极低。不仅追剧秒开 4K/8K，客户端一键同步功能更全面兼容 Clash Verge Rev、Shadowrocket (小火箭)、Surge 及 Sing-box 格式，24 小时技术团队在线维护，口碑极佳。",
+            fullArticle: `
+                <h3>🥈 暮光加速机场 深度测评与好评总结 【官方第二名】</h3>
+                <p><b>暮光加速机场</b>凭借强大的 BGP 三网入口调度能力，被浪网官方评选为推荐榜单第二名。特别适合对游戏延迟敏感及全网视频追剧的用户。</p>
+                <div style="margin:24px 0; padding:18px; background:rgba(16,185,129,0.15); border:none; border-radius:8px;">
+                    <strong>🎁 暮光加速专属优惠码: <span style="color:#10b981; font-size:1.2rem;">mm88</span></strong>
+                    <br><a href="https://langwang3.twilightaff.com/#/?code=8YW2PdKT" target="_blank" class="register-link-btn" style="background:#10b981; margin-top:12px;">直达暮光加速机场官网注册入口 ➔</a>
+                </div>
+            `
+        },
+        {
+            id: "ap-3",
+            rankTag: "3rd", rankClass: "rank-sub",
+            name: "梯子云机场",
+            lineType: "IPLC 跨境专线 + 备用 BGP 中转",
+            ping: "38 ms", speed: "250,000 Kbps", sla: "99.90% 高可用在线率",
+            coupon: "tiziyun",
+            link: "https://langwang3.ladderaff.com/#/?code=L1jG6nO0",
+            review: "主打高性价比 IPLC 跨境专线与多组冗余 BGP 中转线路。具备无感知秒级自动故障切换分流机制，当某条国际海底光缆突发维护时，系统会自动将流量无缝调度至灾备通道。实测解锁 Disney+ 4K 极清画质、HBO Max 独家剧集与 YouTube Premium，晚高峰速率稳定攀升至 250,000 Kbps，节点在线率高达 99.90%，被誉为追剧看球与高频出海必备的高性价比神器。",
+            fullArticle: `<p>梯子云机场详细测评报告。</p>`
+        },
+        {
+            id: "ap-4",
+            rankTag: "4th", rankClass: "rank-sub",
+            name: "飞 V 机场",
+            lineType: "大带宽独立服务器专线",
+            ping: "39 ms", speed: "290,000 Kbps", sla: "99.90% 高可用在线率",
+            coupon: "fly20",
+            link: "https://langwang3.flyvaff.com/#/?code=xiDNo6Dm",
+            review: "全节点配备独享独立大带宽物理专线服务器通道，专为重度影音极客、4K 蓝光影视迷及大文件下载党深度定制。测试团队使用 IDM 多线程下载器拉取 10GB 镜像，峰值速度冲上 290,000 Kbps，全程不限速、不主动丢包。后台界面傻瓜式简洁，新手小白完成注册后即可一键复制或扫描二维码快捷导入全套代理订阅，上手毫无门槛。",
+            fullArticle: `<p>飞V机场详细测评报告。</p>`
+        },
+        {
+            id: "ap-5",
+            rankTag: "5th", rankClass: "rank-sub",
+            name: "灵动云机场",
+            lineType: "智能 BGP 按量内网专线",
+            ping: "35 ms", speed: "240,000 Kbps", sla: "99.85% 高可用在线率",
+            coupon: "880223",
+            link: "https://langwang3.lingdongaff.com/#/?code=YI6r1wRy",
+            review: "同时提供极其灵活的“不限时间按量计费包”与“高性价比月付/年付周期包”，完美切中低频办公与高频重度用户的预算需求。流量永不过期，用多少扣多少。节点针对 ChatGPT、Claude 3.5、Midjourney 等 AI 人工智能平台进行了防风控住宅 IP 广播调优，极少触发 Cloudflare 人机验证码弹窗，响应延迟低至 35ms，是独立开发者与办公族的超值首选。",
+            fullArticle: `<p>灵动云机场详细测评报告。</p>`
+        },
+        {
+            id: "ap-6",
+            rankTag: "6th", rankClass: "rank-sub",
+            name: "隐形人机场",
+            lineType: "Hysteria 2 隐藏加密传输线",
+            ping: "42 ms", speed: "230,000 Kbps", sla: "99.80% 高可用在线率",
+            coupon: "yxr888",
+            link: "https://langwang3.invisibleaff.com/#/?code=55YDwp0B",
+            review: "主打最新 Hysteria 2 UDP 协议与独家隐藏防封锁混淆算法，在公网环境剧烈波动或敏感封锁时期依然能够展现惊人的穿透韧性与吞吐能力。即使在丢包率 15% 的恶劣弱网环境下，仍可发起多重数据重传，将连接速率保持在 230,000 Kbps。严格遵循零日志记录安全隐秘承诺，全面保护用户隐私数据安全。",
+            fullArticle: `<p>隐形人机场详细测评报告。</p>`
+        },
+        {
+            id: "ap-7",
+            rankTag: "7th", rankClass: "rank-sub",
+            name: "全球云机场",
+            lineType: "全球 80+ 节点 BGP 专线",
+            ping: "45 ms", speed: "210,000 Kbps", sla: "99.75% 高可用在线率",
+            coupon: "qq88",
+            link: "https://hotdo.gcvipaff.com/#/?code=22LGmwXf",
+            review: "拥有覆盖亚洲（港日韩台）、北美（美加）、欧洲（英法德意）以及冷门地区（阿根廷、土耳其、智利、埃及）的 80+ 节点海量 BGP 调度网络。系统可依据各节点实时负载自动进行动态链路均衡分配，避免单点过载。流媒体全解锁，完美支持多设备同时在线并发连接，适合跨国出海团队与海淘站长使用。",
+            fullArticle: `
+                <h3>🌍 全球云机场 80+ 节点海量地区测试</h3>
+                <p>全球云拥有庞大的海网调度架构。</p>
+                <div style="margin:24px 0; padding:18px; background:rgba(6,182,212,0.15); border:none; border-radius:8px;">
+                    <strong>🎁 全球云专属优惠码: <span style="color:#06b6d4; font-size:1.2rem;">qq88</span></strong>
+                    <br><a href="https://hotdo.gcvipaff.com/#/?code=22LGmwXf" target="_blank" class="register-link-btn" style="background:#06b6d4; margin-top:12px;">直达全球云机场官网注册入口 ➔</a>
+                </div>
+            `
+        },
+        {
+            id: "ap-8",
+            rankTag: "8th", rankClass: "rank-sub",
+            name: "飞鸟云 (Feinio Cloud)",
+            lineType: "性价比 IEPL 专线中转",
+            ping: "40 ms", speed: "220,000 Kbps", sla: "99.80% 高可用在线率",
+            coupon: "fn888",
+            link: "https://langwang.wavenetaff.com/#/register?code=W6CVZLof",
+            review: "老牌高性价比 IEPL 专线中转机场，价格平易近人，线路稳定流畅，特别适合预算有限但对网络稳定性有高要求的追剧及办公族。全节点经过优化排查，支持一键订阅导入 Clash、小火箭、Stash、Sing-box 等主流客户端，晚高峰实测 220,000 Kbps 极速播放 4K 蓝光无缓冲，性价比无出其右。",
+            fullArticle: `<h3>🦅 飞鸟云 IEPL 专线中转实测报告</h3><p>飞鸟云主打平价优质专线。</p>`
+        },
+        {
+            id: "ap-9",
+            rankTag: "9th", rankClass: "rank-sub",
+            name: "Nemu 云机场",
+            lineType: "原生家宽 IP 节点",
+            ping: "41 ms", speed: "215,000 Kbps", sla: "99.75% 在线率",
+            coupon: "nemu88",
+            link: "https://langwang.wavenetaff.com/#/register?code=W6CVZLof",
+            review: "主打纯净原生住宅家宽 IP 节点的专业级加速平台，专为对 AI 人工智能交互与流媒体地区风控有严格要求的用户定制。节点涵盖美日港台家宽 IP 广播，能极佳绕过 OpenAI、Claude、Netflix 的风控拦截，极大规避账号封禁报错风险。节点响应敏捷，稳定率高达 99.75%。",
+            fullArticle: `<h3>🐱 Nemu 云机场 纯净原生 IP 专线测评报告</h3><p>适合对外服 AI 对话要求较高的团队。</p>`
+        },
+        {
+            id: "ap-10",
+            rankTag: "10th", rankClass: "rank-sub",
+            name: "BoomCloud",
+            lineType: "老牌 BGP 冗余通道",
+            ping: "44 ms", speed: "205,000 Kbps", sla: "99.70% 在线率",
+            coupon: "boom66",
+            link: "https://langwang.wavenetaff.com/#/register?code=W6CVZLof",
+            review: "运营多年的老牌资深出海加速服务商，自建庞大的多出口 BGP 冗余通道与多机房灾备备份机制。系统具备极强的自我修复与动态容灾能力，历经多年网络环境波动考验依然保持高可用。客户端适配极其完善，包含 Windows、macOS、Android、iOS 及 OpenWrt 路由器插件全平台覆盖。",
+            fullArticle: `<h3>💥 BoomCloud 老牌机场稳定性测试</h3><p>提供长时间稳定的基础跨国加速服务。</p>`
+        },
+        {
+            id: "ap-11",
+            rankTag: "11th", rankClass: "rank-sub",
+            name: "极客云 (GeekCloud)",
+            lineType: "大流量低单价方案",
+            ping: "46 ms", speed: "195,000 Kbps", sla: "99.65% 在线率",
+            coupon: "geek88",
+            link: "https://langwang.wavenetaff.com/#/register?code=W6CVZLof",
+            review: "主打大流量、低单价平价套餐方案，专为大文件下载党、P2P 影视迷及全家多设备并发共享用户精心打造。套餐内包含海量 G 级流量包，价格极其平民化。即使在晚高峰千人并发压测下，实测速率仍可维持在 195,000 Kbps，是平价大流量机场中的实力老牌代表。",
+            fullArticle: `<h3>🤓 极客云 (GeekCloud) 大流量平价机场测评</h3><p>套餐流量充足，价格亲民。</p>`
+        },
+        {
+            id: "ap-12",
+            rankTag: "12th", rankClass: "rank-sub",
+            name: "速鹰 666 (Suying)",
+            lineType: "多节点备用隧道",
+            ping: "48 ms", speed: "190,000 Kbps", sla: "99.60% 在线率",
+            coupon: "sy666",
+            link: "https://langwang.wavenetaff.com/#/register?code=W6CVZLof",
+            review: "拥有极为全面的全球节点覆盖网络与多组容灾防封锁隧道入口。配置导入极其快速简单，提供全套傻瓜式教程与一键订阅链接。无论作为日常主用梯子还是敏感阻断时期的应急备用网络，都能带来极度安心稳定的连通率保障，充当备用梯子绝无后顾之忧。",
+            fullArticle: `<h3>🦅 速鹰 666 (Suying) 备用网络多线路评价</h3><p>拥有节点数量多，配置导入简单快速。</p>`
+        },
+        {
+            id: "ap-13",
+            rankTag: "13th", rankClass: "rank-sub",
+            name: "奶油机场 (Cream Net)",
+            lineType: "极简轻量流媒体通道",
+            ping: "50 ms", speed: "185,000 Kbps", sla: "99.55% 在线率",
+            coupon: "cream88",
+            link: "https://langwang.wavenetaff.com/#/register?code=W6CVZLof",
+            review: "节点架构经过极简轻量化调优，专针对移动端（iPhone 小火箭 Shadowrocket、Android Sing-Box/Clash）与 Telegram、X (Twitter)、Instagram 等日常社交软件体验进行了 TCP/UDP 传输加速优化。界面清爽无杂质，连接响应迅速，非常适合手机端随开随用的轻量化出海体验。",
+            fullArticle: `<h3>🍦 奶油机场 (Cream Net) 移动端优化实测</h3><p>非常适合小火箭与 Surge 移动端开卡使用。</p>`
+        }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById('tuijian-single-rows-container');
+        container.innerHTML = allAirportsList.map(ap => `
+            <div class="airport-row-card" onclick="openAirportModalById('${ap.id}')">
+                <div class="row-header">
+                    <div class="row-title-area">
+                        <span class="rank-tag ${ap.rankClass}">${ap.rankTag}</span>
+                        <h2 class="airport-name-title">${ap.name}</h2>
+                    </div>
+                </div>
+
+                <div class="row-rich-text">
+                    ${ap.review}
+                </div>
+
+                <div class="row-specs-grid">
+                    <div class="spec-item">
+                        <div class="spec-label">晚高峰 Ping 延迟</div>
+                        <div class="spec-val" style="color:var(--accent-emerald);">${ap.ping}</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">8K 视频速率</div>
+                        <div class="spec-val">${ap.speed}</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">稳定性 SLA</div>
+                        <div class="spec-val" style="color:var(--accent-gold);">${ap.sla}</div>
+                    </div>
+                </div>
+
+                <div class="row-bottom-actions" onclick="event.stopPropagation();">
+                    <div class="coupon-code-box">
+                        <span>🎁 专属优惠码: <strong>${ap.coupon}</strong></span>
+                        <button class="mini-copy-btn" onclick="copyCoupon('${ap.coupon}')">复制</button>
+                    </div>
+                    <a href="${ap.link}" target="_blank" class="register-link-btn" style="text-decoration:none; display:block; text-align:center; width:100%; font-weight:800; padding:12px; font-size:0.95rem; background:linear-gradient(135deg, #10b981, #059669); color:#fff; border-radius:8px; margin-top:4px;">
+                        🚀 直达 ${ap.name} 官网注册入口 ➔
+                    </a>
+                </div>
+            </div>
+        `).join('');
+    });
+
+    function openAirportModalById(id) {
+        window.location.href = 'article.html?id=' + id;
+    }
+
+    function closeArticleModal() {
+        document.getElementById('article-modal').classList.remove('active');
+    }
+
+    function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme_preference', newTheme);
+        const themeBtn = document.getElementById('theme-toggle-btn');
+        if (themeBtn) themeBtn.innerText = newTheme === 'dark' ? '☀️' : '🌙';
+    }
+
+    function copyCoupon(code) {
+        navigator.clipboard.writeText(code).then(() => {
+            showToast(`已成功复制专属优惠码: ${code}`);
+        }).catch(() => {
+            showToast(`专属优惠码为: ${code}`);
+        });
+    }
+
+    function showToast(msg) {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerText = msg;
+        container.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+    </script>
+</body>
+</html>
