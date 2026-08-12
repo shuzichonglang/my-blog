@@ -2556,7 +2556,7 @@ function main(config) {<br>
         applyTheme(state.theme);
         const params = new URLSearchParams(window.location.search);
         const catParam = params.get('cat');
-        let initialCat = 'AI探索';
+        let initialCat = '首页';
         if (catParam) {
             if (slugCategoryMap[catParam]) {
                 initialCat = slugCategoryMap[catParam];
@@ -2564,7 +2564,7 @@ function main(config) {<br>
                 initialCat = catParam;
             }
         }
-        filterByCategory(initialCat);
+        filterByCategory(initialCat, false);
         setupEventListeners();
     }
 
@@ -2587,13 +2587,13 @@ function main(config) {<br>
         if (themeBtn) themeBtn.innerText = theme === 'dark' ? '☀️' : '🌙';
     }
 
-    function filterByCategory(cat) {
+    function filterByCategory(cat, shouldScroll = true) {
         if (slugCategoryMap[cat]) {
             cat = slugCategoryMap[cat];
         }
         state.currentCategory = cat;
         
-        const slug = categorySlugMap[cat] || 'ai';
+        const slug = categorySlugMap[cat] || (cat === '首页' ? 'all' : 'ai');
         if (window.history && window.history.replaceState) {
             const cleanUrl = window.location.pathname + (slug === 'all' ? '' : '?cat=' + slug);
             window.history.replaceState(null, '', cleanUrl);
@@ -2617,9 +2617,11 @@ function main(config) {<br>
 
         renderArticles();
 
-        const mainElem = document.getElementById('main-content') || document.getElementById('articles-feed');
-        if (mainElem) {
-            mainElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (shouldScroll) {
+            const mainElem = document.getElementById('main-content') || document.getElementById('articles-feed');
+            if (mainElem) {
+                mainElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
     }
 
