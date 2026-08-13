@@ -188,20 +188,28 @@
     /* Filter Pills Bar */
     .filter-bar-container { margin-bottom: 12px; }
     .filter-bar {
-        display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
-        background-color: var(--card-bg); padding: 14px 18px; border-radius: 12px;
+        display: flex; gap: 8px; flex-wrap: nowrap; overflow-x: auto; align-items: center;
+        background-color: var(--card-bg); padding: 12px 16px; border-radius: 12px;
         border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);
+        -webkit-overflow-scrolling: touch; scrollbar-width: none;
     }
+    .filter-bar::-webkit-scrollbar { display: none; }
     .filter-pill {
-        padding: 9px 18px; border-radius: 9999px; border: none;
+        padding: 9px 18px; border-radius: 9999px; border: 1.5px solid var(--border-color);
         background-color: var(--pill-bg); color: var(--pill-text); font-size: 0.92rem;
         font-weight: 800; cursor: pointer; transition: all 0.2s ease;
-        display: flex; align-items: center; gap: 6px; white-space: nowrap;
+        display: flex; align-items: center; gap: 6px; white-space: nowrap; flex-shrink: 0;
+        user-select: none; -webkit-tap-highlight-color: transparent;
     }
-    .filter-pill:hover { background-color: var(--pill-hover); color: var(--text-primary); }
+    .filter-pill:hover {
+        background-color: var(--pill-hover); color: var(--text-primary);
+        border-color: var(--primary-accent); transform: translateY(-1px);
+    }
+    .filter-pill:active { transform: scale(0.95); opacity: 0.9; }
     .filter-pill.active {
-        background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff;
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35); transform: scale(1.03);
+        background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff !important;
+        border-color: #3b82f6; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45);
+        transform: translateY(-1px) scale(1.03);
     }
 
     .main-content {
@@ -468,11 +476,12 @@
 
         <div class="search-box-container">
             <span class="search-icon">🔍</span>
-            <input type="search" id="search-input" class="search-input" placeholder="搜索 8大AI, 6大折腾, 6大建站优化, 6大订阅转换, 13大机场..." aria-label="全站关键字搜索">
+            <input type="search" id="search-input" class="search-input" placeholder="搜索 13大机场, 8大AI, 6大折腾, 6大建站, 6大订阅, 4大工具..." aria-label="全站关键字搜索">
+            <button id="search-clear-btn" onclick="clearSearchQuery()" style="display:none; position:absolute; right:12px; top:50%; transform:translateY(-50%); background:transparent; border:none; color:var(--text-muted); font-size:1.1rem; cursor:pointer; padding:4px;" title="清空搜索">✕</button>
         </div>
 
         <div class="nav-actions">
-            <button onclick="filterByCategory('机场推荐')" class="register-link-btn" style="padding:7px 14px; font-size:0.85rem; background:linear-gradient(135deg, #ef4444, #f59e0b); color:#fff; cursor:pointer;" title="显示13大机场推荐">✈️ 机场推荐 (13大)</button>
+            <button onclick="filterByCategory('机场推荐')" class="register-link-btn" style="padding:7px 14px; font-size:0.85rem; background:linear-gradient(135deg, #ef4444, #f59e0b); color:#fff; cursor:pointer;" title="显示13大机场推荐库">✈️ 机场推荐 (13库)</button>
             <button id="theme-toggle-btn" class="btn-icon" onclick="toggleTheme()" title="切换深色/浅色模式">🌙</button>
             <button class="btn-icon" onclick="showToast('已成功收藏全站知识库')" title="收藏页面">🔖</button>
         </div>
@@ -492,14 +501,14 @@
 
             <nav class="nav-menu" aria-label="全站关键字导航">
                 <ul>
-                    <li><a href="javascript:void(0)" onclick="filterByCategory('首页')" class="active" style="cursor:pointer;" title="首页全量">首页 (全量展示)</a></li>
-                    <li><a href="javascript:void(0)" onclick="filterByCategory('机场推荐')" title="13大机场推荐" style="color:var(--accent-gold); font-weight:800; cursor:pointer;">✈️ 机场推荐 (13大机场)</a></li>
-                    <li><a href="javascript:void(0)" onclick="filterByCategory('AI探索')" title="8大AI极客矩阵" style="cursor:pointer;">🤖 AI探索 (8大矩阵)</a></li>
-                    <li><a href="javascript:void(0)" onclick="filterByCategory('折腾记录')" title="6大踩坑经验复盘" style="cursor:pointer;">📝 折腾记录 (6大复盘)</a></li>
-                    <li><a href="javascript:void(0)" onclick="filterByCategory('建站优化')" title="6大性能提升调优" style="cursor:pointer;">🤍 建站优化 (6大调优)</a></li>
-                    <li><a href="javascript:void(0)" onclick="filterByCategory('订阅转换')" title="6大订阅转换平台" style="cursor:pointer;">🔄 订阅转换 (6大服务)</a></li>
-                    <li><a href="javascript:void(0)" onclick="filterByCategory('机场测试')" title="13大机场晚高峰测试" style="cursor:pointer;">🧪 机场测试 (13大实测)</a></li>
-                    <li><a href="javascript:void(0)" onclick="filterByCategory('科学上网')" title="全平台客户端下载" style="cursor:pointer;">📱 科学上网 (4大平台)</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByCategory('首页')" class="active" style="cursor:pointer;" title="首页全量库">首页 (全量53库)</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByCategory('机场推荐')" title="13大机场推荐库" style="color:var(--accent-gold); font-weight:800; cursor:pointer;">✈️ 机场推荐 (13库)</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByCategory('AI探索')" title="8大AI极客矩阵库" style="cursor:pointer;">🤖 AI探索 (8库)</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByCategory('折腾记录')" title="6大踩坑经验复盘库" style="cursor:pointer;">📝 折腾记录 (6库)</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByCategory('建站优化')" title="6大性能提升调优库" style="cursor:pointer;">🤍 建站优化 (6库)</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByCategory('订阅转换')" title="6大订阅转换平台库" style="cursor:pointer;">🔄 订阅转换 (6库)</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByCategory('机场测试')" title="13大机场晚高峰测试库" style="cursor:pointer;">🧪 机场测试 (13库)</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByCategory('科学上网')" title="全平台客户端下载库" style="cursor:pointer;">📱 科学上网 (4库)</a></li>
                     <li><a href="javascript:void(0)" onclick="filterByCategory('技术干货')" title="全栈开发与代码笔记" style="cursor:pointer;">💻 技术干货 (6大教程)</a></li>
                     <li><a href="javascript:void(0)" onclick="filterByCategory('实用工具')" title="高效开发与日常必备" style="cursor:pointer;">🛠️ 实用工具 (4大神器)</a></li>
                     <li><a href="javascript:void(0)" onclick="filterByCategory('联系我们')" title="联系我们官方通道" style="cursor:pointer; color:var(--accent-rose); font-weight:800;">📬 联系我们 (频道与邮箱)</a></li>
@@ -581,16 +590,22 @@
 
             <!-- Filter Pills Bar -->
             <div class="filter-bar-container">
-                <div class="filter-bar">
-                    <button class="filter-pill" id="pill-tuijian" onclick="filterByCategory('机场推荐')" style="background:linear-gradient(135deg,#ef4444,#f59e0b); color:#fff; cursor:pointer;">✈️ 机场推荐</button>
-                    <button class="filter-pill active" id="pill-ai" onclick="filterByCategory('AI探索')" style="cursor:pointer;">🤖 AI探索 (8大)</button>
-                    <button class="filter-pill" id="pill-record" onclick="filterByCategory('折腾记录')" style="cursor:pointer;">📝 折腾记录 (6大)</button>
-                    <button class="filter-pill" id="pill-opt" onclick="filterByCategory('建站优化')" style="cursor:pointer;">🤍 建站优化 (6大)</button>
-                    <button class="filter-pill" id="pill-sub" onclick="filterByCategory('订阅转换')" style="cursor:pointer;">🔄 订阅转换 (6大)</button>
-                    <button class="filter-pill" id="pill-test" onclick="filterByCategory('机场测试')" style="cursor:pointer;">机场测试</button>
-                    <button class="filter-pill" id="pill-geo" onclick="filterByCategory('科学上网')" style="cursor:pointer;">科学上网</button>
-                    <button class="filter-pill" id="pill-tech" onclick="filterByCategory('技术干货')" style="cursor:pointer;">💻 技术干货</button>
-                    <button class="filter-pill" id="pill-tool" onclick="filterByCategory('实用工具')" style="cursor:pointer;">🛠️ 实用工具</button>
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; padding:0 4px; flex-wrap:wrap; gap:6px;">
+                    <span style="font-size:0.88rem; font-weight:800; color:var(--text-primary); display:flex; align-items:center; gap:6px;">
+                        📂 分类资源库 <span style="font-size:0.75rem; background:rgba(59,130,246,0.15); color:#3b82f6; border:1px solid rgba(59,130,246,0.3); padding:2px 8px; border-radius:12px; font-weight:700;">👉 点击标签切库 | 手机可左右滑动</span>
+                    </span>
+                </div>
+                <div class="filter-bar" id="mobile-filter-bar">
+                    <button class="filter-pill" id="pill-all" onclick="filterByCategory('首页')" style="cursor:pointer;" title="查看全部 53 个资源库">🌟 首页全量 (53库)</button>
+                    <button class="filter-pill" id="pill-tuijian" onclick="filterByCategory('机场推荐')" style="background:linear-gradient(135deg,#ef4444,#f59e0b); color:#fff; cursor:pointer;" title="查看 13 大机场推荐库">✈️ 机场推荐 (13库)</button>
+                    <button class="filter-pill active" id="pill-ai" onclick="filterByCategory('AI探索')" style="cursor:pointer;" title="查看 8 大 AI 工具与指南库">🤖 AI探索 (8库)</button>
+                    <button class="filter-pill" id="pill-record" onclick="filterByCategory('折腾记录')" style="cursor:pointer;" title="查看 6 大踩坑与复盘库">📝 折腾记录 (6库)</button>
+                    <button class="filter-pill" id="pill-opt" onclick="filterByCategory('建站优化')" style="cursor:pointer;" title="查看 6 大建站与性能调优库">🤍 建站优化 (6库)</button>
+                    <button class="filter-pill" id="pill-sub" onclick="filterByCategory('订阅转换')" style="cursor:pointer;" title="查看 6 大订阅转换平台库">🔄 订阅转换 (6库)</button>
+                    <button class="filter-pill" id="pill-test" onclick="filterByCategory('机场测试')" style="cursor:pointer;" title="查看 13 大机场测试简报库">🧪 机场测试 (13库)</button>
+                    <button class="filter-pill" id="pill-geo" onclick="filterByCategory('科学上网')" style="cursor:pointer;" title="查看 4 大平台客户端库">📱 科学上网 (4库)</button>
+                    <button class="filter-pill" id="pill-tech" onclick="filterByCategory('技术干货')" style="cursor:pointer;" title="查看 6 大技术干货教程库">💻 技术干货 (6库)</button>
+                    <button class="filter-pill" id="pill-tool" onclick="filterByCategory('实用工具')" style="cursor:pointer;" title="查看 4 大实用工具神器库">🛠️ 实用工具 (4库)</button>
                 </div>
             </div>
 
@@ -604,44 +619,192 @@
         <aside class="sidebar-right">
             
             <section class="widget" aria-labelledby="keywords-title">
-                <h3 class="widget-title" id="keywords-title">核心主题分类</h3>
+                <h3 class="widget-title" id="keywords-title">核心主题资源库</h3>
                 <div class="tag-cloud">
-                    <a href="javascript:void(0)" onclick="filterByCategory('机场推荐')" class="sidebar-tag" style="color:#ef4444; font-weight:800; cursor:pointer;">✈️ 机场推荐 (13大)</a>
-                    <a href="javascript:void(0)" onclick="filterByCategory('AI探索')" class="sidebar-tag" style="color:#8b5cf6; font-weight:800; cursor:pointer;">🤖 AI 探索 (8集)</a>
-                    <a href="javascript:void(0)" onclick="filterByCategory('折腾记录')" class="sidebar-tag" style="color:#10b981; font-weight:800; cursor:pointer;">📝 折腾记录 (6集)</a>
-                    <a href="javascript:void(0)" onclick="filterByCategory('建站优化')" class="sidebar-tag" style="color:#06b6d4; font-weight:800; cursor:pointer;">🤍 建站优化 (6集)</a>
-                    <a href="javascript:void(0)" onclick="filterByCategory('订阅转换')" class="sidebar-tag" style="color:#3b82f6; font-weight:800; cursor:pointer;">🔄 订阅转换 (6集)</a>
-                    <a href="javascript:void(0)" onclick="filterByCategory('机场测试')" class="sidebar-tag" style="cursor:pointer;">🧪 机场测试</a>
-                    <a href="javascript:void(0)" onclick="filterByCategory('技术干货')" class="sidebar-tag" style="cursor:pointer;">💻 技术干货</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('机场推荐')" class="sidebar-tag" style="color:#ef4444; font-weight:800; cursor:pointer;">✈️ 机场推荐 (13库)</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('AI探索')" class="sidebar-tag" style="color:#8b5cf6; font-weight:800; cursor:pointer;">🤖 AI 探索 (8库)</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('折腾记录')" class="sidebar-tag" style="color:#10b981; font-weight:800; cursor:pointer;">📝 折腾记录 (6库)</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('建站优化')" class="sidebar-tag" style="color:#06b6d4; font-weight:800; cursor:pointer;">🤍 建站优化 (6库)</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('订阅转换')" class="sidebar-tag" style="color:#3b82f6; font-weight:800; cursor:pointer;">🔄 订阅转换 (6库)</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('机场测试')" class="sidebar-tag" style="cursor:pointer;">🧪 机场测试 (13库)</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('科学上网')" class="sidebar-tag" style="cursor:pointer;">📱 科学上网 (4库)</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('技术干货')" class="sidebar-tag" style="cursor:pointer;">💻 技术干货 (6库)</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('实用工具')" class="sidebar-tag" style="cursor:pointer;">🛠️ 实用工具 (4库)</a>
                 </div>
             </section>
 
             <section class="widget" aria-labelledby="tools-title">
-                <h3 class="widget-title" id="tools-title">在线极速服务</h3>
+                <h3 class="widget-title" id="tools-title">在线极速服务库</h3>
                 <div class="tag-cloud">
-                    <a href="https://sub.v1.mk" target="_blank" class="sidebar-tag">Subconverter 转换</a>
-                    <a href="https://sub.v1.mk" target="_blank" class="sidebar-tag">Sing-Box 规则</a>
-                    <a href="https://raycast.com" target="_blank" class="sidebar-tag">Raycast 官网</a>
-                    <a href="https://jsonlint.com" target="_blank" class="sidebar-tag">JSON 校验盒</a>
+                    <a href="https://sub.v1.mk" target="_blank" class="sidebar-tag">Subconverter 转换库</a>
+                    <a href="https://sub.v1.mk" target="_blank" class="sidebar-tag">Sing-Box 规则库</a>
+                    <a href="https://raycast.com" target="_blank" class="sidebar-tag">Raycast 官网库</a>
+                    <a href="https://jsonlint.com" target="_blank" class="sidebar-tag">JSON 校验盒库</a>
                 </div>
             </section>
 
             <section class="widget" aria-labelledby="ranking-title">
-                <h3 class="widget-title" id="ranking-title">🏆 13大机场官网直达榜单</h3>
+                <h3 class="widget-title" id="ranking-title" style="display:flex; justify-content:space-between; align-items:center;">
+                    <span>🏆 13大机场推荐测评库</span>
+                    <span style="font-size:0.75rem; background:rgba(245,158,11,0.15); color:var(--accent-gold); padding:2px 8px; border-radius:10px; border:1px solid rgba(245,158,11,0.3); font-weight:800;">13独立专线/节点库</span>
+                </h3>
                 <ul class="sidebar-ranking-list">
-                    <li class="sidebar-ranking-item"><a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none; display:flex; justify-content:space-between; width:100%;"><span>🥇 <strong>1. 浪网 (langwangnet)</strong></span> <span style="color:var(--accent-gold); font-weight:800;">• lw888</span></a></li>
-                    <li class="sidebar-ranking-item"><a href="https://langwang3.twilightaff.com/#/?code=8YW2PdKT" target="_blank" style="color:inherit; text-decoration:none; display:flex; justify-content:space-between; width:100%;"><span>🥈 <strong>2. 暮光加速机场</strong></span> <span style="color:var(--accent-gold); font-weight:800;">• mm88</span></a></li>
-                    <li class="sidebar-ranking-item"><a href="https://langwang3.ladderaff.com/#/?code=L1jG6nO0" target="_blank" style="color:inherit; text-decoration:none; display:flex; justify-content:space-between; width:100%;"><span>🥉 <strong>3. 梯子云机场</strong></span> <span style="color:var(--accent-gold); font-weight:800;">• tiziyun</span></a></li>
-                    <li class="sidebar-ranking-item"><a href="https://langwang3.flyvaff.com/#/?code=xiDNo6Dm" target="_blank" style="color:inherit; text-decoration:none; display:flex; justify-content:space-between; width:100%;"><span>✈️ <strong>4. 飞 V 机场</strong></span> <span style="color:var(--accent-gold); font-weight:800;">• fly20</span></a></li>
-                    <li class="sidebar-ranking-item"><a href="https://langwang3.lingdongaff.com/#/?code=YI6r1wRy" target="_blank" style="color:inherit; text-decoration:none; display:flex; justify-content:space-between; width:100%;"><span>💫 <strong>5. 灵动云机场</strong></span> <span style="color:var(--accent-gold); font-weight:800;">• 880223</span></a></li>
-                    <li class="sidebar-ranking-item"><a href="https://langwang3.invisibleaff.com/#/?code=55YDwp0B" target="_blank" style="color:inherit; text-decoration:none; display:flex; justify-content:space-between; width:100%;"><span>👤 <strong>6. 隐形人机场</strong></span> <span style="color:var(--accent-gold); font-weight:800;">• yxr888</span></a></li>
-                    <li class="sidebar-ranking-item"><a href="https://hotdo.gcvipaff.com/#/?code=22LGmwXf" target="_blank" style="color:inherit; text-decoration:none; display:flex; justify-content:space-between; width:100%;"><span>🌍 <strong>7. 全球云机场</strong></span> <span style="color:var(--accent-gold); font-weight:800;">• qq88</span></a></li>
-                    <li class="sidebar-ranking-item"><a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none; display:flex; justify-content:space-between; width:100%;"><span>🦅 <strong>8. 飞鸟云 (Feinio)</strong></span> <span style="color:var(--accent-gold); font-weight:800;">• fn888</span></a></li>
-                    <li class="sidebar-ranking-item"><a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none; display:flex; justify-content:space-between; width:100%;"><span>🐱 <strong>9. Nemu 云机场</strong></span> <span style="color:var(--accent-gold); font-weight:800;">• nemu88</span></a></li>
-                    <li class="sidebar-ranking-item"><a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none; display:flex; justify-content:space-between; width:100%;"><span>💥 <strong>10. BoomCloud</strong></span> <span style="color:var(--accent-gold); font-weight:800;">• boom66</span></a></li>
-                    <li class="sidebar-ranking-item"><a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none; display:flex; justify-content:space-between; width:100%;"><span>🤓 <strong>11. 极客云 (Geek)</strong></span> <span style="color:var(--accent-gold); font-weight:800;">• geek88</span></a></li>
-                    <li class="sidebar-ranking-item"><a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none; display:flex; justify-content:space-between; width:100%;"><span>🦅 <strong>12. 速鹰 666 (Suying)</strong></span> <span style="color:var(--accent-gold); font-weight:800;">• sy666</span></a></li>
-                    <li class="sidebar-ranking-item"><a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none; display:flex; justify-content:space-between; width:100%;"><span>🍦 <strong>13. 奶油机场 (Cream)</strong></span> <span style="color:var(--accent-gold); font-weight:800;">• cream88</span></a></li>
+                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
+                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                                <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none;"><span>🥇 <strong>1. 浪网 (langwangnet)</strong></span></a>
+                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• lw888</span>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
+                                <span style="background:rgba(16,185,129,0.12); color:#10b981; padding:2px 6px; border-radius:4px; font-weight:700;">IEPL原生专线库</span>
+                                <button onclick="openAirportModalById('ap-1')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
+                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                                <a href="https://langwang3.twilightaff.com/#/?code=8YW2PdKT" target="_blank" style="color:inherit; text-decoration:none;"><span>🥈 <strong>2. 暮光加速机场</strong></span></a>
+                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• mm88</span>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
+                                <span style="background:rgba(59,130,246,0.12); color:#3b82f6; padding:2px 6px; border-radius:4px; font-weight:700;">BGP中转加速库</span>
+                                <button onclick="openAirportModalById('ap-2')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
+                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                                <a href="https://langwang3.ladderaff.com/#/?code=L1jG6nO0" target="_blank" style="color:inherit; text-decoration:none;"><span>🥉 <strong>3. 梯子云机场</strong></span></a>
+                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• tiziyun</span>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
+                                <span style="background:rgba(245,158,11,0.12); color:#f59e0b; padding:2px 6px; border-radius:4px; font-weight:700;">流媒体解锁库</span>
+                                <button onclick="openAirportModalById('ap-3')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
+                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                                <a href="https://langwang3.flyvaff.com/#/?code=xiDNo6Dm" target="_blank" style="color:inherit; text-decoration:none;"><span>✈️ <strong>4. 飞 V 机场</strong></span></a>
+                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• fly20</span>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
+                                <span style="background:rgba(6,182,212,0.12); color:#06b6d4; padding:2px 6px; border-radius:4px; font-weight:700;">8K极速节点库</span>
+                                <button onclick="openAirportModalById('ap-4')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
+                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                                <a href="https://langwang3.lingdongaff.com/#/?code=YI6r1wRy" target="_blank" style="color:inherit; text-decoration:none;"><span>💫 <strong>5. 灵动云机场</strong></span></a>
+                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• 880223</span>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
+                                <span style="background:rgba(139,92,246,0.12); color:#8b5cf6; padding:2px 6px; border-radius:4px; font-weight:700;">高性价比库</span>
+                                <button onclick="openAirportModalById('ap-5')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
+                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                                <a href="https://langwang3.invisibleaff.com/#/?code=55YDwp0B" target="_blank" style="color:inherit; text-decoration:none;"><span>👤 <strong>6. 隐形人机场</strong></span></a>
+                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• yxr888</span>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
+                                <span style="background:rgba(244,63,94,0.12); color:#f43f5e; padding:2px 6px; border-radius:4px; font-weight:700;">防封锁容灾库</span>
+                                <button onclick="openAirportModalById('ap-6')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
+                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                                <a href="https://hotdo.gcvipaff.com/#/?code=22LGmwXf" target="_blank" style="color:inherit; text-decoration:none;"><span>🌍 <strong>7. 全球云机场</strong></span></a>
+                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• qq88</span>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
+                                <span style="background:rgba(16,185,129,0.12); color:#10b981; padding:2px 6px; border-radius:4px; font-weight:700;">全球多节点库</span>
+                                <button onclick="openAirportModalById('ap-7')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
+                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                                <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none;"><span>🦅 <strong>8. 飞鸟云 (Feinio)</strong></span></a>
+                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• fn888</span>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
+                                <span style="background:rgba(59,130,246,0.12); color:#3b82f6; padding:2px 6px; border-radius:4px; font-weight:700;">Hy2协议极速库</span>
+                                <button onclick="openAirportModalById('ap-8')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
+                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                                <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none;"><span>🐱 <strong>9. Nemu 云机场</strong></span></a>
+                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• nemu88</span>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
+                                <span style="background:rgba(245,158,11,0.12); color:#f59e0b; padding:2px 6px; border-radius:4px; font-weight:700;">游戏低延迟库</span>
+                                <button onclick="openAirportModalById('ap-9')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
+                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                                <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none;"><span>💥 <strong>10. BoomCloud</strong></span></a>
+                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• boom66</span>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
+                                <span style="background:rgba(139,92,246,0.12); color:#8b5cf6; padding:2px 6px; border-radius:4px; font-weight:700;">老牌稳定节点库</span>
+                                <button onclick="openAirportModalById('ap-10')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
+                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                                <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none;"><span>🤓 <strong>11. 极客云 (Geek)</strong></span></a>
+                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• geek88</span>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
+                                <span style="background:rgba(6,182,212,0.12); color:#06b6d4; padding:2px 6px; border-radius:4px; font-weight:700;">海量大流量库</span>
+                                <button onclick="openAirportModalById('ap-11')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
+                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                                <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none;"><span>🦅 <strong>12. 速鹰 666 (Suying)</strong></span></a>
+                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• sy666</span>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
+                                <span style="background:rgba(16,185,129,0.12); color:#10b981; padding:2px 6px; border-radius:4px; font-weight:700;">平价入门库</span>
+                                <button onclick="openAirportModalById('ap-12')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
+                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                                <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none;"><span>🍦 <strong>13. 奶油机场 (Cream)</strong></span></a>
+                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• cream88</span>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
+                                <span style="background:rgba(244,63,94,0.12); color:#f43f5e; padding:2px 6px; border-radius:4px; font-weight:700;">轻量备用库</span>
+                                <button onclick="openAirportModalById('ap-13')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </section>
 
@@ -2592,6 +2755,19 @@ function main(config) {<br>
         if (themeBtn) themeBtn.innerText = theme === 'dark' ? '☀️' : '🌙';
     }
 
+    function escapeHtml(str) {
+        return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function clearSearchQuery() {
+        state.searchQuery = '';
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) searchInput.value = '';
+        const clearBtn = document.getElementById('search-clear-btn');
+        if (clearBtn) clearBtn.style.display = 'none';
+        renderArticles();
+    }
+
     function filterByCategory(cat, shouldScroll = true) {
         if (slugCategoryMap[cat]) {
             cat = slugCategoryMap[cat];
@@ -2607,7 +2783,19 @@ function main(config) {<br>
         const pills = document.querySelectorAll('.filter-pill');
         pills.forEach(p => {
             const rawText = p.innerText.trim();
-            if (rawText.includes(cat) || (cat !== '首页' && cat.includes(rawText.replace(/[^\u4e00-\u9fa5]/g, '')))) {
+            const pillId = p.id || '';
+            if (
+                (cat === '首页' && (pillId === 'pill-all' || rawText.includes('首页'))) ||
+                (cat === '机场推荐' && (pillId === 'pill-tuijian' || rawText.includes('机场推荐'))) ||
+                (cat === 'AI探索' && (pillId === 'pill-ai' || rawText.includes('AI探索'))) ||
+                (cat === '折腾记录' && (pillId === 'pill-record' || rawText.includes('折腾记录'))) ||
+                (cat === '建站优化' && (pillId === 'pill-opt' || rawText.includes('建站优化'))) ||
+                (cat === '订阅转换' && (pillId === 'pill-sub' || rawText.includes('订阅转换'))) ||
+                (cat === '机场测试' && (pillId === 'pill-test' || rawText.includes('机场测试'))) ||
+                (cat === '科学上网' && (pillId === 'pill-geo' || rawText.includes('科学上网'))) ||
+                (cat === '技术干货' && (pillId === 'pill-tech' || rawText.includes('技术干货'))) ||
+                (cat === '实用工具' && (pillId === 'pill-tool' || rawText.includes('实用工具')))
+            ) {
                 p.classList.add('active');
             } else {
                 p.classList.remove('active');
@@ -2635,14 +2823,24 @@ function main(config) {<br>
         if (!container) return;
         
         const cat = state.currentCategory || 'AI探索';
+        const query = (state.searchQuery || '').trim().toLowerCase();
         
         let filtered = allArticlesList.filter(ap => {
+            // 1. Global Keyword Search Priority
+            if (query) {
+                const nameMatch = ap.name && ap.name.toLowerCase().includes(query);
+                const lineMatch = ap.lineType && ap.lineType.toLowerCase().includes(query);
+                const recMatch = ap.recommendText && ap.recommendText.toLowerCase().includes(query);
+                const couponMatch = ap.coupon && ap.coupon.toLowerCase().includes(query);
+                const rankTagMatch = ap.rankTag && ap.rankTag.toLowerCase().includes(query);
+                const catMatch = ap.category && ap.category.some(c => c.toLowerCase().includes(query));
+                const fullMatch = ap.fullArticle && ap.fullArticle.toLowerCase().includes(query);
+                return nameMatch || lineMatch || recMatch || couponMatch || rankTagMatch || catMatch || fullMatch;
+            }
+
+            // 2. Standard Category Filter
             if (cat === '首页' || cat === 'ALL') return true;
             if (ap.category && ap.category.includes(cat)) return true;
-            if (state.searchQuery.trim()) {
-                const q = state.searchQuery.toLowerCase();
-                return ap.name.toLowerCase().includes(q) || ap.lineType.toLowerCase().includes(q) || ap.recommendText.toLowerCase().includes(q);
-            }
             if (ap.category) {
                 if ((cat.includes('机场') || cat.includes('tuijian')) && (ap.category.includes('机场推荐') || ap.category.includes('机场测试'))) return true;
                 if ((cat.includes('科学') || cat.includes('梯子')) && ap.category.includes('科学上网')) return true;
@@ -2657,12 +2855,32 @@ function main(config) {<br>
             return false;
         });
 
-        if (filtered.length === 0) {
-            filtered = [...allArticlesList];
+        let searchBannerHtml = '';
+        if (query) {
+            if (filtered.length > 0) {
+                searchBannerHtml = `
+                    <div style="background:rgba(59,130,246,0.1); border:1.5px solid #3b82f6; padding:14px 18px; border-radius:12px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; box-shadow:0 4px 14px rgba(59,130,246,0.15);">
+                        <div style="font-size:0.95rem; font-weight:800; color:var(--text-primary);">
+                            🔍 全站关键字搜索结果：“<span style="color:#3b82f6;">${escapeHtml(query)}</span>”（共匹配到 <strong style="color:var(--accent-gold); font-size:1.1rem;">${filtered.length}</strong> 个资源库）
+                        </div>
+                        <button onclick="clearSearchQuery()" style="background:#3b82f6; color:#fff; border:none; padding:7px 16px; border-radius:8px; font-weight:800; font-size:0.85rem; cursor:pointer; box-shadow:0 2px 8px rgba(59,130,246,0.3);">✕ 清空搜索查看分类</button>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `
+                    <div style="text-align:center; padding:50px 20px; background:var(--card-bg); border-radius:16px; border:1px solid var(--border-color); margin-bottom:20px;">
+                        <div style="font-size:3.5rem; margin-bottom:12px;">🔍</div>
+                        <h3 style="font-size:1.3rem; color:var(--text-primary); margin-bottom:8px; font-weight:800;">未找到与 “${escapeHtml(query)}” 相关的资源库</h3>
+                        <p style="color:var(--text-secondary); font-size:0.92rem; margin-bottom:20px;">建议尝试关键字如：<span style="color:var(--primary-accent); font-weight:700;">浪网、Clash、Sonnet、建站、订阅、优惠码</span></p>
+                        <button onclick="clearSearchQuery()" style="background:linear-gradient(135deg, #2563eb, #1d4ed8); color:#fff; border:none; padding:10px 24px; border-radius:8px; font-weight:800; font-size:0.92rem; cursor:pointer; box-shadow:0 4px 12px rgba(37,99,235,0.3);">👉 清空搜索并查看全库</button>
+                    </div>
+                `;
+                return;
+            }
         }
 
         // Render Format for: 📬 联系我们
-        if (state.currentCategory === '联系我们') {
+        if (state.currentCategory === '联系我们' && !query) {
             const contactArt = allArticlesList.find(a => a.id === 'contact-us');
             container.innerHTML = `
                 <article class="article-card" style="background:var(--card-bg); border:2px solid #f43f5e; border-radius:16px; padding:32px; box-shadow:0 8px 30px rgba(244,63,94,0.25);">
@@ -2704,7 +2922,7 @@ function main(config) {<br>
         }
 
         // Render Format 1: 🤖 AI探索
-        if (state.currentCategory === 'AI探索') {
+        if (state.currentCategory === 'AI探索' && !query) {
             container.innerHTML = `
                 <div class="two-col-grid-container">
                     ${filtered.map(ap => `
@@ -2730,7 +2948,7 @@ function main(config) {<br>
         }
 
         // Render Format 2: 🛠️ 实用工具 & 🔄 订阅转换
-        if (state.currentCategory === '实用工具' || state.currentCategory === '订阅转换') {
+        if ((state.currentCategory === '实用工具' || state.currentCategory === '订阅转换') && !query) {
             container.innerHTML = `
                 <div class="two-col-grid-container">
                     ${filtered.map(ap => `
@@ -2756,7 +2974,7 @@ function main(config) {<br>
         }
 
         // Render Format 3: 📝 折腾记录
-        if (state.currentCategory === '折腾记录') {
+        if (state.currentCategory === '折腾记录' && !query) {
             container.innerHTML = `
                 <div class="two-col-grid-container">
                     ${filtered.map(ap => `
@@ -2787,7 +3005,7 @@ function main(config) {<br>
         }
 
         // Render Format 4: 🤍 建站优化
-        if (state.currentCategory === '建站优化') {
+        if (state.currentCategory === '建站优化' && !query) {
             container.innerHTML = `
                 <div class="two-col-grid-container">
                     ${filtered.map(ap => `
@@ -2813,49 +3031,8 @@ function main(config) {<br>
             return;
         }
 
-        // Render 2-Column Grid Layout for: 机场测试, 科学上网, 💻 技术干货
-        if (state.currentCategory === '机场测试' || state.currentCategory === '技术干货' || state.currentCategory === '科学上网') {
-            container.innerHTML = `
-                <div class="two-col-grid-container">
-                    ${filtered.map(ap => `
-                        <article class="article-card" style="margin-bottom:0;" itemscope itemtype="https://schema.org/BlogPosting">
-                            <div class="row-header">
-                                <div class="row-title-area">
-                                    <span class="rank-tag ${ap.rankClass}" itemprop="keywords">${ap.rankTag}</span>
-                                    <h2 class="article-title" style="font-size:1.05rem; cursor:pointer;" onclick="toggleInlineArticle('${ap.id}')" itemprop="headline">${ap.name}</h2>
-                                </div>
-                            </div>
-
-                            <div class="row-rich-text" style="font-size:0.88rem; padding:12px;" itemprop="abstract">
-                                ${ap.recommendText}
-                            </div>
-
-                            <div class="row-specs-grid" style="grid-template-columns:1fr 1fr; margin:8px 0; padding:8px;">
-                                <div class="spec-item">
-                                    <div class="spec-label">延迟 / 指标</div>
-                                    <div class="spec-val" style="color:var(--accent-emerald); font-size:0.88rem;">${ap.ping}</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-label">速率 / 规范</div>
-                                    <div class="spec-val" style="font-size:0.88rem;">${ap.speed}</div>
-                                </div>
-                            </div>
-
-                            <div class="row-bottom-actions" style="margin-top:8px;">
-                                <div class="coupon-code-box" style="padding:6px 10px; font-size:0.8rem;">
-                                    <span>🎁 优惠码: <strong>${ap.coupon}</strong></span>
-                                </div>
-                                ${ap.link && ap.link !== '#' ? `<a href="${ap.link}" target="_blank" class="register-link-btn" style="text-decoration:none; display:block; text-align:center; width:100%; font-weight:800; padding:9px; font-size:0.85rem; background:linear-gradient(135deg, #10b981, #059669); color:#fff; border-radius:8px; margin-top:4px;" itemprop="url">🚀 直达 ${ap.name} 官网注册 ➔</a>` : ''}
-                            </div>
-                        </article>
-                    `).join('')}
-                </div>
-            `;
-            return;
-        }
-
-        // Standard Single Column for 机场推荐 & Others
-        container.innerHTML = filtered.map(ap => `
+        // Standard Cards for Search Results or Default Categories
+        const cardsHtml = filtered.map(ap => `
             <article class="article-card" itemscope itemtype="https://schema.org/BlogPosting">
                 <div class="row-header">
                     <div class="row-title-area">
@@ -2891,13 +3068,25 @@ function main(config) {<br>
                 </div>
             </article>
         `).join('');
+
+        container.innerHTML = searchBannerHtml + cardsHtml;
     }
 
     function setupEventListeners() {
-        document.getElementById('search-input').addEventListener('input', e => {
-            state.searchQuery = e.target.value;
-            renderArticles();
-        });
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', e => {
+                state.searchQuery = e.target.value;
+                const clearBtn = document.getElementById('search-clear-btn');
+                if (clearBtn) clearBtn.style.display = e.target.value.trim() ? 'block' : 'none';
+                renderArticles();
+            });
+            searchInput.addEventListener('keydown', e => {
+                if (e.key === 'Escape') {
+                    clearSearchQuery();
+                }
+            });
+        }
     }
 
     function toggleInlineArticle(id) {
