@@ -185,32 +185,42 @@
 
     .main-content { flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
 
-    /* Filter Pills Bar */
-    .filter-bar-container { margin-bottom: 12px; }
+    /* Filter Pills Bar - Complete Rounded Capsule Style (圈圈款) */
+    .filter-bar-container { margin-bottom: 16px; }
     .filter-bar {
-        display: flex; gap: 8px; flex-wrap: nowrap; overflow-x: auto; align-items: center;
-        background-color: var(--card-bg); padding: 12px 16px; border-radius: 12px;
-        border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);
+        display: flex; gap: 10px; flex-wrap: nowrap; overflow-x: auto; align-items: center;
+        background-color: var(--card-bg); padding: 14px 18px; border-radius: 9999px;
+        border: 2px solid var(--border-color); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
         -webkit-overflow-scrolling: touch; scrollbar-width: none;
     }
     .filter-bar::-webkit-scrollbar { display: none; }
     .filter-pill {
-        padding: 9px 18px; border-radius: 9999px; border: 1.5px solid var(--border-color);
-        background-color: var(--pill-bg); color: var(--pill-text); font-size: 0.92rem;
-        font-weight: 800; cursor: pointer; transition: all 0.2s ease;
+        padding: 9px 18px; border-radius: 9999px !important;
+        border: 1.5px solid var(--border-color);
+        background-color: var(--card-bg); color: var(--text-primary); font-size: 0.9rem;
+        font-weight: 800; cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex; align-items: center; gap: 6px; white-space: nowrap; flex-shrink: 0;
         user-select: none; -webkit-tap-highlight-color: transparent;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     }
     .filter-pill:hover {
-        background-color: var(--pill-hover); color: var(--text-primary);
-        border-color: var(--primary-accent); transform: translateY(-1px);
+        transform: translateY(-2px) scale(1.04);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+        border-color: var(--primary-accent);
     }
     .filter-pill:active { transform: scale(0.95); opacity: 0.9; }
-    .filter-pill.active {
-        background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff !important;
-        border-color: #3b82f6; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45);
-        transform: translateY(-1px) scale(1.03);
-    }
+
+    /* Distinct Vibrant Active Pill Capsules */
+    #pill-all.active { background: linear-gradient(135deg, #6366f1, #4f46e5) !important; color: #ffffff !important; border-color: #6366f1 !important; box-shadow: 0 6px 18px rgba(99,102,241,0.5) !important; }
+    #pill-tuijian.active { background: linear-gradient(135deg, #ef4444, #f59e0b) !important; color: #ffffff !important; border-color: #ef4444 !important; box-shadow: 0 6px 18px rgba(239,68,68,0.5) !important; }
+    #pill-ai.active { background: linear-gradient(135deg, #2563eb, #1d4ed8) !important; color: #ffffff !important; border-color: #2563eb !important; box-shadow: 0 6px 18px rgba(37,99,235,0.5) !important; }
+    #pill-record.active { background: linear-gradient(135deg, #10b981, #059669) !important; color: #ffffff !important; border-color: #10b981 !important; box-shadow: 0 6px 18px rgba(16,185,129,0.5) !important; }
+    #pill-opt.active { background: linear-gradient(135deg, #06b6d4, #0891b2) !important; color: #ffffff !important; border-color: #06b6d4 !important; box-shadow: 0 6px 18px rgba(6,182,212,0.5) !important; }
+    #pill-sub.active { background: linear-gradient(135deg, #8b5cf6, #7c3aed) !important; color: #ffffff !important; border-color: #8b5cf6 !important; box-shadow: 0 6px 18px rgba(139,92,246,0.5) !important; }
+    #pill-test.active { background: linear-gradient(135deg, #f43f5e, #e11d48) !important; color: #ffffff !important; border-color: #f43f5e !important; box-shadow: 0 6px 18px rgba(244,63,94,0.5) !important; }
+    #pill-geo.active { background: linear-gradient(135deg, #0284c7, #0369a1) !important; color: #ffffff !important; border-color: #0284c7 !important; box-shadow: 0 6px 18px rgba(2,132,199,0.5) !important; }
+    #pill-tech.active { background: linear-gradient(135deg, #d97706, #b45309) !important; color: #ffffff !important; border-color: #d97706 !important; box-shadow: 0 6px 18px rgba(217,119,6,0.5) !important; }
+    #pill-tool.active { background: linear-gradient(135deg, #4b5563, #374151) !important; color: #ffffff !important; border-color: #4b5563 !important; box-shadow: 0 6px 18px rgba(75,85,99,0.5) !important; }
 
     .main-content {
         flex: 1 1 0%;
@@ -596,16 +606,16 @@
                     </span>
                 </div>
                 <div class="filter-bar" id="mobile-filter-bar">
-                    <button class="filter-pill" id="pill-all" onclick="filterByCategory('首页')" style="cursor:pointer;" title="查看全部 53 个资源库">🌟 首页全量 (53库)</button>
-                    <button class="filter-pill" id="pill-tuijian" onclick="filterByCategory('机场推荐')" style="background:linear-gradient(135deg,#ef4444,#f59e0b); color:#fff; cursor:pointer;" title="查看 13 大机场推荐库">✈️ 机场推荐 (13库)</button>
-                    <button class="filter-pill active" id="pill-ai" onclick="filterByCategory('AI探索')" style="cursor:pointer;" title="查看 8 大 AI 工具与指南库">🤖 AI探索 (8库)</button>
-                    <button class="filter-pill" id="pill-record" onclick="filterByCategory('折腾记录')" style="cursor:pointer;" title="查看 6 大踩坑与复盘库">📝 折腾记录 (6库)</button>
-                    <button class="filter-pill" id="pill-opt" onclick="filterByCategory('建站优化')" style="cursor:pointer;" title="查看 6 大建站与性能调优库">🤍 建站优化 (6库)</button>
-                    <button class="filter-pill" id="pill-sub" onclick="filterByCategory('订阅转换')" style="cursor:pointer;" title="查看 6 大订阅转换平台库">🔄 订阅转换 (6库)</button>
-                    <button class="filter-pill" id="pill-test" onclick="filterByCategory('机场测试')" style="cursor:pointer;" title="查看 13 大机场测试简报库">🧪 机场测试 (13库)</button>
-                    <button class="filter-pill" id="pill-geo" onclick="filterByCategory('科学上网')" style="cursor:pointer;" title="查看 4 大平台客户端库">📱 科学上网 (4库)</button>
-                    <button class="filter-pill" id="pill-tech" onclick="filterByCategory('技术干货')" style="cursor:pointer;" title="查看 6 大技术干货教程库">💻 技术干货 (6库)</button>
-                    <button class="filter-pill" id="pill-tool" onclick="filterByCategory('实用工具')" style="cursor:pointer;" title="查看 4 大实用工具神器库">🛠️ 实用工具 (4库)</button>
+                    <button class="filter-pill" id="pill-all" onclick="filterByCategory('首页')" style="background:rgba(99,102,241,0.12); border:1.5px solid rgba(99,102,241,0.3); border-radius:9999px; cursor:pointer;" title="查看全部 53 个资源库">🌟 首页全量 (53库)</button>
+                    <button class="filter-pill" id="pill-tuijian" onclick="filterByCategory('机场推荐')" style="background:rgba(239,68,68,0.12); border:1.5px solid rgba(239,68,68,0.3); border-radius:9999px; cursor:pointer;" title="查看 13 大机场推荐库">✈️ 机场推荐 (13库)</button>
+                    <button class="filter-pill active" id="pill-ai" onclick="filterByCategory('AI探索')" style="background:rgba(37,99,235,0.12); border:1.5px solid rgba(37,99,235,0.3); border-radius:9999px; cursor:pointer;" title="查看 8 大 AI 工具与指南库">🤖 AI探索 (8库)</button>
+                    <button class="filter-pill" id="pill-record" onclick="filterByCategory('折腾记录')" style="background:rgba(16,185,129,0.12); border:1.5px solid rgba(16,185,129,0.3); border-radius:9999px; cursor:pointer;" title="查看 6 大踩坑与复盘库">📝 折腾记录 (6库)</button>
+                    <button class="filter-pill" id="pill-opt" onclick="filterByCategory('建站优化')" style="background:rgba(6,182,212,0.12); border:1.5px solid rgba(6,182,212,0.3); border-radius:9999px; cursor:pointer;" title="查看 6 大建站与性能调优库">🤍 建站优化 (6库)</button>
+                    <button class="filter-pill" id="pill-sub" onclick="filterByCategory('订阅转换')" style="background:rgba(139,92,246,0.12); border:1.5px solid rgba(139,92,246,0.3); border-radius:9999px; cursor:pointer;" title="查看 6 大订阅转换平台库">🔄 订阅转换 (6库)</button>
+                    <button class="filter-pill" id="pill-test" onclick="filterByCategory('机场测试')" style="background:rgba(244,63,94,0.12); border:1.5px solid rgba(244,63,94,0.3); border-radius:9999px; cursor:pointer;" title="查看 13 大机场测试简报库">🧪 机场测试 (13库)</button>
+                    <button class="filter-pill" id="pill-geo" onclick="filterByCategory('科学上网')" style="background:rgba(2,132,199,0.12); border:1.5px solid rgba(2,132,199,0.3); border-radius:9999px; cursor:pointer;" title="查看 4 大平台客户端库">📱 科学上网 (4库)</button>
+                    <button class="filter-pill" id="pill-tech" onclick="filterByCategory('技术干货')" style="background:rgba(217,119,6,0.12); border:1.5px solid rgba(217,119,6,0.3); border-radius:9999px; cursor:pointer;" title="查看 6 大技术干货教程库">💻 技术干货 (6库)</button>
+                    <button class="filter-pill" id="pill-tool" onclick="filterByCategory('实用工具')" style="background:rgba(107,114,128,0.12); border:1.5px solid rgba(107,114,128,0.3); border-radius:9999px; cursor:pointer;" title="查看 4 大实用工具神器库">🛠️ 实用工具 (4库)</button>
                 </div>
             </div>
 
@@ -648,160 +658,160 @@
                     <span>🏆 13大机场推荐测评库</span>
                     <span style="font-size:0.75rem; background:rgba(245,158,11,0.15); color:var(--accent-gold); padding:2px 8px; border-radius:10px; border:1px solid rgba(245,158,11,0.3); font-weight:800;">13独立专线/节点库</span>
                 </h3>
-                <ul class="sidebar-ranking-list">
-                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
-                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
-                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-                                <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none;" rel="noopener noreferrer nofollow"><span>🥇 <strong>1. 浪网 (langwangnet)</strong></span></a>
-                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• lw888</span>
-                            </div>
-                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
-                                <span style="background:rgba(16,185,129,0.12); color:#10b981; padding:2px 6px; border-radius:4px; font-weight:700;">IEPL原生专线库</span>
-                                <button onclick="openAirportModalById('ap-1')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
-                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
-                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-                                <a href="https://langwang3.twilightaff.com/#/?code=8YW2PdKT" target="_blank" style="color:inherit; text-decoration:none;" rel="noopener noreferrer nofollow"><span>🥈 <strong>2. 暮光加速机场</strong></span></a>
-                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• mm88</span>
-                            </div>
-                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
-                                <span style="background:rgba(59,130,246,0.12); color:#3b82f6; padding:2px 6px; border-radius:4px; font-weight:700;">BGP中转加速库</span>
-                                <button onclick="openAirportModalById('ap-2')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                <ul class="sidebar-ranking-list" style="display:flex; flex-direction:column; gap:8px;">
+                    <li class="sidebar-ranking-item" style="padding:10px 14px; border:1px solid var(--border-color); background:var(--card-bg); border-radius:9999px; box-shadow:0 2px 8px rgba(0,0,0,0.06); transition:all 0.2s ease;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; width:100%; gap:6px; flex-wrap:nowrap;">
+                            <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="background:rgba(59,130,246,0.12); border:1px solid rgba(59,130,246,0.3); padding:4px 10px; border-radius:9999px; color:var(--text-primary); text-decoration:none; font-weight:800; font-size:0.82rem; display:inline-flex; align-items:center; gap:4px; flex-shrink:0;" rel="noopener noreferrer nofollow">
+                                🥇 <strong>1. 浪网</strong>
+                            </a>
+                            <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
+                                <span style="background:linear-gradient(135deg,#f59e0b,#d97706); color:#000; font-weight:800; font-size:0.75rem; padding:3px 8px; border-radius:9999px; box-shadow:0 2px 6px rgba(245,158,11,0.3);">• lw888</span>
+                                <span style="background:rgba(16,185,129,0.15); color:#10b981; border:1px solid rgba(16,185,129,0.3); padding:3px 8px; border-radius:9999px; font-weight:800; font-size:0.72rem;">IEPL专线</span>
+                                <button onclick="openAirportModalById('ap-1')" style="background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; border:none; padding:4px 10px; border-radius:9999px; font-weight:800; cursor:pointer; font-size:0.72rem; box-shadow:0 2px 6px rgba(37,99,235,0.3);">📖 详评 ➔</button>
                             </div>
                         </div>
                     </li>
-                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
-                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
-                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-                                <a href="https://langwang3.ladderaff.com/#/?code=L1jG6nO0" target="_blank" style="color:inherit; text-decoration:none;" rel="noopener noreferrer nofollow"><span>🥉 <strong>3. 梯子云机场</strong></span></a>
-                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• tiziyun</span>
-                            </div>
-                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
-                                <span style="background:rgba(245,158,11,0.12); color:#f59e0b; padding:2px 6px; border-radius:4px; font-weight:700;">流媒体解锁库</span>
-                                <button onclick="openAirportModalById('ap-3')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
-                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
-                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-                                <a href="https://langwang3.flyvaff.com/#/?code=xiDNo6Dm" target="_blank" style="color:inherit; text-decoration:none;" rel="noopener noreferrer nofollow"><span>✈️ <strong>4. 飞 V 机场</strong></span></a>
-                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• fly20</span>
-                            </div>
-                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
-                                <span style="background:rgba(6,182,212,0.12); color:#06b6d4; padding:2px 6px; border-radius:4px; font-weight:700;">8K极速节点库</span>
-                                <button onclick="openAirportModalById('ap-4')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                    <li class="sidebar-ranking-item" style="padding:10px 14px; border:1px solid var(--border-color); background:var(--card-bg); border-radius:9999px; box-shadow:0 2px 8px rgba(0,0,0,0.06); transition:all 0.2s ease;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; width:100%; gap:6px; flex-wrap:nowrap;">
+                            <a href="https://langwang3.twilightaff.com/#/?code=8YW2PdKT" target="_blank" style="background:rgba(59,130,246,0.12); border:1px solid rgba(59,130,246,0.3); padding:4px 10px; border-radius:9999px; color:var(--text-primary); text-decoration:none; font-weight:800; font-size:0.82rem; display:inline-flex; align-items:center; gap:4px; flex-shrink:0;" rel="noopener noreferrer nofollow">
+                                🥈 <strong>2. 暮光加速</strong>
+                            </a>
+                            <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
+                                <span style="background:linear-gradient(135deg,#f59e0b,#d97706); color:#000; font-weight:800; font-size:0.75rem; padding:3px 8px; border-radius:9999px; box-shadow:0 2px 6px rgba(245,158,11,0.3);">• mm88</span>
+                                <span style="background:rgba(59,130,246,0.15); color:#3b82f6; border:1px solid rgba(59,130,246,0.3); padding:3px 8px; border-radius:9999px; font-weight:800; font-size:0.72rem;">BGP中转</span>
+                                <button onclick="openAirportModalById('ap-2')" style="background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; border:none; padding:4px 10px; border-radius:9999px; font-weight:800; cursor:pointer; font-size:0.72rem; box-shadow:0 2px 6px rgba(37,99,235,0.3);">📖 详评 ➔</button>
                             </div>
                         </div>
                     </li>
-                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
-                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
-                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-                                <a href="https://langwang3.lingdongaff.com/#/?code=YI6r1wRy" target="_blank" style="color:inherit; text-decoration:none;" rel="noopener noreferrer nofollow"><span>💫 <strong>5. 灵动云机场</strong></span></a>
-                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• 880223</span>
-                            </div>
-                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
-                                <span style="background:rgba(139,92,246,0.12); color:#8b5cf6; padding:2px 6px; border-radius:4px; font-weight:700;">高性价比库</span>
-                                <button onclick="openAirportModalById('ap-5')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
-                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
-                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-                                <a href="https://langwang3.invisibleaff.com/#/?code=55YDwp0B" target="_blank" style="color:inherit; text-decoration:none;" rel="noopener noreferrer nofollow"><span>👤 <strong>6. 隐形人机场</strong></span></a>
-                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• yxr888</span>
-                            </div>
-                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
-                                <span style="background:rgba(244,63,94,0.12); color:#f43f5e; padding:2px 6px; border-radius:4px; font-weight:700;">防封锁容灾库</span>
-                                <button onclick="openAirportModalById('ap-6')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                    <li class="sidebar-ranking-item" style="padding:10px 14px; border:1px solid var(--border-color); background:var(--card-bg); border-radius:9999px; box-shadow:0 2px 8px rgba(0,0,0,0.06); transition:all 0.2s ease;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; width:100%; gap:6px; flex-wrap:nowrap;">
+                            <a href="https://langwang3.ladderaff.com/#/?code=L1jG6nO0" target="_blank" style="background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.3); padding:4px 10px; border-radius:9999px; color:var(--text-primary); text-decoration:none; font-weight:800; font-size:0.82rem; display:inline-flex; align-items:center; gap:4px; flex-shrink:0;" rel="noopener noreferrer nofollow">
+                                🥉 <strong>3. 梯子云</strong>
+                            </a>
+                            <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
+                                <span style="background:linear-gradient(135deg,#f59e0b,#d97706); color:#000; font-weight:800; font-size:0.75rem; padding:3px 8px; border-radius:9999px; box-shadow:0 2px 6px rgba(245,158,11,0.3);">• tiziyun</span>
+                                <span style="background:rgba(245,158,11,0.15); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); padding:3px 8px; border-radius:9999px; font-weight:800; font-size:0.72rem;">流媒体</span>
+                                <button onclick="openAirportModalById('ap-3')" style="background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; border:none; padding:4px 10px; border-radius:9999px; font-weight:800; cursor:pointer; font-size:0.72rem; box-shadow:0 2px 6px rgba(37,99,235,0.3);">📖 详评 ➔</button>
                             </div>
                         </div>
                     </li>
-                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
-                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
-                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-                                <a href="https://hotdo.gcvipaff.com/#/?code=22LGmwXf" target="_blank" style="color:inherit; text-decoration:none;" rel="noopener noreferrer nofollow"><span>🌍 <strong>7. 全球云机场</strong></span></a>
-                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• qq88</span>
-                            </div>
-                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
-                                <span style="background:rgba(16,185,129,0.12); color:#10b981; padding:2px 6px; border-radius:4px; font-weight:700;">全球多节点库</span>
-                                <button onclick="openAirportModalById('ap-7')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
-                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
-                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-                                <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none;" rel="noopener noreferrer nofollow"><span>🦅 <strong>8. 飞鸟云 (Feinio)</strong></span></a>
-                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• fn888</span>
-                            </div>
-                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
-                                <span style="background:rgba(59,130,246,0.12); color:#3b82f6; padding:2px 6px; border-radius:4px; font-weight:700;">Hy2协议极速库</span>
-                                <button onclick="openAirportModalById('ap-8')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                    <li class="sidebar-ranking-item" style="padding:10px 14px; border:1px solid var(--border-color); background:var(--card-bg); border-radius:9999px; box-shadow:0 2px 8px rgba(0,0,0,0.06); transition:all 0.2s ease;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; width:100%; gap:6px; flex-wrap:nowrap;">
+                            <a href="https://langwang3.flyvaff.com/#/?code=xiDNo6Dm" target="_blank" style="background:rgba(6,182,212,0.12); border:1px solid rgba(6,182,212,0.3); padding:4px 10px; border-radius:9999px; color:var(--text-primary); text-decoration:none; font-weight:800; font-size:0.82rem; display:inline-flex; align-items:center; gap:4px; flex-shrink:0;" rel="noopener noreferrer nofollow">
+                                ✈️ <strong>4. 飞 V 机场</strong>
+                            </a>
+                            <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
+                                <span style="background:linear-gradient(135deg,#f59e0b,#d97706); color:#000; font-weight:800; font-size:0.75rem; padding:3px 8px; border-radius:9999px; box-shadow:0 2px 6px rgba(245,158,11,0.3);">• fly20</span>
+                                <span style="background:rgba(6,182,212,0.15); color:#06b6d4; border:1px solid rgba(6,182,212,0.3); padding:3px 8px; border-radius:9999px; font-weight:800; font-size:0.72rem;">8K极速</span>
+                                <button onclick="openAirportModalById('ap-4')" style="background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; border:none; padding:4px 10px; border-radius:9999px; font-weight:800; cursor:pointer; font-size:0.72rem; box-shadow:0 2px 6px rgba(37,99,235,0.3);">📖 详评 ➔</button>
                             </div>
                         </div>
                     </li>
-                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
-                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
-                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-                                <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none;" rel="noopener noreferrer nofollow"><span>🐱 <strong>9. Nemu 云机场</strong></span></a>
-                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• nemu88</span>
-                            </div>
-                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
-                                <span style="background:rgba(245,158,11,0.12); color:#f59e0b; padding:2px 6px; border-radius:4px; font-weight:700;">游戏低延迟库</span>
-                                <button onclick="openAirportModalById('ap-9')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
-                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
-                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-                                <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none;" rel="noopener noreferrer nofollow"><span>💥 <strong>10. BoomCloud</strong></span></a>
-                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• boom66</span>
-                            </div>
-                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
-                                <span style="background:rgba(139,92,246,0.12); color:#8b5cf6; padding:2px 6px; border-radius:4px; font-weight:700;">老牌稳定节点库</span>
-                                <button onclick="openAirportModalById('ap-10')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                    <li class="sidebar-ranking-item" style="padding:10px 14px; border:1px solid var(--border-color); background:var(--card-bg); border-radius:9999px; box-shadow:0 2px 8px rgba(0,0,0,0.06); transition:all 0.2s ease;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; width:100%; gap:6px; flex-wrap:nowrap;">
+                            <a href="https://langwang3.lingdongaff.com/#/?code=YI6r1wRy" target="_blank" style="background:rgba(139,92,246,0.12); border:1px solid rgba(139,92,246,0.3); padding:4px 10px; border-radius:9999px; color:var(--text-primary); text-decoration:none; font-weight:800; font-size:0.82rem; display:inline-flex; align-items:center; gap:4px; flex-shrink:0;" rel="noopener noreferrer nofollow">
+                                💫 <strong>5. 灵动云</strong>
+                            </a>
+                            <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
+                                <span style="background:linear-gradient(135deg,#f59e0b,#d97706); color:#000; font-weight:800; font-size:0.75rem; padding:3px 8px; border-radius:9999px; box-shadow:0 2px 6px rgba(245,158,11,0.3);">• 880223</span>
+                                <span style="background:rgba(139,92,246,0.15); color:#8b5cf6; border:1px solid rgba(139,92,246,0.3); padding:3px 8px; border-radius:9999px; font-weight:800; font-size:0.72rem;">性价比</span>
+                                <button onclick="openAirportModalById('ap-5')" style="background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; border:none; padding:4px 10px; border-radius:9999px; font-weight:800; cursor:pointer; font-size:0.72rem; box-shadow:0 2px 6px rgba(37,99,235,0.3);">📖 详评 ➔</button>
                             </div>
                         </div>
                     </li>
-                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
-                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
-                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-                                <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none;" rel="noopener noreferrer nofollow"><span>🤓 <strong>11. 极客云 (Geek)</strong></span></a>
-                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• geek88</span>
-                            </div>
-                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
-                                <span style="background:rgba(6,182,212,0.12); color:#06b6d4; padding:2px 6px; border-radius:4px; font-weight:700;">海量大流量库</span>
-                                <button onclick="openAirportModalById('ap-11')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
-                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
-                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-                                <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none;" rel="noopener noreferrer nofollow"><span>🦅 <strong>12. 速鹰 666 (Suying)</strong></span></a>
-                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• sy666</span>
-                            </div>
-                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
-                                <span style="background:rgba(16,185,129,0.12); color:#10b981; padding:2px 6px; border-radius:4px; font-weight:700;">平价入门库</span>
-                                <button onclick="openAirportModalById('ap-12')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                    <li class="sidebar-ranking-item" style="padding:10px 14px; border:1px solid var(--border-color); background:var(--card-bg); border-radius:9999px; box-shadow:0 2px 8px rgba(0,0,0,0.06); transition:all 0.2s ease;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; width:100%; gap:6px; flex-wrap:nowrap;">
+                            <a href="https://langwang3.invisibleaff.com/#/?code=55YDwp0B" target="_blank" style="background:rgba(244,63,94,0.12); border:1px solid rgba(244,63,94,0.3); padding:4px 10px; border-radius:9999px; color:var(--text-primary); text-decoration:none; font-weight:800; font-size:0.82rem; display:inline-flex; align-items:center; gap:4px; flex-shrink:0;" rel="noopener noreferrer nofollow">
+                                👤 <strong>6. 隐形人</strong>
+                            </a>
+                            <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
+                                <span style="background:linear-gradient(135deg,#f59e0b,#d97706); color:#000; font-weight:800; font-size:0.75rem; padding:3px 8px; border-radius:9999px; box-shadow:0 2px 6px rgba(245,158,11,0.3);">• yxr888</span>
+                                <span style="background:rgba(244,63,94,0.15); color:#f43f5e; border:1px solid rgba(244,63,94,0.3); padding:3px 8px; border-radius:9999px; font-weight:800; font-size:0.72rem;">容灾防封</span>
+                                <button onclick="openAirportModalById('ap-6')" style="background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; border:none; padding:4px 10px; border-radius:9999px; font-weight:800; cursor:pointer; font-size:0.72rem; box-shadow:0 2px 6px rgba(37,99,235,0.3);">📖 详评 ➔</button>
                             </div>
                         </div>
                     </li>
-                    <li class="sidebar-ranking-item" style="padding:10px 0; border-bottom:1px dashed var(--border-color);">
-                        <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
-                            <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-                                <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="color:inherit; text-decoration:none;" rel="noopener noreferrer nofollow"><span>🍦 <strong>13. 奶油机场 (Cream)</strong></span></a>
-                                <span style="color:var(--accent-gold); font-weight:800; font-size:0.85rem;">• cream88</span>
+                    <li class="sidebar-ranking-item" style="padding:10px 14px; border:1px solid var(--border-color); background:var(--card-bg); border-radius:9999px; box-shadow:0 2px 8px rgba(0,0,0,0.06); transition:all 0.2s ease;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; width:100%; gap:6px; flex-wrap:nowrap;">
+                            <a href="https://hotdo.gcvipaff.com/#/?code=22LGmwXf" target="_blank" style="background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.3); padding:4px 10px; border-radius:9999px; color:var(--text-primary); text-decoration:none; font-weight:800; font-size:0.82rem; display:inline-flex; align-items:center; gap:4px; flex-shrink:0;" rel="noopener noreferrer nofollow">
+                                🌍 <strong>7. 全球云</strong>
+                            </a>
+                            <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
+                                <span style="background:linear-gradient(135deg,#f59e0b,#d97706); color:#000; font-weight:800; font-size:0.75rem; padding:3px 8px; border-radius:9999px; box-shadow:0 2px 6px rgba(245,158,11,0.3);">• qq88</span>
+                                <span style="background:rgba(16,185,129,0.15); color:#10b981; border:1px solid rgba(16,185,129,0.3); padding:3px 8px; border-radius:9999px; font-weight:800; font-size:0.72rem;">全球节点</span>
+                                <button onclick="openAirportModalById('ap-7')" style="background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; border:none; padding:4px 10px; border-radius:9999px; font-weight:800; cursor:pointer; font-size:0.72rem; box-shadow:0 2px 6px rgba(37,99,235,0.3);">📖 详评 ➔</button>
                             </div>
-                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
-                                <span style="background:rgba(244,63,94,0.12); color:#f43f5e; padding:2px 6px; border-radius:4px; font-weight:700;">轻量备用库</span>
-                                <button onclick="openAirportModalById('ap-13')" style="background:transparent; border:none; color:var(--primary-accent); font-weight:800; cursor:pointer; text-decoration:underline; font-size:0.78rem;">📖 详评/库 ➔</button>
+                        </div>
+                    </li>
+                    <li class="sidebar-ranking-item" style="padding:10px 14px; border:1px solid var(--border-color); background:var(--card-bg); border-radius:9999px; box-shadow:0 2px 8px rgba(0,0,0,0.06); transition:all 0.2s ease;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; width:100%; gap:6px; flex-wrap:nowrap;">
+                            <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="background:rgba(59,130,246,0.12); border:1px solid rgba(59,130,246,0.3); padding:4px 10px; border-radius:9999px; color:var(--text-primary); text-decoration:none; font-weight:800; font-size:0.82rem; display:inline-flex; align-items:center; gap:4px; flex-shrink:0;" rel="noopener noreferrer nofollow">
+                                🦅 <strong>8. 飞鸟云</strong>
+                            </a>
+                            <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
+                                <span style="background:linear-gradient(135deg,#f59e0b,#d97706); color:#000; font-weight:800; font-size:0.75rem; padding:3px 8px; border-radius:9999px; box-shadow:0 2px 6px rgba(245,158,11,0.3);">• fn888</span>
+                                <span style="background:rgba(59,130,246,0.15); color:#3b82f6; border:1px solid rgba(59,130,246,0.3); padding:3px 8px; border-radius:9999px; font-weight:800; font-size:0.72rem;">Hy2协议</span>
+                                <button onclick="openAirportModalById('ap-8')" style="background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; border:none; padding:4px 10px; border-radius:9999px; font-weight:800; cursor:pointer; font-size:0.72rem; box-shadow:0 2px 6px rgba(37,99,235,0.3);">📖 详评 ➔</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sidebar-ranking-item" style="padding:10px 14px; border:1px solid var(--border-color); background:var(--card-bg); border-radius:9999px; box-shadow:0 2px 8px rgba(0,0,0,0.06); transition:all 0.2s ease;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; width:100%; gap:6px; flex-wrap:nowrap;">
+                            <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.3); padding:4px 10px; border-radius:9999px; color:var(--text-primary); text-decoration:none; font-weight:800; font-size:0.82rem; display:inline-flex; align-items:center; gap:4px; flex-shrink:0;" rel="noopener noreferrer nofollow">
+                                🐱 <strong>9. Nemu云</strong>
+                            </a>
+                            <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
+                                <span style="background:linear-gradient(135deg,#f59e0b,#d97706); color:#000; font-weight:800; font-size:0.75rem; padding:3px 8px; border-radius:9999px; box-shadow:0 2px 6px rgba(245,158,11,0.3);">• nemu88</span>
+                                <span style="background:rgba(245,158,11,0.15); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); padding:3px 8px; border-radius:9999px; font-weight:800; font-size:0.72rem;">游戏低延迟</span>
+                                <button onclick="openAirportModalById('ap-9')" style="background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; border:none; padding:4px 10px; border-radius:9999px; font-weight:800; cursor:pointer; font-size:0.72rem; box-shadow:0 2px 6px rgba(37,99,235,0.3);">📖 详评 ➔</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sidebar-ranking-item" style="padding:10px 14px; border:1px solid var(--border-color); background:var(--card-bg); border-radius:9999px; box-shadow:0 2px 8px rgba(0,0,0,0.06); transition:all 0.2s ease;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; width:100%; gap:6px; flex-wrap:nowrap;">
+                            <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="background:rgba(139,92,246,0.12); border:1px solid rgba(139,92,246,0.3); padding:4px 10px; border-radius:9999px; color:var(--text-primary); text-decoration:none; font-weight:800; font-size:0.82rem; display:inline-flex; align-items:center; gap:4px; flex-shrink:0;" rel="noopener noreferrer nofollow">
+                                💥 <strong>10. BoomCloud</strong>
+                            </a>
+                            <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
+                                <span style="background:linear-gradient(135deg,#f59e0b,#d97706); color:#000; font-weight:800; font-size:0.75rem; padding:3px 8px; border-radius:9999px; box-shadow:0 2px 6px rgba(245,158,11,0.3);">• boom66</span>
+                                <span style="background:rgba(139,92,246,0.15); color:#8b5cf6; border:1px solid rgba(139,92,246,0.3); padding:3px 8px; border-radius:9999px; font-weight:800; font-size:0.72rem;">老牌稳定</span>
+                                <button onclick="openAirportModalById('ap-10')" style="background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; border:none; padding:4px 10px; border-radius:9999px; font-weight:800; cursor:pointer; font-size:0.72rem; box-shadow:0 2px 6px rgba(37,99,235,0.3);">📖 详评 ➔</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sidebar-ranking-item" style="padding:10px 14px; border:1px solid var(--border-color); background:var(--card-bg); border-radius:9999px; box-shadow:0 2px 8px rgba(0,0,0,0.06); transition:all 0.2s ease;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; width:100%; gap:6px; flex-wrap:nowrap;">
+                            <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="background:rgba(6,182,212,0.12); border:1px solid rgba(6,182,212,0.3); padding:4px 10px; border-radius:9999px; color:var(--text-primary); text-decoration:none; font-weight:800; font-size:0.82rem; display:inline-flex; align-items:center; gap:4px; flex-shrink:0;" rel="noopener noreferrer nofollow">
+                                🤓 <strong>11. 极客云</strong>
+                            </a>
+                            <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
+                                <span style="background:linear-gradient(135deg,#f59e0b,#d97706); color:#000; font-weight:800; font-size:0.75rem; padding:3px 8px; border-radius:9999px; box-shadow:0 2px 6px rgba(245,158,11,0.3);">• geek88</span>
+                                <span style="background:rgba(6,182,212,0.15); color:#06b6d4; border:1px solid rgba(6,182,212,0.3); padding:3px 8px; border-radius:9999px; font-weight:800; font-size:0.72rem;">海量流量</span>
+                                <button onclick="openAirportModalById('ap-11')" style="background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; border:none; padding:4px 10px; border-radius:9999px; font-weight:800; cursor:pointer; font-size:0.72rem; box-shadow:0 2px 6px rgba(37,99,235,0.3);">📖 详评 ➔</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sidebar-ranking-item" style="padding:10px 14px; border:1px solid var(--border-color); background:var(--card-bg); border-radius:9999px; box-shadow:0 2px 8px rgba(0,0,0,0.06); transition:all 0.2s ease;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; width:100%; gap:6px; flex-wrap:nowrap;">
+                            <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.3); padding:4px 10px; border-radius:9999px; color:var(--text-primary); text-decoration:none; font-weight:800; font-size:0.82rem; display:inline-flex; align-items:center; gap:4px; flex-shrink:0;" rel="noopener noreferrer nofollow">
+                                🦅 <strong>12. 速鹰666</strong>
+                            </a>
+                            <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
+                                <span style="background:linear-gradient(135deg,#f59e0b,#d97706); color:#000; font-weight:800; font-size:0.75rem; padding:3px 8px; border-radius:9999px; box-shadow:0 2px 6px rgba(245,158,11,0.3);">• sy666</span>
+                                <span style="background:rgba(16,185,129,0.15); color:#10b981; border:1px solid rgba(16,185,129,0.3); padding:3px 8px; border-radius:9999px; font-weight:800; font-size:0.72rem;">平价入门</span>
+                                <button onclick="openAirportModalById('ap-12')" style="background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; border:none; padding:4px 10px; border-radius:9999px; font-weight:800; cursor:pointer; font-size:0.72rem; box-shadow:0 2px 6px rgba(37,99,235,0.3);">📖 详评 ➔</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sidebar-ranking-item" style="padding:10px 14px; border:1px solid var(--border-color); background:var(--card-bg); border-radius:9999px; box-shadow:0 2px 8px rgba(0,0,0,0.06); transition:all 0.2s ease;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; width:100%; gap:6px; flex-wrap:nowrap;">
+                            <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="background:rgba(244,63,94,0.12); border:1px solid rgba(244,63,94,0.3); padding:4px 10px; border-radius:9999px; color:var(--text-primary); text-decoration:none; font-weight:800; font-size:0.82rem; display:inline-flex; align-items:center; gap:4px; flex-shrink:0;" rel="noopener noreferrer nofollow">
+                                🍦 <strong>13. 奶油机场</strong>
+                            </a>
+                            <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
+                                <span style="background:linear-gradient(135deg,#f59e0b,#d97706); color:#000; font-weight:800; font-size:0.75rem; padding:3px 8px; border-radius:9999px; box-shadow:0 2px 6px rgba(245,158,11,0.3);">• cream88</span>
+                                <span style="background:rgba(244,63,94,0.15); color:#f43f5e; border:1px solid rgba(244,63,94,0.3); padding:3px 8px; border-radius:9999px; font-weight:800; font-size:0.72rem;">轻量备用</span>
+                                <button onclick="openAirportModalById('ap-13')" style="background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; border:none; padding:4px 10px; border-radius:9999px; font-weight:800; cursor:pointer; font-size:0.72rem; box-shadow:0 2px 6px rgba(37,99,235,0.3);">📖 详评 ➔</button>
                             </div>
                         </div>
                     </li>
