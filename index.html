@@ -2818,6 +2818,56 @@ function main(config) {<br>
         }
     }
 
+    function createAirportCardMarkup(ap) {
+        const isRank1 = ap.rankClass && ap.rankClass.includes('rank-1');
+        const isRank2 = ap.rankClass && ap.rankClass.includes('rank-2');
+        const isRank3 = ap.rankClass && ap.rankClass.includes('rank-3');
+
+        const borderCol = isRank1 ? '#ff416c' : (isRank2 ? '#2563eb' : (isRank3 ? '#d97706' : '#10b981'));
+        const badgeGrad = isRank1 ? 'linear-gradient(135deg, #ff416c, #ff4b2b)' : (isRank2 ? 'linear-gradient(135deg, #2563eb, #1d4ed8)' : (isRank3 ? 'linear-gradient(135deg, #f59e0b, #b45309)' : 'linear-gradient(135deg, #10b981, #047857)'));
+        const lineBadgeBg = isRank1 ? 'rgba(255,65,108,0.12)' : (isRank2 ? 'rgba(37,99,235,0.12)' : (isRank3 ? 'rgba(245,158,11,0.12)' : 'rgba(16,185,129,0.12)'));
+        const lineBadgeCol = isRank1 ? '#ff416c' : (isRank2 ? '#2563eb' : (isRank3 ? '#d97706' : '#10b981'));
+
+        return `
+            <article class="format-airport-card" style="border:2px solid ${borderCol} !important; border-radius:16px; padding:22px; background:var(--card-bg); box-shadow:0 8px 24px rgba(0,0,0,0.08); display:flex; flex-direction:column; justify-content:space-between; gap:16px;" itemscope itemtype="https://schema.org/BlogPosting">
+                <div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+                        <span style="background:${badgeGrad}; color:#ffffff; font-weight:800; font-size:0.82rem; padding:5px 14px; border-radius:9999px; box-shadow:0 3px 10px rgba(0,0,0,0.2);" itemprop="keywords">${ap.rankTag}</span>
+                        <span style="background:${lineBadgeBg}; color:${lineBadgeCol}; font-weight:800; font-size:0.8rem; padding:4px 12px; border-radius:9999px; border:1px solid ${borderCol};">${ap.lineType || 'IEPL 专线'}</span>
+                    </div>
+                    
+                    <h2 class="article-title" style="font-size:1.35rem; font-weight:800; color:var(--text-primary); margin:0 0 10px 0; cursor:pointer; line-height:1.35;" onclick="openArticleModal('${ap.id}')" itemprop="headline">${ap.name}</h2>
+                    
+                    <p style="font-size:0.92rem; color:var(--text-primary); line-height:1.7; opacity:0.95; margin:0 0 14px 0;" itemprop="abstract">${ap.recommendText}</p>
+                    
+                    <div style="background:var(--bg-color); border:1.5px solid var(--border-color); border-radius:12px; padding:12px; display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;">
+                        <div style="background:var(--card-bg); border:1px solid var(--border-color); padding:8px 10px; border-radius:8px;">
+                            <div style="font-size:0.75rem; color:var(--text-secondary); font-weight:700; margin-bottom:2px;">⚡ 节点延迟</div>
+                            <div style="font-size:0.92rem; font-weight:800; color:#10b981;">${ap.ping}</div>
+                        </div>
+                        <div style="background:var(--card-bg); border:1px solid var(--border-color); padding:8px 10px; border-radius:8px;">
+                            <div style="font-size:0.75rem; color:var(--text-secondary); font-weight:700; margin-bottom:2px;">🚀 8K 测速</div>
+                            <div style="font-size:0.92rem; font-weight:800; color:var(--text-primary);">${ap.speed}</div>
+                        </div>
+                        <div style="background:var(--card-bg); border:1px solid var(--border-color); padding:8px 10px; border-radius:8px;">
+                            <div style="font-size:0.75rem; color:var(--text-secondary); font-weight:700; margin-bottom:2px;">🛡️ 服务 SLA</div>
+                            <div style="font-size:0.92rem; font-weight:800; color:#f59e0b;">${ap.sla}</div>
+                        </div>
+                        <div style="background:var(--card-bg); border:1px solid var(--border-color); padding:8px 10px; border-radius:8px;">
+                            <div style="font-size:0.75rem; color:var(--text-secondary); font-weight:700; margin-bottom:2px;">🎁 专属优惠码</div>
+                            <div style="font-size:0.92rem; font-weight:800; color:#ef4444;"><span style="background:rgba(239,68,68,0.12); color:#ef4444; padding:2px 8px; border-radius:6px; border:1px solid rgba(239,68,68,0.3);">${ap.coupon}</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                    ${ap.link && ap.link !== '#' ? `<a href="${ap.link}" target="_blank" rel="noopener noreferrer nofollow" style="min-height:48px; font-weight:800; font-size:0.95rem; border-radius:12px; display:flex; align-items:center; justify-content:center; text-decoration:none; background:${badgeGrad}; color:#ffffff; box-shadow:0 4px 14px rgba(0,0,0,0.2); text-align:center;" itemprop="url">🚀 直达 ${ap.name} 官网注册入口 ➔</a>` : ''}
+                    <button onclick="openArticleModal('${ap.id}')" style="min-height:48px; font-weight:800; font-size:0.95rem; border-radius:12px; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, #2563eb, #1d4ed8); color:#ffffff; cursor:pointer; border:none; width:100%; box-shadow:0 4px 14px rgba(37,99,235,0.35); text-align:center;">📖 打开阅读 ${ap.name} 完整测评长文 ➔</button>
+                </div>
+            </article>
+        `;
+    }
+
     function renderArticles() {
         const container = document.getElementById('articles-feed');
         if (!container) return;
@@ -2884,44 +2934,7 @@ function main(config) {<br>
             const airportList = allArticlesList.filter(ap => ap.type === 'airport' || (ap.category && (ap.category.includes('机场推荐') || ap.category.includes('机场测试'))));
             const nonAirportList = allArticlesList.filter(ap => !(ap.type === 'airport' || (ap.category && (ap.category.includes('机场推荐') || ap.category.includes('机场测试')))));
 
-            const airportCardsHtml = airportList.map(ap => `
-                <article class="format-airport-card" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div>
-                        <div class="row-header">
-                            <div class="row-title-area">
-                                <span class="rank-tag ${ap.rankClass}" itemprop="keywords">${ap.rankTag}</span>
-                                <h2 class="article-title" style="cursor:pointer;" onclick="openArticleModal('${ap.id}')" itemprop="headline">${ap.name}</h2>
-                            </div>
-                        </div>
-
-                        <div class="row-rich-text" itemprop="abstract">
-                            ${ap.recommendText}
-                        </div>
-
-                        <div class="row-specs-grid">
-                            <div class="spec-item">
-                                <div class="spec-label">核心分类 / 延迟</div>
-                                <div class="spec-val" style="color:var(--accent-emerald);">${ap.ping}</div>
-                            </div>
-                            <div class="spec-item">
-                                <div class="spec-label">特色优势 / 速率</div>
-                                <div class="spec-val">${ap.speed}</div>
-                            </div>
-                            <div class="spec-item">
-                                <div class="spec-label">服务 SLA / 机制</div>
-                                <div class="spec-val" style="color:var(--accent-gold);">${ap.sla}</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row-bottom-actions">
-                        <div class="coupon-code-box">
-                            <span>🎁 专属优惠码: <strong>${ap.coupon}</strong></span>
-                        </div>
-                        ${ap.link && ap.link !== '#' ? `<a href="${ap.link}" target="_blank" rel="noopener noreferrer nofollow" class="register-link-btn" style="text-decoration:none; display:block; text-align:center; width:100%; font-weight:800; padding:12px; font-size:0.95rem; background:linear-gradient(135deg, #10b981, #059669); color:#fff; border-radius:8px;" itemprop="url">🚀 直达 ${ap.name} 官网注册入口 ➔</a>` : ''}
-                    </div>
-                </article>
-            `).join('');
+            const airportCardsHtml = airportList.map(ap => createAirportCardMarkup(ap)).join('');
 
             const otherCardsHtml = nonAirportList.map(ap => `
                 <article class="article-card" itemscope itemtype="https://schema.org/BlogPosting">
@@ -2937,7 +2950,7 @@ function main(config) {<br>
                         </div>
                     </div>
                     <div class="row-bottom-actions">
-                        <button class="big-detail-pop-btn" onclick="openArticleModal('${ap.id}')" style="background:var(--card-bg); border:1px solid var(--border-color); color:var(--text-primary); padding:9px; cursor:pointer; font-weight:700; width:100%;">📖 查看完整内容 ➔</button>
+                        <button class="big-detail-pop-btn" onclick="openArticleModal('${ap.id}')" style="background:linear-gradient(135deg, #2563eb, #1d4ed8); color:#fff; border:none; padding:10px; cursor:pointer; font-weight:800; border-radius:10px; width:100%;">📖 查看完整内容 ➔</button>
                     </div>
                 </article>
             `).join('');
@@ -3013,44 +3026,7 @@ function main(config) {<br>
         if ((state.currentCategory === '机场推荐' || state.currentCategory === '机场测试') && !query) {
             container.innerHTML = `
                 <div class="two-col-grid-container">
-                    ${filtered.map(ap => `
-                        <article class="format-airport-card" itemscope itemtype="https://schema.org/BlogPosting">
-                            <div>
-                                <div class="row-header">
-                                    <div class="row-title-area">
-                                        <span class="rank-tag ${ap.rankClass || 'rank-1'}" itemprop="keywords">${ap.rankTag}</span>
-                                        <h2 class="article-title" style="cursor:pointer;" onclick="openArticleModal('${ap.id}')" itemprop="headline">${ap.name}</h2>
-                                    </div>
-                                </div>
-
-                                <div class="row-rich-text" itemprop="abstract">
-                                    ${ap.recommendText}
-                                </div>
-
-                                <div class="row-specs-grid">
-                                    <div class="spec-item">
-                                        <div class="spec-label">核心分类 / 延迟</div>
-                                        <div class="spec-val" style="color:var(--accent-emerald);">${ap.ping}</div>
-                                    </div>
-                                    <div class="spec-item">
-                                        <div class="spec-label">特色优势 / 速率</div>
-                                        <div class="spec-val">${ap.speed}</div>
-                                    </div>
-                                    <div class="spec-item">
-                                        <div class="spec-label">服务 SLA / 机制</div>
-                                        <div class="spec-val" style="color:var(--accent-gold);">${ap.sla}</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row-bottom-actions">
-                                <div class="coupon-code-box">
-                                    <span>🎁 专属优惠码: <strong>${ap.coupon}</strong></span>
-                                </div>
-                                ${ap.link && ap.link !== '#' ? `<a href="${ap.link}" target="_blank" rel="noopener noreferrer nofollow" class="register-link-btn" style="text-decoration:none; display:block; text-align:center; width:100%; font-weight:800; padding:12px; font-size:0.95rem; background:linear-gradient(135deg, #10b981, #059669); color:#fff; border-radius:8px;" itemprop="url">🚀 直达 ${ap.name} 官网注册入口 ➔</a>` : ''}
-                            </div>
-                        </article>
-                    `).join('')}
+                    ${filtered.map(ap => createAirportCardMarkup(ap)).join('')}
                 </div>
             `;
             return;
