@@ -418,10 +418,42 @@
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3) !important;
     }
 
-    /* Automatic Floating / Breathing Animation for Figures 2, 3, 4 (针对需求：图2 图3 图4要可以自动动下动下的) */
+    /* Automatic Floating / Breathing Animation for Figures 2, 3, 4 & Action Buttons (针对需求：这里的按钮也是要可以自动跳动的那种) */
     @keyframes auto-float-gently {
         0%, 100% { transform: translateY(0px); }
         50% { transform: translateY(-5px); }
+    }
+
+    /* All Action & Register Buttons Automatic Bouncing Animation */
+    .register-link-btn, .big-detail-pop-btn, .ai-action-btn, .tool-action-btn, .record-action-btn {
+        animation: auto-float-gently 3s ease-in-out infinite;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Main Content Feed - Generous Breathing Space & Clear Card Separator (针对需求：图2开始看起来很乱 空一个位置在继续下一个) */
+    #articles-feed {
+        display: flex;
+        flex-direction: column;
+        gap: 36px !important;
+        margin-top: 16px;
+    }
+
+    .article-card, .format-airport-card, .format-ai-card, .format-tool-card, .format-record-card, .format-opt-card {
+        margin-bottom: 16px !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+        position: relative;
+    }
+
+    /* Clean Card Bottom Separation Line (清爽优雅的留白隔线) */
+    .article-card::after, .format-airport-card::after, .format-ai-card::after, .format-tool-card::after, .format-record-card::after, .format-opt-card::after {
+        content: '';
+        position: absolute;
+        bottom: -26px;
+        left: 10%;
+        right: 10%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+        opacity: 0.6;
     }
 
     /* Figure 3: Left Sidebar Navigation Menu Floating Animation */
