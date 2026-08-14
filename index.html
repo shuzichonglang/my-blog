@@ -60,7 +60,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
-    :root {
+    :root, [data-theme="dark"] {
         --bg-color: #111827;
         --card-bg: #1f2937;
         --card-border: rgba(255, 255, 255, 0.08);
@@ -646,8 +646,8 @@
         </div>
 
         <div class="nav-actions" style="display:flex; align-items:center; gap:10px;">
-            <button id="theme-toggle-btn" class="theme-toggle-capsule-btn" onclick="toggleTheme()" title="点击一键切换白天/晚上模式" style="background:linear-gradient(135deg, #f59e0b, #d97706); color:#ffffff; border:none; padding:7px 14px; border-radius:9999px; font-weight:800; font-size:0.85rem; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:0 4px 12px rgba(245,158,11,0.35); transition:all 0.25s ease;">
-                <span id="theme-btn-icon">☀️</span> <span id="theme-btn-text">白天模式</span>
+            <button id="theme-toggle-btn" class="theme-toggle-capsule-btn" onclick="toggleTheme()" title="点击一键切换白天/晚上模式" style="background:linear-gradient(135deg, #1e293b, #0f172a); border:1.5px solid #3b82f6; color:#ffffff; padding:7px 14px; border-radius:9999px; font-weight:800; font-size:0.85rem; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:0 4px 12px rgba(59,130,246,0.4); transition:all 0.25s ease;">
+                <span id="theme-btn-icon">🌙</span> <span id="theme-btn-text">晚上模式 (点击切白天)</span>
             </button>
             <button onclick="filterByCategory('机场推荐')" class="register-link-btn" style="padding:7px 14px; font-size:0.85rem; background:linear-gradient(135deg, #ef4444, #f59e0b); color:#fff; cursor:pointer;" title="显示13大机场推荐库">✈️ 机场推荐 (13库)</button>
             <button class="btn-icon" onclick="showToast('已成功收藏全站知识库')" title="收藏页面">🔖</button>
@@ -3274,18 +3274,20 @@ ollama ps</code></pre>
         const themeBtnText = document.getElementById('theme-btn-text');
         
         if (theme === 'dark') {
-            if (themeBtnIcon) themeBtnIcon.innerText = '☀️';
-            if (themeBtnText) themeBtnText.innerText = '白天模式';
+            if (themeBtnIcon) themeBtnIcon.innerText = '🌙';
+            if (themeBtnText) themeBtnText.innerText = '晚上模式 (点击切白天)';
             if (themeBtn) {
-                themeBtn.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
-                themeBtn.style.boxShadow = '0 4px 12px rgba(245,158,11,0.4)';
+                themeBtn.style.background = 'linear-gradient(135deg, #1e293b, #0f172a)';
+                themeBtn.style.border = '1.5px solid #3b82f6';
+                themeBtn.style.boxShadow = '0 4px 12px rgba(59,130,246,0.4)';
             }
         } else {
-            if (themeBtnIcon) themeBtnIcon.innerText = '🌙';
-            if (themeBtnText) themeBtnText.innerText = '晚上模式';
+            if (themeBtnIcon) themeBtnIcon.innerText = '☀️';
+            if (themeBtnText) themeBtnText.innerText = '白天模式 (点击切晚上)';
             if (themeBtn) {
-                themeBtn.style.background = 'linear-gradient(135deg, #6366f1, #4338ca)';
-                themeBtn.style.boxShadow = '0 4px 12px rgba(99,102,241,0.4)';
+                themeBtn.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
+                themeBtn.style.border = '1.5px solid #fbbf24';
+                themeBtn.style.boxShadow = '0 4px 12px rgba(245,158,11,0.4)';
             }
         }
     }
