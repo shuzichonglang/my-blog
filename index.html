@@ -194,21 +194,7 @@
         -webkit-overflow-scrolling: touch; scrollbar-width: none;
     }
     .filter-bar::-webkit-scrollbar { display: none; }
-    .filter-pill {
-        padding: 9px 18px; border-radius: 9999px !important;
-        border: 1.5px solid var(--border-color);
-        background-color: var(--card-bg); color: var(--text-primary); font-size: 0.9rem;
-        font-weight: 800; cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        display: flex; align-items: center; gap: 6px; white-space: nowrap; flex-shrink: 0;
-        user-select: none; -webkit-tap-highlight-color: transparent;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-    }
-    .filter-pill:hover {
-        transform: translateY(-2px) scale(1.04);
-        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
-        border-color: var(--primary-accent);
-    }
-    .filter-pill:active { transform: scale(0.95); }
+
 
     /* 每一个分类标签恒定为图2与图3同款高饱和炫彩渐变胶囊按钮 (白字加粗+发光阴影)，全色彩库不重样 */
     .filter-pill {
@@ -508,15 +494,15 @@
             <nav class="nav-menu" aria-label="全站关键字导航">
                 <ul>
                     <li><a href="javascript:void(0)" onclick="filterByCategory('首页')" class="active" style="cursor:pointer;" title="首页全量库">首页 (全量53库)</a></li>
-                    <li><a href="javascript:void(0)" onclick="filterByCategory('机场推荐')" title="13大机场推荐库" style="color:var(--accent-gold); font-weight:800; cursor:pointer;">✈️ 机场推荐 (13库)</a></li>
-                    <li><a href="javascript:void(0)" onclick="filterByCategory('AI探索')" title="8大AI极客矩阵库" style="cursor:pointer;">🤖 AI探索 (8库)</a></li>
-                    <li><a href="javascript:void(0)" onclick="filterByCategory('折腾记录')" title="6大踩坑经验复盘库" style="cursor:pointer;">📝 折腾记录 (6库)</a></li>
-                    <li><a href="javascript:void(0)" onclick="filterByCategory('建站优化')" title="6大性能提升调优库" style="cursor:pointer;">🤍 建站优化 (6库)</a></li>
-                    <li><a href="javascript:void(0)" onclick="filterByCategory('订阅转换')" title="6大订阅转换平台库" style="cursor:pointer;">🔄 订阅转换 (6库)</a></li>
-                    <li><a href="javascript:void(0)" onclick="filterByCategory('机场测试')" title="13大机场晚高峰测试库" style="cursor:pointer;">🧪 机场测试 (13库)</a></li>
-                    <li><a href="javascript:void(0)" onclick="filterByCategory('科学上网')" title="全平台客户端下载库" style="cursor:pointer;">📱 科学上网 (4库)</a></li>
-                    <li><a href="javascript:void(0)" onclick="filterByCategory('技术干货')" title="全栈开发与代码笔记" style="cursor:pointer;">💻 技术干货 (6大教程)</a></li>
-                    <li><a href="javascript:void(0)" onclick="filterByCategory('实用工具')" title="高效开发与日常必备" style="cursor:pointer;">🛠️ 实用工具 (4大神器)</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByCategory('机场推荐')" title="13大机场推荐库" style="color:var(--accent-gold); font-weight:800; cursor:pointer;">✈️ 机场推荐库 (13库)</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByCategory('AI探索')" title="8大AI极客矩阵库" style="cursor:pointer;">🤖 AI探索库 (8库)</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByCategory('折腾记录')" title="6大踩坑经验复盘库" style="cursor:pointer;">📝 折腾记录库 (6库)</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByCategory('建站优化')" title="6大性能提升调优库" style="cursor:pointer;">🤍 建站优化库 (6库)</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByCategory('订阅转换')" title="6大订阅转换平台库" style="cursor:pointer;">🔄 订阅转换库 (6库)</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByCategory('机场测试')" title="13大机场晚高峰测试库" style="cursor:pointer;">🧪 机场测试库 (13库)</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByCategory('科学上网')" title="全平台客户端下载库" style="cursor:pointer;">📱 科学上网库 (4库)</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByCategory('技术干货')" title="全栈开发与代码笔记" style="cursor:pointer;">💻 技术干货库 (6库)</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByCategory('实用工具')" title="高效开发与日常必备" style="cursor:pointer;">🛠️ 实用工具库 (4库)</a></li>
                     <li><a href="javascript:void(0)" onclick="filterByCategory('联系我们')" title="联系我们官方通道" style="cursor:pointer; color:var(--accent-rose); font-weight:800;">📬 联系我们 (频道与邮箱)</a></li>
                 </ul>
             </nav>
@@ -627,25 +613,25 @@
             <section class="widget" aria-labelledby="keywords-title">
                 <h3 class="widget-title" id="keywords-title">核心主题资源库</h3>
                 <div class="tag-cloud">
-                    <a href="javascript:void(0)" onclick="filterByCategory('机场推荐')" class="sidebar-tag" style="color:#ef4444; font-weight:800; cursor:pointer;">✈️ 机场推荐 (13库)</a>
-                    <a href="javascript:void(0)" onclick="filterByCategory('AI探索')" class="sidebar-tag" style="color:#8b5cf6; font-weight:800; cursor:pointer;">🤖 AI 探索 (8库)</a>
-                    <a href="javascript:void(0)" onclick="filterByCategory('折腾记录')" class="sidebar-tag" style="color:#10b981; font-weight:800; cursor:pointer;">📝 折腾记录 (6库)</a>
-                    <a href="javascript:void(0)" onclick="filterByCategory('建站优化')" class="sidebar-tag" style="color:#06b6d4; font-weight:800; cursor:pointer;">🤍 建站优化 (6库)</a>
-                    <a href="javascript:void(0)" onclick="filterByCategory('订阅转换')" class="sidebar-tag" style="color:#3b82f6; font-weight:800; cursor:pointer;">🔄 订阅转换 (6库)</a>
-                    <a href="javascript:void(0)" onclick="filterByCategory('机场测试')" class="sidebar-tag" style="cursor:pointer;">🧪 机场测试 (13库)</a>
-                    <a href="javascript:void(0)" onclick="filterByCategory('科学上网')" class="sidebar-tag" style="cursor:pointer;">📱 科学上网 (4库)</a>
-                    <a href="javascript:void(0)" onclick="filterByCategory('技术干货')" class="sidebar-tag" style="cursor:pointer;">💻 技术干货 (6库)</a>
-                    <a href="javascript:void(0)" onclick="filterByCategory('实用工具')" class="sidebar-tag" style="cursor:pointer;">🛠️ 实用工具 (4库)</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('机场推荐')" class="sidebar-tag" style="background:linear-gradient(135deg, #ff416c, #ff4b2b); color:#ffffff !important; font-weight:800; cursor:pointer; border-radius:9999px; padding:8px 16px; box-shadow:0 4px 12px rgba(255,65,108,0.35);">✈️ 机场推荐库 (13库)</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('AI探索')" class="sidebar-tag" style="background:linear-gradient(135deg, #2563eb, #1d4ed8); color:#ffffff !important; font-weight:800; cursor:pointer; border-radius:9999px; padding:8px 16px; box-shadow:0 4px 12px rgba(37,99,235,0.35);">🤖 AI探索库 (8库)</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('折腾记录')" class="sidebar-tag" style="background:linear-gradient(135deg, #10b981, #047857); color:#ffffff !important; font-weight:800; cursor:pointer; border-radius:9999px; padding:8px 16px; box-shadow:0 4px 12px rgba(16,185,129,0.35);">📝 折腾记录库 (6库)</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('建站优化')" class="sidebar-tag" style="background:linear-gradient(135deg, #06b6d4, #0e7490); color:#ffffff !important; font-weight:800; cursor:pointer; border-radius:9999px; padding:8px 16px; box-shadow:0 4px 12px rgba(6,182,212,0.35);">🤍 建站优化库 (6库)</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('订阅转换')" class="sidebar-tag" style="background:linear-gradient(135deg, #8b5cf6, #6d28d9); color:#ffffff !important; font-weight:800; cursor:pointer; border-radius:9999px; padding:8px 16px; box-shadow:0 4px 12px rgba(139,92,246,0.35);">🔄 订阅转换库 (6库)</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('机场测试')" class="sidebar-tag" style="background:linear-gradient(135deg, #f43f5e, #be123c); color:#ffffff !important; font-weight:800; cursor:pointer; border-radius:9999px; padding:8px 16px; box-shadow:0 4px 12px rgba(244,63,94,0.35);">🧪 机场测试库 (13库)</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('科学上网')" class="sidebar-tag" style="background:linear-gradient(135deg, #0284c7, #0369a1); color:#ffffff !important; font-weight:800; cursor:pointer; border-radius:9999px; padding:8px 16px; box-shadow:0 4px 12px rgba(2,132,199,0.35);">📱 科学上网库 (4库)</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('技术干货')" class="sidebar-tag" style="background:linear-gradient(135deg, #d97706, #b45309); color:#ffffff !important; font-weight:800; cursor:pointer; border-radius:9999px; padding:8px 16px; box-shadow:0 4px 12px rgba(217,119,6,0.35);">💻 技术干货库 (6库)</a>
+                    <a href="javascript:void(0)" onclick="filterByCategory('实用工具')" class="sidebar-tag" style="background:linear-gradient(135deg, #ec4899, #be185d); color:#ffffff !important; font-weight:800; cursor:pointer; border-radius:9999px; padding:8px 16px; box-shadow:0 4px 12px rgba(236,72,153,0.35);">🛠️ 实用工具库 (4库)</a>
                 </div>
             </section>
 
             <section class="widget" aria-labelledby="tools-title">
                 <h3 class="widget-title" id="tools-title">在线极速服务库</h3>
                 <div class="tag-cloud">
-                    <a href="https://sub.v1.mk" target="_blank" class="sidebar-tag" rel="noopener noreferrer nofollow">Subconverter 转换库</a>
-                    <a href="https://sub.v1.mk" target="_blank" class="sidebar-tag" rel="noopener noreferrer nofollow">Sing-Box 规则库</a>
-                    <a href="https://raycast.com" target="_blank" class="sidebar-tag" rel="noopener noreferrer nofollow">Raycast 官网库</a>
-                    <a href="https://jsonlint.com" target="_blank" class="sidebar-tag" rel="noopener noreferrer nofollow">JSON 校验盒库</a>
+                    <a href="https://sub.v1.mk" target="_blank" class="sidebar-tag" style="background:linear-gradient(135deg, #8b5cf6, #6d28d9); color:#ffffff !important; font-weight:800; border-radius:9999px; padding:8px 16px; box-shadow:0 4px 12px rgba(139,92,246,0.35);" rel="noopener noreferrer nofollow">Subconverter 转换库</a>
+                    <a href="https://sub.v1.mk" target="_blank" class="sidebar-tag" style="background:linear-gradient(135deg, #06b6d4, #0e7490); color:#ffffff !important; font-weight:800; border-radius:9999px; padding:8px 16px; box-shadow:0 4px 12px rgba(6,182,212,0.35);" rel="noopener noreferrer nofollow">Sing-Box 规则库</a>
+                    <a href="https://raycast.com" target="_blank" class="sidebar-tag" style="background:linear-gradient(135deg, #ff416c, #ff4b2b); color:#ffffff !important; font-weight:800; border-radius:9999px; padding:8px 16px; box-shadow:0 4px 12px rgba(255,65,108,0.35);" rel="noopener noreferrer nofollow">Raycast 官网库</a>
+                    <a href="https://jsonlint.com" target="_blank" class="sidebar-tag" style="background:linear-gradient(135deg, #10b981, #047857); color:#ffffff !important; font-weight:800; border-radius:9999px; padding:8px 16px; box-shadow:0 4px 12px rgba(16,185,129,0.35);" rel="noopener noreferrer nofollow">JSON 校验盒库</a>
                 </div>
             </section>
 
