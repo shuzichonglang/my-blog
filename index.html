@@ -409,28 +409,55 @@
     #modal-content code, #modal-content pre { background: var(--bg-color) !important; color: var(--text-primary) !important; border: 1px solid var(--border-color) !important; padding: 12px; border-radius: 8px; font-family: var(--font-mono); }
     .modal-close-btn { position: absolute; top: 16px; right: 16px; width: 38px; height: 38px; border-radius: 50%; background-color: rgba(0,0,0,0.5); color: #fff; border: none; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; }
 
+    /* 有关于这些的 直接化线出来 (给所有链接与按钮标题强制画出醒目下划线) */
+    #modal-content a, .row-rich-text a, .article-card a[href] {
+        text-decoration: underline 2.5px #f59e0b !important;
+        text-underline-offset: 4px !important;
+        font-weight: 800 !important;
+        transition: all 0.2s ease;
+    }
+    #modal-content a:hover, .row-rich-text a:hover, .article-card a[href]:hover {
+        color: #ef4444 !important;
+        text-decoration-color: #ef4444 !important;
+    }
+
     .toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; }
     .toast { background-color: var(--card-bg); color: var(--text-primary); border: 1px solid var(--card-border); padding: 12px 18px; border-radius: 12px; font-size: 0.88rem; font-weight: 600; display: flex; gap: 10px; }
 
-    /* Floating Email Corner Button */
+    /* Floating Email Corner Button (右下角悬浮留言邮箱胶囊按钮) */
     .floating-email-btn {
         position: fixed;
         right: 24px;
         bottom: 90px;
-        z-index: 1050;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
+        z-index: 1055;
         background: linear-gradient(135deg, #f43f5e, #be123c);
         color: #ffffff;
+        padding: 12px 22px;
+        border-radius: 9999px;
+        font-weight: 800;
+        font-size: 0.95rem;
+        box-shadow: 0 8px 28px rgba(244, 63, 94, 0.65);
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2.5px solid rgba(255, 255, 255, 0.4);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.7rem;
-        box-shadow: 0 8px 25px rgba(244, 63, 94, 0.55);
-        cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 2px solid rgba(255, 255, 255, 0.4);
+        user-select: none;
+    }
+    .floating-email-btn:hover {
+        transform: scale(1.08) translateY(-3px);
+        box-shadow: 0 12px 36px rgba(244, 63, 94, 0.85);
+    }
+    .pulse-ring-email {
+        position: absolute;
+        top: -6px; left: -6px; right: -6px; bottom: -6px;
+        border-radius: 9999px;
+        border: 2.5px solid #f43f5e;
+        animation: float-pulse-cat-anim 2s infinite;
+        pointer-events: none;
+    }
+
     /* Floating Category Corner Button (左下角悬浮快捷切库按钮) */
     .floating-cat-btn {
         position: fixed;
@@ -656,6 +683,21 @@
                     <a href="https://raycast.com" target="_blank" class="sidebar-tag" style="background:linear-gradient(135deg, #ff416c, #ff4b2b); color:#ffffff !important; font-weight:800; border-radius:9999px; padding:8px 16px; box-shadow:0 4px 12px rgba(255,65,108,0.35);" rel="noopener noreferrer nofollow">Raycast 官网库</a>
                     <a href="https://jsonlint.com" target="_blank" class="sidebar-tag" style="background:linear-gradient(135deg, #10b981, #047857); color:#ffffff !important; font-weight:800; border-radius:9999px; padding:8px 16px; box-shadow:0 4px 12px rgba(16,185,129,0.35);" rel="noopener noreferrer nofollow">JSON 校验盒库</a>
                 </div>
+            </section>
+
+            <!-- 右侧栏新增 📧 博主联系邮箱与留言打卡组件 (针对图2右下角需求) -->
+            <section class="widget" style="border-top: 4px solid #f43f5e; margin-top:16px;">
+                <h3 class="widget-title" style="color:var(--text-primary); font-weight:800; display:flex; align-items:center; justify-content:space-between;">
+                    <span>📧 博主联系邮箱与留言</span>
+                    <span style="font-size:0.75rem; background:rgba(244,63,94,0.15); color:#f43f5e; padding:2px 8px; border-radius:4px; font-weight:800;">随时打卡</span>
+                </h3>
+                <div style="background:var(--bg-color); border:1px solid var(--border-color); padding:10px 12px; border-radius:8px; margin-bottom:10px;">
+                    <div style="font-size:0.78rem; color:var(--text-muted); font-weight:700; margin-bottom:2px;">📬 提问/商务官方邮箱</div>
+                    <div style="font-size:0.88rem; font-weight:800; color:#f43f5e; word-break:break-all; cursor:pointer;" onclick="copyContactEmail()" title="点击复制邮箱">lnqry8060610@outlook.com 📋</div>
+                </div>
+                <button onclick="openContactMessageModal()" style="width:100%; padding:10px; border-radius:9999px; background:linear-gradient(135deg, #f43f5e, #be123c); color:#fff; border:none; font-weight:800; font-size:0.88rem; cursor:pointer; box-shadow:0 4px 14px rgba(244,63,94,0.35);">
+                    ✍️ 点击打开在线留言板 & 发送信件 ➔
+                </button>
             </section>
 
             <section class="widget" aria-labelledby="ranking-title">
@@ -1033,11 +1075,12 @@
         </span>
     </div>
 
-    <!-- Floating Email Corner Button -->
-    <div class="floating-email-btn" onclick="openContactMessageModal()" title="点击查看博主邮箱与在线留言">
-        <div class="pulse-ring"></div>
-        <span class="floating-email-badge">留言</span>
-        ✉️
+    <!-- Floating Email Corner Button (右下角悬浮留言邮箱胶囊按钮 - 针对图2需求) -->
+    <div id="floating-email-corner-btn" class="floating-email-btn" onclick="openContactMessageModal()" title="点击查看博主邮箱与在线留言打卡">
+        <div class="pulse-ring-email"></div>
+        <span style="font-weight:800; font-size:0.92rem; color:#ffffff; display:flex; align-items:center; gap:6px;">
+            📧 在线留言与邮箱 ✉️
+        </span>
     </div>
 
     <div id="toast-container" class="toast-container"></div>
