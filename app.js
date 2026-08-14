@@ -1,8 +1,8 @@
 /**
- * 浪网官方 - 主引擎及 SEO/GEO 优化系统
+ * 数字冲浪 - 主引擎及 SEO/GEO 优化系统
  */
 
-// 浪网官方 - 文章数据库
+// 数字冲浪 - 文章数据库
 const articlesData = [
     {
         id: "art-1",
@@ -13,13 +13,13 @@ const articlesData = [
         date: "2026年08月04日",
         isoDate: "2026-08-04T08:00:00+00:00",
         readTime: "8 分钟阅读",
-        author: "浪网官方",
+        author: "数字冲浪",
         likes: 386,
         bannerBg: "linear-gradient(135deg, #2563eb, #7c3aed)",
         bannerTitle: "2026 翻墙机场推荐榜",
-        imageAlt: "浪网官方 2026 高速稳定翻墙机场推荐与评测示意图",
+        imageAlt: "数字冲浪 2026 高速稳定翻墙机场推荐与评测示意图",
         content: `
-            <p>在如今复杂多变的网络环境下，选择一家节点稳定、速度快且防封锁能力强的<b>翻墙机场</b>至关重要。浪网官方团队经过长期连通性测速与晚高峰压力测试，精心整理出本期优质机场推荐名录。</p>
+            <p>在如今复杂多变的网络环境下，选择一家节点稳定、速度快且防封锁能力强的<b>翻墙机场</b>至关重要。数字冲浪技术团队经过长期连通性测速与晚高峰压力测试，精心整理出本期优质机场推荐名录。</p>
             <h3>1. 选购翻墙机场的关键指标</h3>
             <ul>
                 <li><b>传输线路类型</b>：优先选择纯正 IEPL/IPLC 内网专线，不经过公网防火墙，延迟低且极致稳定。</li>
@@ -34,22 +34,22 @@ const articlesData = [
     {
         id: "art-2",
         title: "全网热门翻墙机场综合测试报告：晚高峰节点丢包率与 8K 流媒体测速分析",
-        summary: "浪网官方独家机场测试报告，实时监测多款机场节点的连通性、Ping 延迟抖动以及晚高峰流媒体画质加载速度。",
+        summary: "数字冲浪独家机场测试报告，实时监测多款机场节点的连通性、Ping 延迟抖动以及晚高峰流媒体画质加载速度。",
         category: ["机场测试", "节点测速"],
         year: 2026,
         date: "2026年07月28日",
         isoDate: "2026-07-28T09:30:00+00:00",
         readTime: "10 分钟阅读",
-        author: "浪网官方",
+        author: "数字冲浪",
         likes: 512,
         bannerBg: "linear-gradient(135deg, #0284c7, #2563eb)",
         bannerTitle: "机场测试与延迟测评",
-        imageAlt: "浪网官方 节点测速工具与晚高峰性能测试图表",
+        imageAlt: "数字冲浪 节点测速工具与晚高峰性能测试图表",
         content: `
             <p>连通性与节点丢包率是检验机场真实品质的试金石。本次<b>机场测试</b>涵盖了 15 家主流机场，累计测试节点数量超过 300 个。</p>
             <h3>晚高峰压测数据解析</h3>
             <p>在晚间 20:00 - 23:00 的网络拥堵高峰期，IEPL 专线机场表现依旧抢眼，香港与日本节点的平均 Ping 维持在 35ms - 50ms 之间，4K 拖动无缓冲延迟。</p>
-            <pre><code>// 浪网官方测试结果样例
+            <pre><code>// 数字冲浪测试结果样例
 [节点] 香港 BGP 01 - 延迟: 32ms - 速度: 450Mbps - 状态: 极佳
 [节点] 日本 IEPL 02 - 延迟: 48ms - 速度: 620Mbps - 状态: 极佳
 [节点] 美西 专线 01 - 延迟: 135ms - 速度: 380Mbps - 状态: 良好</code></pre>
@@ -58,13 +58,13 @@ const articlesData = [
     {
         id: "art-3",
         title: "订阅转换工具全指南：Subconverter 与自建在线订阅转换防泄露配置教程",
-        summary: "教您如何使用浪网官方订阅转换工具，轻松将各类机场节点转换成 Clash, Shadowrocket, Sing-Box 及 Quantumult X 格式，保护节点链接隐私。",
+        summary: "教您如何使用数字冲浪订阅转换工具，轻松将各类机场节点转换成 Clash, Shadowrocket, Sing-Box 及 Quantumult X 格式，保护节点链接隐私。",
         category: ["订阅转换", "科学上网"],
         year: 2025,
         date: "2025年12月14日",
         isoDate: "2025-12-14T14:15:00+00:00",
         readTime: "6 分钟阅读",
-        author: "浪网官方",
+        author: "数字冲浪",
         likes: 274,
         bannerBg: "linear-gradient(135deg, #d946ef, #8b5cf6)",
         bannerTitle: "订阅转换安全指南",
@@ -72,7 +72,7 @@ const articlesData = [
         content: `
             <p>在使用不同客户端时，常常需要将机场原始订阅链接转换为 Clash YAML 配置文件或 Sing-Box JSON 格式。<b>订阅转换</b>不仅方便多客户端使用，还能进行规则去广告和策略组重组。</p>
             <h3>订阅转换安全须知</h3>
-            <p>切勿使用来源不明的第三方转换链接，防止机场链接被恶意偷取。推荐使用浪网官方安全托管转换后端或自建客户端转换程序。</p>
+            <p>切勿使用来源不明的第三方转换链接，防止机场链接被恶意偷取。推荐使用数字冲浪安全托管转换后端或自建客户端转换程序。</p>
         `
     },
     {
@@ -84,7 +84,7 @@ const articlesData = [
         date: "2025年09月09日",
         isoDate: "2025-09-09T11:00:00+00:00",
         readTime: "7 分钟阅读",
-        author: "浪网官方",
+        author: "数字冲浪",
         likes: 410,
         bannerBg: "linear-gradient(135deg, #059669, #0891b2)",
         bannerTitle: "建站优化实战",
@@ -102,7 +102,7 @@ const articlesData = [
         date: "2024年11月19日",
         isoDate: "2024-11-19T16:45:00+00:00",
         readTime: "9 分钟阅读",
-        author: "浪网官方",
+        author: "数字冲浪",
         likes: 315,
         bannerBg: "linear-gradient(135deg, #ea580c, #dc2626)",
         bannerTitle: "客户端配置指南",
@@ -158,11 +158,11 @@ function applyTheme(theme) {
 function renderNav() {
     const navItems = [
         { id: 'home', label: '首页', icon: '🏠', count: articlesData.length },
-        { id: 'search', label: '浪网搜索', icon: '🔍', count: null },
+        { id: 'search', label: '全站搜索', icon: '🔍', count: null },
         { id: 'contact', label: '联系我们', icon: '✉️', count: null },
         { id: 'tuijian', label: '机场推荐', icon: '✈️', count: articlesData.filter(a => a.category.includes('机场推荐')).length },
         { id: 'subconvert', label: '订阅转换', icon: '🔄', count: articlesData.filter(a => a.category.includes('订阅转换')).length },
-        { id: 'daohang', label: '浪网导航', icon: '☰', count: null },
+        { id: 'daohang', label: '全站导航', icon: '☰', count: null },
         { id: 'youhua', label: '建站优化', icon: '🤍', count: null },
         { id: 'guidang', label: '文章归档', icon: '📖', count: articlesData.length },
         { id: 'youlian', label: '友情链接', icon: '🧲', count: null }
@@ -463,7 +463,7 @@ function filterByYear(year) {
 }
 
 function renderTagsCloud() {
-    const tags = ["翻墙机场", "机场推荐", "机场测试", "订阅转换", "建站优化", "科学上网", "浪网导航", "IEPL专线"];
+    const tags = ["翻墙机场", "机场推荐", "机场测试", "订阅转换", "建站优化", "科学上网", "全站导航", "IEPL专线"];
     const container = document.getElementById('tag-cloud-container');
     if (!container) return;
 
@@ -476,7 +476,7 @@ function handleNewsletterSubmit(event) {
     event.preventDefault();
     const input = document.getElementById('newsletter-email');
     if (input && input.value) {
-        showToast(`订阅成功！浪网官方测评周报将发送至 ${input.value}`);
+        showToast(`订阅成功！数字冲浪测评周报将发送至 ${input.value}`);
         input.value = '';
     }
 }
@@ -540,7 +540,7 @@ function injectArticleJSONLD(article) {
         "keywords": article.category.join(', '),
         "publisher": {
             "@type": "Organization",
-            "name": "浪网官方"
+            "name": "数字冲浪"
         }
     });
 }
