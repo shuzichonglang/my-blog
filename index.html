@@ -427,34 +427,42 @@
         cursor: pointer;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         border: 2px solid rgba(255, 255, 255, 0.4);
+    /* Floating Category Corner Button (左下角悬浮快捷切库按钮) */
+    .floating-cat-btn {
+        position: fixed;
+        left: 24px;
+        bottom: 90px;
+        z-index: 1055;
+        background: linear-gradient(135deg, #2563eb, #7c3aed);
+        color: #ffffff;
+        padding: 12px 22px;
+        border-radius: 9999px;
+        font-weight: 800;
+        font-size: 0.95rem;
+        box-shadow: 0 8px 28px rgba(37, 99, 235, 0.65);
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2.5px solid rgba(255, 255, 255, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
     }
-    .floating-email-btn:hover {
-        transform: scale(1.12) translateY(-4px);
-        box-shadow: 0 12px 30px rgba(244, 63, 94, 0.75);
+    .floating-cat-btn:hover {
+        transform: scale(1.08) translateY(-3px);
+        box-shadow: 0 12px 36px rgba(37, 99, 235, 0.85);
     }
-    .floating-email-btn .pulse-ring {
+    .pulse-ring-cat {
         position: absolute;
-        top: -5px; left: -5px; right: -5px; bottom: -5px;
-        border-radius: 50%;
-        border: 2px solid #f43f5e;
-        animation: float-pulse-anim 2s infinite;
+        top: -6px; left: -6px; right: -6px; bottom: -6px;
+        border-radius: 9999px;
+        border: 2.5px solid #3b82f6;
+        animation: float-pulse-cat-anim 2s infinite;
         pointer-events: none;
     }
-    @keyframes float-pulse-anim {
+    @keyframes float-pulse-cat-anim {
         0% { transform: scale(1); opacity: 0.85; }
-        100% { transform: scale(1.45); opacity: 0; }
-    }
-    .floating-email-badge {
-        position: absolute;
-        top: -6px;
-        right: -6px;
-        background: #f59e0b;
-        color: #000;
-        font-size: 0.7rem;
-        font-weight: 800;
-        padding: 2px 7px;
-        border-radius: 10px;
-        border: 2px solid var(--card-bg);
+        100% { transform: scale(1.3); opacity: 0; }
     }
 
     @media (max-width: 768px) {
@@ -462,6 +470,7 @@
         .page-container { flex-direction: column; }
         .sidebar-left, .sidebar-right { width: 100%; position: static; }
         .floating-email-btn { right: 16px; bottom: 80px; width: 52px; height: 52px; font-size: 1.4rem; }
+        .floating-cat-btn { left: 16px; bottom: 80px; padding: 10px 18px; font-size: 0.88rem; }
     }
     </style>
 </head>
@@ -950,6 +959,74 @@
                 </div>
             </div>
         </div>
+    <!-- Floating Category Drawer Modal (手机端 & 桌面端悬浮全量分类资源库菜单) -->
+    <div id="category-drawer-modal" class="modal-overlay" onclick="if(event.target === this) closeCategoryDrawer()">
+        <div class="modal-container" style="max-width:680px; border-radius:20px; border:2.5px solid #3b82f6; box-shadow:0 25px 60px rgba(0,0,0,0.6); overflow:hidden; background:var(--card-bg);">
+            <button class="modal-close-btn" onclick="closeCategoryDrawer()" style="position:absolute; top:16px; right:16px; width:38px; height:38px; border-radius:50%; background:rgba(0,0,0,0.6); color:#fff; border:1.5px solid rgba(255,255,255,0.3); font-size:1.2rem; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:100;" title="关闭弹窗">✕</button>
+            
+            <div style="background:linear-gradient(135deg, #1e293b, #0f172a); border-bottom:3px solid #3b82f6; padding:24px 28px; text-align:left;">
+                <div style="font-size:0.82rem; background:linear-gradient(135deg, #2563eb, #1d4ed8); color:#fff; padding:3px 12px; border-radius:9999px; display:inline-block; font-weight:800; margin-bottom:8px;">📂 手机悬浮全量资源库菜单</div>
+                <h3 style="font-size:1.4rem; font-weight:800; color:#ffffff; margin:0; text-shadow:0 2px 6px rgba(0,0,0,0.4);">全站 53 大资源库与 13 大机场分类</h3>
+                <p style="font-size:0.85rem; color:#94a3b8; margin:6px 0 0 0;">点击任意分类胶囊，瞬间切换首页内容流并自动平滑滚动</p>
+            </div>
+
+            <div class="modal-body" style="padding:24px 28px;">
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                    <button onclick="selectCategoryFromDrawer('首页')" style="background:linear-gradient(135deg, #6366f1, #4338ca); color:#ffffff; font-weight:800; font-size:0.95rem; padding:12px 20px; border-radius:9999px; border:none; cursor:pointer; text-align:left; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(99,102,241,0.35);">
+                        <span>🌟 首页全量库 (53大资源库)</span>
+                        <span>➔</span>
+                    </button>
+                    <button onclick="selectCategoryFromDrawer('机场推荐')" style="background:linear-gradient(135deg, #ff416c, #ff4b2b); color:#ffffff; font-weight:800; font-size:0.95rem; padding:12px 20px; border-radius:9999px; border:none; cursor:pointer; text-align:left; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(255,65,108,0.35);">
+                        <span>✈️ 机场推荐库 (13大独立专线节点库)</span>
+                        <span>➔</span>
+                    </button>
+                    <button onclick="selectCategoryFromDrawer('AI探索')" style="background:linear-gradient(135deg, #2563eb, #1d4ed8); color:#ffffff; font-weight:800; font-size:0.95rem; padding:12px 20px; border-radius:9999px; border:none; cursor:pointer; text-align:left; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(37,99,235,0.35);">
+                        <span>🤖 AI探索库 (8大 AI 交互与工具矩阵)</span>
+                        <span>➔</span>
+                    </button>
+                    <button onclick="selectCategoryFromDrawer('折腾记录')" style="background:linear-gradient(135deg, #10b981, #047857); color:#ffffff; font-weight:800; font-size:0.95rem; padding:12px 20px; border-radius:9999px; border:none; cursor:pointer; text-align:left; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(16,185,129,0.35);">
+                        <span>📝 折腾记录库 (6大建站踩坑与实操避坑)</span>
+                        <span>➔</span>
+                    </button>
+                    <button onclick="selectCategoryFromDrawer('建站优化')" style="background:linear-gradient(135deg, #06b6d4, #0e7490); color:#ffffff; font-weight:800; font-size:0.95rem; padding:12px 20px; border-radius:9999px; border:none; cursor:pointer; text-align:left; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(6,182,212,0.35);">
+                        <span>🤍 建站优化库 (6大 Lighthouse 100分调优)</span>
+                        <span>➔</span>
+                    </button>
+                    <button onclick="selectCategoryFromDrawer('订阅转换')" style="background:linear-gradient(135deg, #8b5cf6, #6d28d9); color:#ffffff; font-weight:800; font-size:0.95rem; padding:12px 20px; border-radius:9999px; border:none; cursor:pointer; text-align:left; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(139,92,246,0.35);">
+                        <span>🔄 订阅转换库 (6大在线订阅节点转换平台)</span>
+                        <span>➔</span>
+                    </button>
+                    <button onclick="selectCategoryFromDrawer('机场测试')" style="background:linear-gradient(135deg, #f43f5e, #be123c); color:#ffffff; font-weight:800; font-size:0.95rem; padding:12px 20px; border-radius:9999px; border:none; cursor:pointer; text-align:left; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(244,63,94,0.35);">
+                        <span>🧪 机场测试库 (13大晚高峰压测与测速报告)</span>
+                        <span>➔</span>
+                    </button>
+                    <button onclick="selectCategoryFromDrawer('科学上网')" style="background:linear-gradient(135deg, #0284c7, #0369a1); color:#ffffff; font-weight:800; font-size:0.95rem; padding:12px 20px; border-radius:9999px; border:none; cursor:pointer; text-align:left; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.35);">
+                        <span>📱 科学上网库 (4大平台客户端下载)</span>
+                        <span>➔</span>
+                    </button>
+                    <button onclick="selectCategoryFromDrawer('技术干货')" style="background:linear-gradient(135deg, #d97706, #b45309); color:#ffffff; font-weight:800; font-size:0.95rem; padding:12px 20px; border-radius:9999px; border:none; cursor:pointer; text-align:left; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.35);">
+                        <span>💻 技术干货库 (6大全栈代码与架构教程)</span>
+                        <span>➔</span>
+                    </button>
+                    <button onclick="selectCategoryFromDrawer('实用工具')" style="background:linear-gradient(135deg, #ec4899, #be185d); color:#ffffff; font-weight:800; font-size:0.95rem; padding:12px 20px; border-radius:9999px; border:none; cursor:pointer; text-align:left; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(236,72,153,0.35);">
+                        <span>🛠️ 实用工具库 (4大日常极客必备工具)</span>
+                        <span>➔</span>
+                    </button>
+                    <button onclick="selectCategoryFromDrawer('联系我们')" style="background:linear-gradient(135deg, #f43f5e, #9f1239); color:#ffffff; font-weight:800; font-size:0.95rem; padding:12px 20px; border-radius:9999px; border:none; cursor:pointer; text-align:left; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(244,63,94,0.35);">
+                        <span>📬 联系我们 (TG官方频道与邮箱)</span>
+                        <span>➔</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Category Corner Button (左下角悬浮快捷切库按钮) -->
+    <div id="floating-category-nav-btn" class="floating-cat-btn" onclick="openCategoryDrawer()" title="点击一键展开全部分类资源库">
+        <div class="pulse-ring-cat"></div>
+        <span style="font-weight:800; font-size:0.92rem; color:#ffffff; display:flex; align-items:center; gap:6px;">
+            📂 快捷切库 (53大库) ➔
+        </span>
     </div>
 
     <!-- Floating Email Corner Button -->
@@ -3414,8 +3491,46 @@ function main(config) {<br>
         toast.className = 'toast';
         toast.innerText = msg;
         container.appendChild(toast);
-        setTimeout(() => toast.remove(), 3000);
+        // Category Drawer Modal JS & Filter Bar Drag/Swipe JS (解决图2滑动不了与图3图4手机悬浮按钮需求)
+    function openCategoryDrawer() {
+        const modal = document.getElementById('category-drawer-modal');
+        if (modal) modal.classList.add('active');
     }
+
+    function closeCategoryDrawer() {
+        const modal = document.getElementById('category-drawer-modal');
+        if (modal) modal.classList.remove('active');
+    }
+
+    function selectCategoryFromDrawer(cat) {
+        closeCategoryDrawer();
+        filterByCategory(cat);
+    }
+
+    // Enable Touch/Mouse Drag Horizontal Scrolling for filter-bar (彻底解决图2滑动不了问题)
+    window.addEventListener('DOMContentLoaded', () => {
+        const filterBar = document.getElementById('mobile-filter-bar');
+        if (!filterBar) return;
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        filterBar.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - filterBar.offsetLeft;
+            scrollLeft = filterBar.scrollLeft;
+        });
+        filterBar.addEventListener('mouseleave', () => { isDown = false; });
+        filterBar.addEventListener('mouseup', () => { isDown = false; });
+        filterBar.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - filterBar.offsetLeft;
+            const walk = (x - startX) * 2.5;
+            filterBar.scrollLeft = scrollLeft - walk;
+        });
+    });
     </script>
 </body>
 </html>
