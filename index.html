@@ -246,86 +246,37 @@
         overflow-x: hidden;
     }
 
-    /* Standard Card Style */
+    /* 5 DISTINCT FULL COLORED BORDER CARD FORMATS (列成隔线外框卡片格式) */
     .article-card {
-        background-color: var(--card-bg); border-radius: 14px; overflow: hidden;
-        border: 1px solid var(--border-color); border-bottom: 4px solid var(--primary-accent);
-        padding: 26px; transition: transform 0.2s, box-shadow 0.2s; position: relative;
+        background-color: var(--card-bg); border-radius: 16px !important; overflow: hidden;
+        border: 2px solid #06b6d4 !important;
+        padding: 24px; transition: transform 0.25s, box-shadow 0.25s; position: relative;
         cursor: pointer; display: flex; flex-direction: column; justify-content: space-between;
         max-width: 100%; box-sizing: border-box; overflow-x: hidden; word-break: break-word;
+        box-shadow: 0 8px 24px rgba(6, 182, 212, 0.15);
     }
-    .article-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08); }
+    .article-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(6, 182, 212, 0.3); }
 
-    .row-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
-    .row-title-area { display: flex; align-items: center; gap: 12px; }
-    .rank-tag { font-size: 0.92rem; font-weight: 800; padding: 5px 14px; border-radius: 9999px; color: #fff; }
-    .rank-1 { background: linear-gradient(135deg, #f59e0b, #ef4444); }
-    .rank-2 { background: linear-gradient(135deg, #f59e0b, #10b981); }
-    .rank-sub { background: var(--primary-accent); }
-    .article-title { font-size: 1.35rem; font-weight: 800; color: var(--text-primary); margin: 0; }
-    .line-type-badge { display: none !important; }
-
-    .row-rich-text {
-        font-size: 1.02rem; color: var(--text-primary); line-height: 1.8; margin-bottom: 16px;
-        padding: 4px 0 10px 0; border: none; background: transparent; opacity: 1; font-weight: 500;
-    }
-    .row-specs-grid {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-        gap: 10px; margin: 14px 0; padding: 14px; background-color: rgba(255, 255, 255, 0.03);
-        border-radius: 10px; border: none;
-    }
-    .spec-item { text-align: center; }
-    .spec-label { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 4px; font-weight: 600; }
-    .spec-val { font-size: 1.02rem; font-weight: 800; color: var(--text-primary); }
-
-    .row-bottom-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 14px; }
-    .coupon-code-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
-    .coupon-code-box {
-        background-color: rgba(245, 158, 11, 0.12); border: none;
-        color: var(--accent-gold); padding: 9px 16px; border-radius: 8px;
-        font-size: 0.95rem; font-weight: 800; display: flex; align-items: center; gap: 8px;
-    }
-
-    .big-detail-pop-btn {
-        width: 100%; padding: 14px 20px; border-radius: 12px; border: none;
-        background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; font-weight: 800;
-        font-size: 1.02rem; cursor: pointer; transition: all 0.2s ease;
-        display: flex; align-items: center; justify-content: center; gap: 8px;
-        box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
-    }
-    .big-detail-pop-btn:hover {
-        background: linear-gradient(135deg, #1d4ed8, #1e40af);
-        transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
-    }
-
-    .register-link-btn {
-        padding: 12px 20px; border-radius: 8px; border: none;
-        background-color: var(--primary-accent); color: #fff; text-decoration: none;
-        font-weight: 800; font-size: 1rem; transition: all 0.2s ease; display: inline-block;
-    }
-
-    /* Grid 响应式多列并排 */
-    .two-col-grid-container {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;
-    }
-
-    /* 4 DISTINCT CUSTOM CARD FORMATS */
-    .format-ai-card {
-        background-color: var(--card-bg);
-        border: 1px solid var(--card-border);
-        border-top: 4px solid #8b5cf6;
-        border-radius: 12px; padding: 22px;
-        box-shadow: var(--shadow-sm); transition: all 0.25s ease;
+    .format-airport-card {
+        background-color: var(--card-bg); border: 2px solid #10b981 !important; border-radius: 16px !important;
+        padding: 24px; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.16); transition: all 0.25s ease;
         display: flex; flex-direction: column; justify-content: space-between; cursor: pointer;
     }
-    .format-ai-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: #8b5cf6; }
-    .ai-model-pill { background: var(--primary-light); border: 1px solid #8b5cf6; color: var(--text-primary); font-weight: 800; font-size: 0.78rem; padding: 3px 10px; border-radius: 999px; }
+    .format-airport-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(16, 185, 129, 0.3); }
+
+    .format-ai-card {
+        background-color: var(--card-bg); border: 2px solid #8b5cf6 !important; border-radius: 16px !important;
+        padding: 24px; box-shadow: 0 8px 24px rgba(139, 92, 246, 0.16); transition: all 0.25s ease;
+        display: flex; flex-direction: column; justify-content: space-between; cursor: pointer;
+    }
+    .format-ai-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(139, 92, 246, 0.3); }
+    .ai-model-pill { background: rgba(139, 92, 246, 0.15); border: 1px solid #8b5cf6; color: #8b5cf6; font-weight: 800; font-size: 0.8rem; padding: 4px 12px; border-radius: 999px; }
     .ai-prompt-box { background: var(--bg-color); border: 1px solid var(--border-color); padding: 14px; border-radius: 8px; color: var(--text-primary); font-size: 0.88rem; margin: 12px 0; font-family: var(--font-mono); line-height: 1.6; white-space: pre-wrap; word-break: break-word; font-weight: 600; }
     .ai-action-btn { background: linear-gradient(135deg, #7c3aed, #6d28d9); color: #ffffff; font-weight: 800; border: none; padding: 11px; border-radius: 8px; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; font-size: 0.9rem; }
 
     .format-tool-card {
-        background-color: var(--card-bg); border: 2px solid #f59e0b; border-radius: 12px;
-        padding: 22px; box-shadow: 0 8px 24px rgba(245, 158, 11, 0.15); transition: all 0.25s ease;
+        background-color: var(--card-bg); border: 2px solid #f59e0b !important; border-radius: 16px !important;
+        padding: 24px; box-shadow: 0 8px 24px rgba(245, 158, 11, 0.16); transition: all 0.25s ease;
         display: flex; flex-direction: column; justify-content: space-between; cursor: pointer;
     }
     .format-tool-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(245, 158, 11, 0.3); }
@@ -334,23 +285,37 @@
     .tool-action-btn { background: linear-gradient(135deg, #f59e0b, #d97706); color: #000; font-weight: 800; border: none; padding: 11px; border-radius: 8px; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; font-size: 0.9rem; }
 
     .format-record-card {
-        background-color: var(--card-bg); border: 1px solid var(--border-color); border-top: 4px solid #10b981;
-        border-radius: 12px; padding: 22px; box-shadow: var(--shadow-sm); transition: all 0.25s ease;
+        background-color: var(--card-bg); border: 2px solid #10b981 !important; border-radius: 16px !important;
+        padding: 24px; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.16); transition: all 0.25s ease;
         display: flex; flex-direction: column; justify-content: space-between; cursor: pointer;
     }
-    .format-record-card:hover { transform: translateY(-3px); border-color: #10b981; box-shadow: var(--shadow-md); }
+    .format-record-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(16, 185, 129, 0.3); }
     .record-checklist { background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); padding: 12px; border-radius: 8px; margin: 12px 0; font-size: 0.88rem; }
     .record-action-btn { background: linear-gradient(135deg, #10b981, #059669); color: #fff; font-weight: 800; border: none; padding: 11px; border-radius: 8px; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; font-size: 0.9rem; }
 
     .format-opt-card {
-        background-color: var(--card-bg); border: 1px solid var(--border-color); border-top: 4px solid #06b6d4; border-radius: 12px;
-        padding: 22px; box-shadow: 0 8px 24px rgba(6, 182, 212, 0.15); transition: all 0.25s ease;
+        background-color: var(--card-bg); border: 2px solid #06b6d4 !important; border-radius: 16px !important;
+        padding: 24px; box-shadow: 0 8px 24px rgba(6, 182, 212, 0.16); transition: all 0.25s ease;
         display: flex; flex-direction: column; justify-content: space-between; cursor: pointer;
     }
     .format-opt-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(6, 182, 212, 0.3); }
     .opt-score-badge { background: rgba(6, 182, 212, 0.15); border: 1px solid #06b6d4; color: #38bdf8; padding: 4px 12px; border-radius: 999px; font-weight: 800; font-size: 0.8rem; }
     .opt-metrics-bar { display: flex; justify-content: space-around; margin: 12px 0; background: var(--bg-color); padding: 10px; border-radius: 6px; text-align: center; }
     .opt-action-btn { background: linear-gradient(135deg, #06b6d4, #0284c7); color: #fff; font-weight: 800; border: none; padding: 11px; border-radius: 8px; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; font-size: 0.9rem; }
+
+    .format-geo-card {
+        background-color: var(--card-bg); border: 2px solid #059669 !important; border-radius: 16px !important;
+        padding: 24px; box-shadow: 0 8px 24px rgba(5, 150, 105, 0.16); transition: all 0.25s ease;
+        display: flex; flex-direction: column; justify-content: space-between; cursor: pointer;
+    }
+    .format-geo-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(5, 150, 105, 0.3); }
+
+    .format-tech-card {
+        background-color: var(--card-bg); border: 2px solid #d97706 !important; border-radius: 16px !important;
+        padding: 24px; box-shadow: 0 8px 24px rgba(217, 119, 6, 0.16); transition: all 0.25s ease;
+        display: flex; flex-direction: column; justify-content: space-between; cursor: pointer;
+    }
+    .format-tech-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(217, 119, 6, 0.3); }
 
     /* Ultra-readable Inline Article Typography */
     .inline-article-box {
@@ -2911,30 +2876,32 @@ function main(config) {<br>
             const nonAirportList = allArticlesList.filter(ap => !(ap.type === 'airport' || (ap.category && (ap.category.includes('机场推荐') || ap.category.includes('机场测试')))));
 
             const airportCardsHtml = airportList.map(ap => `
-                <article class="article-card" style="border-left:4px solid #10b981;" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="row-header">
-                        <div class="row-title-area">
-                            <span class="rank-tag ${ap.rankClass}" itemprop="keywords">${ap.rankTag}</span>
-                            <h2 class="article-title" style="cursor:pointer;" onclick="openArticleModal('${ap.id}')" itemprop="headline">${ap.name}</h2>
+                <article class="format-airport-card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <div>
+                        <div class="row-header">
+                            <div class="row-title-area">
+                                <span class="rank-tag ${ap.rankClass}" itemprop="keywords">${ap.rankTag}</span>
+                                <h2 class="article-title" style="cursor:pointer;" onclick="openArticleModal('${ap.id}')" itemprop="headline">${ap.name}</h2>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row-rich-text" itemprop="abstract">
-                        ${ap.recommendText}
-                    </div>
+                        <div class="row-rich-text" itemprop="abstract">
+                            ${ap.recommendText}
+                        </div>
 
-                    <div class="row-specs-grid">
-                        <div class="spec-item">
-                            <div class="spec-label">核心分类 / 延迟</div>
-                            <div class="spec-val" style="color:var(--accent-emerald);">${ap.ping}</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">特色优势 / 速率</div>
-                            <div class="spec-val">${ap.speed}</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">服务 SLA / 机制</div>
-                            <div class="spec-val" style="color:var(--accent-gold);">${ap.sla}</div>
+                        <div class="row-specs-grid">
+                            <div class="spec-item">
+                                <div class="spec-label">核心分类 / 延迟</div>
+                                <div class="spec-val" style="color:var(--accent-emerald);">${ap.ping}</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">特色优势 / 速率</div>
+                                <div class="spec-val">${ap.speed}</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">服务 SLA / 机制</div>
+                                <div class="spec-val" style="color:var(--accent-gold);">${ap.sla}</div>
+                            </div>
                         </div>
                     </div>
 
@@ -2949,14 +2916,16 @@ function main(config) {<br>
 
             const otherCardsHtml = nonAirportList.map(ap => `
                 <article class="article-card" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="row-header">
-                        <div class="row-title-area">
-                            <span class="rank-tag ${ap.rankClass || 'rank-sub'}" itemprop="keywords">${ap.rankTag}</span>
-                            <h2 class="article-title" style="cursor:pointer;" onclick="openArticleModal('${ap.id}')" itemprop="headline">${ap.name}</h2>
+                    <div>
+                        <div class="row-header">
+                            <div class="row-title-area">
+                                <span class="rank-tag ${ap.rankClass || 'rank-sub'}" itemprop="keywords">${ap.rankTag}</span>
+                                <h2 class="article-title" style="cursor:pointer;" onclick="openArticleModal('${ap.id}')" itemprop="headline">${ap.name}</h2>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row-rich-text" itemprop="abstract">
-                        ${ap.recommendText}
+                        <div class="row-rich-text" itemprop="abstract">
+                            ${ap.recommendText}
+                        </div>
                     </div>
                     <div class="row-bottom-actions">
                         <button class="big-detail-pop-btn" onclick="openArticleModal('${ap.id}')" style="background:var(--card-bg); border:1px solid var(--border-color); color:var(--text-primary); padding:9px; cursor:pointer; font-weight:700; width:100%;">📖 查看完整内容 ➔</button>
@@ -2976,11 +2945,15 @@ function main(config) {<br>
                         <span style="font-size:0.82rem; background:linear-gradient(135deg, #ef4444, #f59e0b); color:#fff; padding:5px 12px; border-radius:20px; font-weight:800; box-shadow:0 2px 8px rgba(239,68,68,0.3);">13 大机场全量在列</span>
                     </div>
                 </div>
-                ${airportCardsHtml}
+                <div class="two-col-grid-container">
+                    ${airportCardsHtml}
+                </div>
                 <div style="background:var(--card-bg); border:1px solid var(--border-color); padding:16px 20px; border-radius:12px; margin:32px 0 20px 0;">
                     <h3 style="font-size:1.15rem; font-weight:800; color:var(--text-primary); margin:0;">📚 更多全站极客资源库（AI探索 / 建站 / 踩坑 / 工具）</h3>
                 </div>
-                ${otherCardsHtml}
+                <div class="two-col-grid-container">
+                    ${otherCardsHtml}
+                </div>
             `;
             return;
         }
@@ -2989,7 +2962,7 @@ function main(config) {<br>
         if (state.currentCategory === '联系我们' && !query) {
             const contactArt = allArticlesList.find(a => a.id === 'contact-us');
             container.innerHTML = `
-                <article class="article-card" style="background:var(--card-bg); border:2px solid #f43f5e; border-radius:16px; padding:32px; box-shadow:0 8px 30px rgba(244,63,94,0.25);">
+                <article class="article-card" style="background:var(--card-bg); border:2px solid #f43f5e !important; border-radius:16px; padding:32px; box-shadow:0 8px 30px rgba(244,63,94,0.25);">
                     <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
                         <div style="display:flex; align-items:center; gap:12px;">
                             <span class="rank-tag rank-1" style="background:linear-gradient(135deg,#f43f5e,#be123c);">📬 官方推荐</span>
@@ -3023,6 +2996,125 @@ function main(config) {<br>
                         ${contactArt ? contactArt.fullArticle : ''}
                     </div>
                 </article>
+            `;
+            return;
+        }
+
+        // Render Format for: ✈️ 机场推荐 & 🧪 机场测试
+        if ((state.currentCategory === '机场推荐' || state.currentCategory === '机场测试') && !query) {
+            container.innerHTML = `
+                <div class="two-col-grid-container">
+                    ${filtered.map(ap => `
+                        <article class="format-airport-card" itemscope itemtype="https://schema.org/BlogPosting">
+                            <div>
+                                <div class="row-header">
+                                    <div class="row-title-area">
+                                        <span class="rank-tag ${ap.rankClass || 'rank-1'}" itemprop="keywords">${ap.rankTag}</span>
+                                        <h2 class="article-title" style="cursor:pointer;" onclick="openArticleModal('${ap.id}')" itemprop="headline">${ap.name}</h2>
+                                    </div>
+                                </div>
+
+                                <div class="row-rich-text" itemprop="abstract">
+                                    ${ap.recommendText}
+                                </div>
+
+                                <div class="row-specs-grid">
+                                    <div class="spec-item">
+                                        <div class="spec-label">核心分类 / 延迟</div>
+                                        <div class="spec-val" style="color:var(--accent-emerald);">${ap.ping}</div>
+                                    </div>
+                                    <div class="spec-item">
+                                        <div class="spec-label">特色优势 / 速率</div>
+                                        <div class="spec-val">${ap.speed}</div>
+                                    </div>
+                                    <div class="spec-item">
+                                        <div class="spec-label">服务 SLA / 机制</div>
+                                        <div class="spec-val" style="color:var(--accent-gold);">${ap.sla}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row-bottom-actions">
+                                <div class="coupon-code-box">
+                                    <span>🎁 专属优惠码: <strong>${ap.coupon}</strong></span>
+                                </div>
+                                ${ap.link && ap.link !== '#' ? `<a href="${ap.link}" target="_blank" rel="noopener noreferrer nofollow" class="register-link-btn" style="text-decoration:none; display:block; text-align:center; width:100%; font-weight:800; padding:12px; font-size:0.95rem; background:linear-gradient(135deg, #10b981, #059669); color:#fff; border-radius:8px;" itemprop="url">🚀 直达 ${ap.name} 官网注册入口 ➔</a>` : ''}
+                            </div>
+                        </article>
+                    `).join('')}
+                </div>
+            `;
+            return;
+        }
+
+        // Render Format for: 📱 科学上网
+        if (state.currentCategory === '科学上网' && !query) {
+            container.innerHTML = `
+                <div class="two-col-grid-container">
+                    ${filtered.map(ap => `
+                        <article class="format-geo-card" itemscope itemtype="https://schema.org/BlogPosting">
+                            <div>
+                                <div class="row-header">
+                                    <div class="row-title-area">
+                                        <span class="rank-tag ${ap.rankClass || 'rank-1'}" style="background:linear-gradient(135deg, #059669, #047857);" itemprop="keywords">${ap.rankTag}</span>
+                                        <h2 class="article-title" style="cursor:pointer;" onclick="openArticleModal('${ap.id}')" itemprop="headline">${ap.name}</h2>
+                                    </div>
+                                </div>
+
+                                <div class="row-rich-text" itemprop="abstract">
+                                    ${ap.recommendText}
+                                </div>
+
+                                <div class="row-specs-grid">
+                                    <div class="spec-item">
+                                        <div class="spec-label">延迟 / 指标</div>
+                                        <div class="spec-val" style="color:var(--accent-emerald);">${ap.ping}</div>
+                                    </div>
+                                    <div class="spec-item">
+                                        <div class="spec-label">速率 / 规范</div>
+                                        <div class="spec-val">${ap.speed}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row-bottom-actions">
+                                <div class="coupon-code-box">
+                                    <span>🎁 推荐配置: <strong>${ap.coupon}</strong></span>
+                                </div>
+                                <button class="big-detail-pop-btn" onclick="openArticleModal('${ap.id}')" style="background:linear-gradient(135deg, #059669, #047857); padding:10px; cursor:pointer;">🚀 直达客户端指南与下载 ➔</button>
+                            </div>
+                        </article>
+                    `).join('')}
+                </div>
+            `;
+            return;
+        }
+
+        // Render Format for: 💻 技术干货
+        if (state.currentCategory === '技术干货' && !query) {
+            container.innerHTML = `
+                <div class="two-col-grid-container">
+                    ${filtered.map(ap => `
+                        <article class="format-tech-card" itemscope itemtype="https://schema.org/BlogPosting">
+                            <div>
+                                <div class="row-header">
+                                    <div class="row-title-area">
+                                        <span class="rank-tag ${ap.rankClass || 'rank-1'}" style="background:linear-gradient(135deg, #d97706, #b45309);" itemprop="keywords">${ap.rankTag}</span>
+                                        <h2 class="article-title" style="cursor:pointer;" onclick="openArticleModal('${ap.id}')" itemprop="headline">${ap.name}</h2>
+                                    </div>
+                                </div>
+
+                                <div class="row-rich-text" itemprop="abstract">
+                                    ${ap.recommendText}
+                                </div>
+                            </div>
+
+                            <div class="row-bottom-actions">
+                                <button class="big-detail-pop-btn" onclick="openArticleModal('${ap.id}')" style="background:linear-gradient(135deg, #d97706, #b45309); padding:10px; cursor:pointer;">📖 打开阅读完整技术干货文章 ➔</button>
+                            </div>
+                        </article>
+                    `).join('')}
+                </div>
             `;
             return;
         }
@@ -3175,7 +3267,7 @@ function main(config) {<br>
             </article>
         `).join('');
 
-        container.innerHTML = searchBannerHtml + cardsHtml;
+        container.innerHTML = searchBannerHtml + '<div class="two-col-grid-container">' + cardsHtml + '</div>';
     }
 
     function setupEventListeners() {
