@@ -1015,12 +1015,16 @@
                 <a href="javascript:void(0)" onclick="selectSearchSuggestion('8K')" class="footer-keyword-link" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; margin:0 6px; cursor:pointer;">8K 极速机场测速</a> •
                 <a href="javascript:void(0)" onclick="selectSearchSuggestion('BGP')" class="footer-keyword-link" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; margin:0 6px; cursor:pointer;">BGP 节点中转</a> •
                 <a href="javascript:void(0)" onclick="selectSearchSuggestion('Hysteria')" class="footer-keyword-link" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; margin:0 6px; cursor:pointer;">Hysteria 2 协议</a> •
-                <a href="javascript:void(0)" onclick="selectSearchSuggestion('防封锁')" class="footer-keyword-link" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; margin:0 6px; cursor:pointer;">防封锁机场选型</a>
+                <a href="javascript:void(0)" onclick="selectSearchSuggestion('防封锁')" class="footer-keyword-link" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; margin:0 6px; cursor:pointer;">防封锁机场选型</a> •
+                <a href="javascript:void(0)" onclick="openAboutUsModal()" class="footer-keyword-link" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; margin:0 6px; cursor:pointer;">关于我们</a> •
+                <a href="javascript:void(0)" onclick="openContactMessageModal()" class="footer-keyword-link" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; margin:0 6px; cursor:pointer;">联系我们</a>
             </div>
 
             <p style="margin-top:12px; font-size:12px; color:var(--text-muted);">© 2026 数字冲浪 (langwangnet). 保留所有权利</p>
             <div style="margin-top:10px; font-size:13px; color:var(--text-muted); display:flex; justify-content:center; gap:16px; align-items:center;">
-                <span style="font-weight:800; color:var(--text-primary);">友情链接:</span>
+                <span style="font-weight:800; color:var(--text-primary);">快捷指南:</span>
+                <a href="javascript:void(0)" onclick="openAboutUsModal()" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; cursor:pointer;">关于我们</a>
+                <a href="javascript:void(0)" onclick="openContactMessageModal()" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; cursor:pointer;">联系我们</a>
                 <a href="javascript:void(0)" onclick="filterByCategory('机场测试')" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; cursor:pointer;">机场测评</a>
                 <a href="javascript:void(0)" onclick="filterByCategory('科学上网')" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; cursor:pointer;">机场教程</a>
             </div>
@@ -1172,6 +1176,34 @@
                         <span>📬 联系我们 (TG官方频道与邮箱)</span>
                         <span>➔</span>
                     </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Us Modal (关于我们 弹窗) -->
+    <div id="about-us-modal" class="modal-overlay" onclick="if(event.target === this) closeAboutUsModal()">
+        <div class="modal-container" style="max-width:760px; border:2.5px solid #f59e0b; box-shadow:0 12px 40px rgba(245, 158, 11, 0.35);">
+            <button class="modal-close-btn" onclick="closeAboutUsModal()">✕</button>
+            <div style="background:linear-gradient(135deg, #f59e0b, #b45309); padding:28px 24px; text-align:center; color:#fff;">
+                <div style="font-size:2.5rem; margin-bottom:6px;">🌟</div>
+                <h2 style="font-size:1.6rem; font-weight:800; margin:0; text-shadow:0 2px 6px rgba(0,0,0,0.3);">关于数字冲浪 (langwangnet)</h2>
+                <p style="font-size:0.92rem; opacity:0.95; margin:6px 0 0 0;">性价比与平价视角 • 适合预算有限的学生党/轻度用户</p>
+            </div>
+            
+            <div class="modal-body" style="padding:28px; line-height:1.8;">
+                <h3 style="font-size:1.15rem; font-weight:800; color:var(--text-primary); margin-top:0;">一、我们的定位与使命</h3>
+                <p>数字冲浪 (langwangnet) 成立于 2026 年，专注于站在性价比与平价视角，为全网预算有限的学生党、独立开发者与日常出海用户提供最权威客观的 VPN 科学上网选型、双向 IEPL 内网专线测评、AI 工具实操及建站性能优化指南。</p>
+
+                <h3 style="font-size:1.15rem; font-weight:800; color:var(--text-primary);">二、68 大全量极客资源库</h3>
+                <p>全站涵盖 13 大机场推荐压测、10 大 AI 探索工具矩阵、8 大全栈技术干货及 6 大平台代理客户端下载，坚持只收录经过晚高峰吞吐与 GFW 抗封锁测试的优质资源。</p>
+
+                <div style="margin-top:20px; background:rgba(245,158,11,0.1); border:1.5px solid #f59e0b; padding:16px; border-radius:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                    <div>
+                        <div style="font-weight:800; color:#b45309;">📬 官方联系与商务合作</div>
+                        <div style="font-size:0.88rem; color:var(--text-muted);">官方邮箱：lnqry8060610@outlook.com</div>
+                    </div>
+                    <button onclick="closeAboutUsModal(); openContactMessageModal();" style="background:linear-gradient(135deg,#f59e0b,#b45309); color:#fff; border:none; padding:8px 16px; border-radius:9999px; font-weight:800; cursor:pointer;">✍️ 在线留言 / 提问 ➔</button>
                 </div>
             </div>
         </div>
@@ -3800,6 +3832,17 @@ ollama ps</code></pre>
 
     function closeContactMessageModal() {
         document.getElementById('contact-message-modal').classList.remove('active');
+    }
+
+    // About Us Modal JS Functions
+    function openAboutUsModal() {
+        const modal = document.getElementById('about-us-modal');
+        if (modal) modal.classList.add('active');
+    }
+
+    function closeAboutUsModal() {
+        const modal = document.getElementById('about-us-modal');
+        if (modal) modal.classList.remove('active');
     }
 
     function copyContactEmail() {
