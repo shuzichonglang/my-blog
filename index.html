@@ -534,7 +534,8 @@
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); z-index: 1000; display: flex; justify-content: center; padding: 40px 16px; overflow-y: auto; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
     .modal-overlay.active { opacity: 1; pointer-events: auto; }
     .modal-container { background-color: #ffffff !important; color: #1e293b !important; border-radius: 16px; max-width: 900px; width: 100%; margin: auto; overflow: hidden; position: relative; border: 2.5px solid #3b82f6 !important; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6); }
-    [data-theme="dark"] .modal-container { background-color: #0f172a !important; color: #f8fafc !important; border: 2.5px solid #3b82f6 !important; }
+    #contact-message-modal .modal-container { background-color: #ffffff !important; color: #0f172a !important; }
+    #contact-message-modal input::placeholder, #contact-message-modal textarea::placeholder { color: #64748b !important; opacity: 0.9 !important; }
     .modal-body { padding: 32px; line-height: 1.85; color: inherit !important; font-size: 1.05rem; }
     #modal-content { color: inherit !important; font-size: 1.05rem; line-height: 1.85; }
     #modal-content p, #modal-content div, #modal-content span, #modal-content li, #modal-content td, #modal-content th { color: inherit !important; }
@@ -1080,64 +1081,64 @@
 
     <!-- Contact & Message Board Modal -->
     <div id="contact-message-modal" class="modal-overlay" onclick="if(event.target === this) closeContactMessageModal()">
-        <div class="modal-container" style="max-width:760px; border:2px solid #f43f5e; box-shadow:0 12px 40px rgba(244, 63, 94, 0.35);">
-            <button class="modal-close-btn" onclick="closeContactMessageModal()">✕</button>
-            <div style="background:linear-gradient(135deg, #f43f5e, #be123c); padding:28px 24px; text-align:center; color:#fff;">
-                <div style="font-size:2.5rem; margin-bottom:6px;">✉️</div>
-                <h2 style="font-size:1.6rem; font-weight:800; margin:0; text-shadow:0 2px 6px rgba(0,0,0,0.3);">联系博主与在线留言</h2>
-                <p style="font-size:0.92rem; opacity:0.9; margin:6px 0 0 0;">获取 2026 VPN 专线优惠、机场测速收录与广告合作</p>
+        <div class="modal-container" style="max-width:760px; background:#ffffff !important; color:#0f172a !important; border:2.5px solid #ff416c; box-shadow:0 20px 60px rgba(0,0,0,0.25);">
+            <button class="modal-close-btn" onclick="closeContactMessageModal()" style="position:absolute; top:16px; right:16px; width:38px; height:38px; border-radius:50%; background:rgba(0,0,0,0.6); color:#fff; border:1.5px solid rgba(255,255,255,0.4); font-size:1.2rem; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:100;" title="关闭弹窗">✕</button>
+            <div style="background:linear-gradient(135deg, #ff416c, #ff4b2b); padding:28px 24px; text-align:center; color:#ffffff;">
+                <div style="font-size:2.6rem; margin-bottom:6px;">✉️</div>
+                <h2 style="font-size:1.65rem; font-weight:800; margin:0; text-shadow:0 2px 6px rgba(0,0,0,0.2);">联系博主与在线留言板</h2>
+                <p style="font-size:0.95rem; opacity:0.95; margin:6px 0 0 0; font-weight:600;">获取 2026 VPN 专线优惠、机场测评收录与商务合作</p>
             </div>
             
-            <div class="modal-body" style="padding:28px;">
+            <div class="modal-body" style="padding:28px; background:#ffffff !important; color:#0f172a !important;">
                 <!-- Official Info Box -->
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px;">
                     <!-- Email Card -->
-                    <div style="background:rgba(244,63,94,0.08); border:1px dashed #f43f5e; padding:16px; border-radius:12px; text-align:center;">
-                        <div style="font-size:1.8rem; margin-bottom:4px;">📧</div>
-                        <div style="font-size:0.85rem; color:#f43f5e; font-weight:700;">官方电子邮箱</div>
-                        <div style="font-size:0.95rem; font-weight:800; color:var(--text-primary); margin:6px 0; word-break:break-all;">lnqry8060610@outlook.com</div>
-                        <div style="display:flex; gap:8px; justify-content:center; margin-top:8px;">
-                            <button onclick="copyContactEmail()" style="background:#f43f5e; color:#fff; border:none; padding:5px 12px; border-radius:6px; font-size:0.8rem; font-weight:700; cursor:pointer;">📋 复制邮箱</button>
-                            <a href="mailto:lnqry8060610@outlook.com" target="_blank" style="background:var(--bg-color); color:var(--text-primary); border:1px solid var(--border-color); padding:5px 12px; border-radius:6px; font-size:0.8rem; font-weight:700; text-decoration:none;" rel="noopener noreferrer nofollow">✉️ 发送邮件</a>
+                    <div style="background:#fff5f5 !important; border:1.5px dashed #feb2b2; padding:18px; border-radius:14px; text-align:center; box-shadow:0 4px 12px rgba(239,68,68,0.06);">
+                        <div style="font-size:2rem; margin-bottom:4px;">📧</div>
+                        <div style="font-size:0.88rem; color:#ef4444; font-weight:800;">官方电子邮箱</div>
+                        <div style="font-size:1rem; font-weight:800; color:#0f172a !important; margin:6px 0; word-break:break-all;">lnqry8060610@outlook.com</div>
+                        <div style="display:flex; gap:8px; justify-content:center; margin-top:10px;">
+                            <button onclick="copyContactEmail()" style="background:#ef4444; color:#ffffff; border:none; padding:7px 14px; border-radius:8px; font-size:0.82rem; font-weight:800; cursor:pointer; box-shadow:0 2px 8px rgba(239,68,68,0.3);">📋 复制邮箱</button>
+                            <a href="mailto:lnqry8060610@outlook.com" target="_blank" style="background:#ffffff; color:#0f172a; border:1.5px solid #cbd5e1; padding:7px 14px; border-radius:8px; font-size:0.82rem; font-weight:800; text-decoration:none;" rel="noopener noreferrer nofollow">✉️ 发送邮件</a>
                         </div>
                     </div>
 
                     <!-- Telegram Card -->
-                    <div style="background:rgba(56,189,248,0.08); border:1px dashed #38bdf8; padding:16px; border-radius:12px; text-align:center;">
-                        <div style="font-size:1.8rem; margin-bottom:4px;">✈️</div>
-                        <div style="font-size:0.85rem; color:#38bdf8; font-weight:700;">Telegram 交流频道</div>
-                        <div style="font-size:0.95rem; font-weight:800; color:var(--text-primary); margin:6px 0;">官方交流解惑</div>
-                        <a href="https://t.me/+vR-Qm3CQ7IQ2ZDg1" target="_blank" style="background:#38bdf8; color:#000; font-weight:800; padding:6px 14px; border-radius:6px; font-size:0.8rem; text-decoration:none; display:inline-block; margin-top:8px;" rel="noopener noreferrer nofollow">👉 直达 TG 频道 ➔</a>
+                    <div style="background:#f0f9ff !important; border:1.5px dashed #93c5fd; padding:18px; border-radius:14px; text-align:center; box-shadow:0 4px 12px rgba(56,189,248,0.06);">
+                        <div style="font-size:2rem; margin-bottom:4px;">✈️</div>
+                        <div style="font-size:0.88rem; color:#0284c7; font-weight:800;">Telegram 交流频道</div>
+                        <div style="font-size:1rem; font-weight:800; color:#0f172a !important; margin:6px 0;">官方交流解惑群组</div>
+                        <a href="https://t.me/+vR-Qm3CQ7IQ2ZDg1" target="_blank" style="background:#0284c7; color:#ffffff; font-weight:800; padding:7px 16px; border-radius:8px; font-size:0.82rem; text-decoration:none; display:inline-block; margin-top:10px; box-shadow:0 2px 8px rgba(2,132,199,0.3);" rel="noopener noreferrer nofollow">👉 直达 TG 频道 ➔</a>
                     </div>
                 </div>
 
                 <!-- Interactive Message Form -->
-                <div style="background:var(--bg-color); border:1px solid var(--border-color); padding:20px; border-radius:12px; margin-bottom:20px;">
-                    <h3 style="font-size:1.1rem; color:var(--text-primary); margin-top:0; margin-bottom:14px; display:flex; align-items:center; gap:8px;">💬 提交在线留言</h3>
+                <div style="background:#f8fafc !important; border:1.5px solid #e2e8f0; padding:22px; border-radius:14px; margin-bottom:20px; box-shadow:0 4px 14px rgba(0,0,0,0.03);">
+                    <h3 style="font-size:1.15rem; color:#0f172a !important; margin-top:0; margin-bottom:16px; font-weight:800; display:flex; align-items:center; gap:8px;">💬 提交在线留言</h3>
                     <form onsubmit="submitUserMessage(event)">
-                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;">
                             <div>
-                                <label style="font-size:0.82rem; color:var(--text-muted); display:block; margin-bottom:4px;">您的称呼 / 昵称:</label>
-                                <input type="text" id="msg-name" required placeholder="例如：极客小王" style="width:100%; padding:8px 12px; background:var(--card-bg); border:1px solid var(--border-color); color:var(--text-primary); border-radius:6px; font-size:0.9rem;">
+                                <label style="font-size:0.85rem; color:#334155 !important; font-weight:700; display:block; margin-bottom:6px;">您的称呼 / 昵称:</label>
+                                <input type="text" id="msg-name" required placeholder="例如：极客小王" style="width:100%; padding:10px 14px; background:#ffffff !important; border:2px solid #cbd5e1 !important; color:#0f172a !important; border-radius:8px; font-size:0.95rem; font-weight:600; outline:none;">
                             </div>
                             <div>
-                                <label style="font-size:0.82rem; color:var(--text-muted); display:block; margin-bottom:4px;">联系方式 (邮箱 / Telegram):</label>
-                                <input type="text" id="msg-contact" required placeholder="例如：lnqry8060610@outlook.com" style="width:100%; padding:8px 12px; background:var(--card-bg); border:1px solid var(--border-color); color:var(--text-primary); border-radius:6px; font-size:0.9rem;">
+                                <label style="font-size:0.85rem; color:#334155 !important; font-weight:700; display:block; margin-bottom:6px;">联系方式 (邮箱 / Telegram):</label>
+                                <input type="text" id="msg-contact" required placeholder="例如：lnqry8060610@outlook.com" style="width:100%; padding:10px 14px; background:#ffffff !important; border:2px solid #cbd5e1 !important; color:#0f172a !important; border-radius:8px; font-size:0.95rem; font-weight:600; outline:none;">
                             </div>
                         </div>
-                        <div style="margin-bottom:14px;">
-                            <label style="font-size:0.82rem; color:var(--text-muted); display:block; margin-bottom:4px;">留言或咨询内容:</label>
-                            <textarea id="msg-content" required rows="3" placeholder="写下您的需求（VPN 选型咨询、节点测评收录、广告投递等）..." style="width:100%; padding:8px 12px; background:var(--card-bg); border:1px solid var(--border-color); color:var(--text-primary); border-radius:6px; font-size:0.9rem; resize:vertical;"></textarea>
+                        <div style="margin-bottom:16px;">
+                            <label style="font-size:0.85rem; color:#334155 !important; font-weight:700; display:block; margin-bottom:6px;">留言或咨询内容:</label>
+                            <textarea id="msg-content" required rows="3" placeholder="写下您的需求（VPN 选型咨询、节点测评收录、广告投递等）..." style="width:100%; padding:10px 14px; background:#ffffff !important; border:2px solid #cbd5e1 !important; color:#0f172a !important; border-radius:8px; font-size:0.95rem; font-weight:600; resize:vertical; outline:none;"></textarea>
                         </div>
-                        <button type="submit" style="background:linear-gradient(135deg, #f43f5e, #be123c); color:#fff; font-weight:800; border:none; padding:10px 24px; border-radius:8px; font-size:0.95rem; cursor:pointer; width:100%;">🚀 立即提交在线留言</button>
+                        <button type="submit" style="background:linear-gradient(135deg, #ff416c, #ff4b2b); color:#ffffff; font-weight:800; border:none; padding:12px 24px; border-radius:10px; font-size:1rem; cursor:pointer; width:100%; box-shadow:0 4px 14px rgba(255,65,108,0.35);">🚀 立即提交在线留言</button>
                     </form>
                 </div>
 
                 <!-- Recent Local Messages -->
                 <div>
-                    <h4 style="font-size:0.95rem; color:var(--text-muted); margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;">
+                    <h4 style="font-size:0.95rem; color:#64748b !important; margin-bottom:12px; font-weight:800; display:flex; justify-content:space-between; align-items:center;">
                         <span>📋 最新留言记录</span>
-                        <span style="font-size:0.78rem; color:var(--text-muted);">实时在线打卡</span>
+                        <span style="font-size:0.8rem; color:#64748b !important;">实时在线打卡</span>
                     </h4>
                     <div id="recent-messages-list">
                         <!-- Loaded dynamically -->
