@@ -418,6 +418,60 @@
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3) !important;
     }
 
+    /* Automatic Floating / Breathing Animation for Figures 2, 3, 4 (针对需求：图2 图3 图4要可以自动动下动下的) */
+    @keyframes auto-float-gently {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-5px); }
+    }
+
+    /* Figure 3: Left Sidebar Navigation Menu Floating Animation */
+    .nav-menu a {
+        animation: auto-float-gently 3.5s ease-in-out infinite;
+    }
+    .nav-menu li:nth-child(1) a { animation-delay: 0.0s; }
+    .nav-menu li:nth-child(2) a { animation-delay: 0.2s; }
+    .nav-menu li:nth-child(3) a { animation-delay: 0.4s; }
+    .nav-menu li:nth-child(4) a { animation-delay: 0.6s; }
+    .nav-menu li:nth-child(5) a { animation-delay: 0.8s; }
+    .nav-menu li:nth-child(6) a { animation-delay: 1.0s; }
+    .nav-menu li:nth-child(7) a { animation-delay: 1.2s; }
+    .nav-menu li:nth-child(8) a { animation-delay: 1.4s; }
+    .nav-menu li:nth-child(9) a { animation-delay: 1.6s; }
+    .nav-menu li:nth-child(10) a { animation-delay: 1.8s; }
+    .nav-menu li:nth-child(11) a { animation-delay: 2.0s; }
+
+    /* Figure 2: Right Sidebar 13 Airport Ranking Items Floating Animation */
+    .sidebar-ranking-item {
+        animation: auto-float-gently 3s ease-in-out infinite;
+    }
+    .sidebar-ranking-list li:nth-child(1) { animation-delay: 0.0s; }
+    .sidebar-ranking-list li:nth-child(2) { animation-delay: 0.25s; }
+    .sidebar-ranking-list li:nth-child(3) { animation-delay: 0.5s; }
+    .sidebar-ranking-list li:nth-child(4) { animation-delay: 0.75s; }
+    .sidebar-ranking-list li:nth-child(5) { animation-delay: 1.0s; }
+    .sidebar-ranking-list li:nth-child(6) { animation-delay: 1.25s; }
+    .sidebar-ranking-list li:nth-child(7) { animation-delay: 1.5s; }
+    .sidebar-ranking-list li:nth-child(8) { animation-delay: 1.75s; }
+    .sidebar-ranking-list li:nth-child(9) { animation-delay: 2.0s; }
+    .sidebar-ranking-list li:nth-child(10) { animation-delay: 2.25s; }
+    .sidebar-ranking-list li:nth-child(11) { animation-delay: 2.5s; }
+    .sidebar-ranking-list li:nth-child(12) { animation-delay: 2.75s; }
+    .sidebar-ranking-list li:nth-child(13) { animation-delay: 3.0s; }
+
+    /* Figure 4: Right Sidebar Category & Service Tags Floating Animation */
+    .sidebar-tag {
+        animation: auto-float-gently 4s ease-in-out infinite;
+    }
+    .tag-cloud a:nth-child(1) { animation-delay: 0.0s; }
+    .tag-cloud a:nth-child(2) { animation-delay: 0.3s; }
+    .tag-cloud a:nth-child(3) { animation-delay: 0.6s; }
+    .tag-cloud a:nth-child(4) { animation-delay: 0.9s; }
+    .tag-cloud a:nth-child(5) { animation-delay: 1.2s; }
+    .tag-cloud a:nth-child(6) { animation-delay: 1.5s; }
+    .tag-cloud a:nth-child(7) { animation-delay: 1.8s; }
+    .tag-cloud a:nth-child(8) { animation-delay: 2.1s; }
+    .tag-cloud a:nth-child(9) { animation-delay: 2.4s; }
+
     /* Footer */
     .site-footer { margin-top: 40px; text-align: center; font-size: 13px; color: var(--text-secondary); border-top: 1px solid var(--border-color); padding: 30px 20px 20px; background: var(--card-bg); }
     .site-footer a { color: var(--primary-accent); text-decoration: none !important; }
@@ -925,26 +979,26 @@
         <div class="footer-container">
             <p><strong>数字冲浪 (极客随笔)</strong> - 性价比与平价视角（适合预算有限的学生党/轻度用户），拥有 8大 <strong>AI探索</strong>、6大 <strong>折腾记录</strong>、6大 <strong>建站优化</strong>、6大 <strong>订阅转换</strong> 与全网 13大 <strong>机场推荐测试</strong>。</p>
             
-            <div style="margin-top:12px; font-size:12px; color:var(--text-muted); line-height:1.85; max-width:960px; margin-left:auto; margin-right:auto;">
-                <span style="font-weight:700; color:var(--text-secondary);">✈️ 机场热门关键字:</span>
-                <a href="tuijian.html" class="footer-keyword-link" style="color:var(--text-secondary); text-decoration:none; margin:0 5px;">机场推荐 2026</a> •
-                <a href="tuijian.html" class="footer-keyword-link" style="color:var(--text-secondary); text-decoration:none; margin:0 5px;">稳定专线机场</a> •
-                <a href="tuijian.html" class="footer-keyword-link" style="color:var(--text-secondary); text-decoration:none; margin:0 5px;">便宜机场推荐</a> •
-                <a href="index.html?cat=test" class="footer-keyword-link" style="color:var(--text-secondary); text-decoration:none; margin:0 5px;">IEPL 内网专线</a> •
-                <a href="tuijian.html" class="footer-keyword-link" style="color:var(--text-secondary); text-decoration:none; margin:0 5px;">Clash 机场推荐</a> •
-                <a href="index.html?cat=vpn" class="footer-keyword-link" style="color:var(--text-secondary); text-decoration:none; margin:0 5px;">Shadowrocket 小火箭机场</a> •
-                <a href="index.html?cat=vpn" class="footer-keyword-link" style="color:var(--text-secondary); text-decoration:none; margin:0 5px;">梯子推荐</a> •
-                <a href="index.html?cat=test" class="footer-keyword-link" style="color:var(--text-secondary); text-decoration:none; margin:0 5px;">8K 极速机场测速</a> •
-                <a href="index.html?cat=test" class="footer-keyword-link" style="color:var(--text-secondary); text-decoration:none; margin:0 5px;">BGP 节点中转</a> •
-                <a href="index.html?cat=test" class="footer-keyword-link" style="color:var(--text-secondary); text-decoration:none; margin:0 5px;">Hysteria 2 协议</a> •
-                <a href="index.html?cat=contact" class="footer-keyword-link" style="color:var(--text-secondary); text-decoration:none; margin:0 5px;">防封锁机场选型</a>
+            <div style="margin-top:12px; font-size:13px; color:var(--text-muted); line-height:2.2; max-width:960px; margin-left:auto; margin-right:auto;">
+                <span style="font-weight:800; color:var(--text-primary); margin-right:6px;">✈️ 机场热门关键字:</span>
+                <a href="javascript:void(0)" onclick="selectSearchSuggestion('机场推荐')" class="footer-keyword-link" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; margin:0 6px; cursor:pointer;">机场推荐 2026</a> •
+                <a href="javascript:void(0)" onclick="selectSearchSuggestion('专线')" class="footer-keyword-link" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; margin:0 6px; cursor:pointer;">稳定专线机场</a> •
+                <a href="javascript:void(0)" onclick="selectSearchSuggestion('便宜机场')" class="footer-keyword-link" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; margin:0 6px; cursor:pointer;">便宜机场推荐</a> •
+                <a href="javascript:void(0)" onclick="selectSearchSuggestion('IEPL')" class="footer-keyword-link" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; margin:0 6px; cursor:pointer;">IEPL 内网专线</a> •
+                <a href="javascript:void(0)" onclick="selectSearchSuggestion('Clash')" class="footer-keyword-link" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; margin:0 6px; cursor:pointer;">Clash 机场推荐</a> •
+                <a href="javascript:void(0)" onclick="selectSearchSuggestion('小火箭')" class="footer-keyword-link" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; margin:0 6px; cursor:pointer;">Shadowrocket 小火箭机场</a> •
+                <a href="javascript:void(0)" onclick="selectSearchSuggestion('梯子')" class="footer-keyword-link" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; margin:0 6px; cursor:pointer;">梯子推荐</a> •
+                <a href="javascript:void(0)" onclick="selectSearchSuggestion('8K')" class="footer-keyword-link" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; margin:0 6px; cursor:pointer;">8K 极速机场测速</a> •
+                <a href="javascript:void(0)" onclick="selectSearchSuggestion('BGP')" class="footer-keyword-link" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; margin:0 6px; cursor:pointer;">BGP 节点中转</a> •
+                <a href="javascript:void(0)" onclick="selectSearchSuggestion('Hysteria')" class="footer-keyword-link" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; margin:0 6px; cursor:pointer;">Hysteria 2 协议</a> •
+                <a href="javascript:void(0)" onclick="selectSearchSuggestion('防封锁')" class="footer-keyword-link" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; margin:0 6px; cursor:pointer;">防封锁机场选型</a>
             </div>
 
-            <p style="margin-top:10px; font-size:12px; color:var(--text-muted);">© 2026 数字冲浪 (langwangnet). 保留所有权利</p>
-            <div style="margin-top:10px; font-size:12px; color:var(--text-muted); display:flex; justify-content:center; gap:16px; align-items:center;">
-                <span>友情链接:</span>
-                <a href="https://jichangreview.net" target="_blank" style="color:var(--text-muted); text-decoration:none;" rel="noopener noreferrer nofollow">机场测评</a>
-                <a href="https://jichangreview.net" target="_blank" style="color:var(--text-muted); text-decoration:none;" rel="noopener noreferrer nofollow">机场教程</a>
+            <p style="margin-top:12px; font-size:12px; color:var(--text-muted);">© 2026 数字冲浪 (langwangnet). 保留所有权利</p>
+            <div style="margin-top:10px; font-size:13px; color:var(--text-muted); display:flex; justify-content:center; gap:16px; align-items:center;">
+                <span style="font-weight:800; color:var(--text-primary);">友情链接:</span>
+                <a href="javascript:void(0)" onclick="filterByCategory('机场测试')" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; cursor:pointer;">机场测评</a>
+                <a href="javascript:void(0)" onclick="filterByCategory('科学上网')" style="color:var(--text-primary); text-decoration:underline 2.5px #f59e0b !important; text-underline-offset:4px; font-weight:800; cursor:pointer;">机场教程</a>
             </div>
         </div>
     </footer>
