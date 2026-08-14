@@ -503,36 +503,36 @@
     .toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; }
     .toast { background-color: var(--card-bg); color: var(--text-primary); border: 1px solid var(--card-border); padding: 12px 18px; border-radius: 12px; font-size: 0.88rem; font-weight: 600; display: flex; gap: 10px; }
 
-    /* Floating Email Corner Button (右下角悬浮留言邮箱胶囊按钮) */
+    /* Floating Email Corner Button (右下角小巧精致的悬浮邮箱包按钮 - 针对需求) */
     .floating-email-btn {
         position: fixed;
         right: 24px;
         bottom: 90px;
         z-index: 1055;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
         background: linear-gradient(135deg, #f43f5e, #be123c);
         color: #ffffff;
-        padding: 12px 22px;
-        border-radius: 9999px;
-        font-weight: 800;
-        font-size: 0.95rem;
-        box-shadow: 0 8px 28px rgba(244, 63, 94, 0.65);
+        font-size: 1.45rem;
+        box-shadow: 0 8px 24px rgba(244, 63, 94, 0.6);
         cursor: pointer;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 2.5px solid rgba(255, 255, 255, 0.4);
+        border: 2.5px solid #ffffff;
         display: flex;
         align-items: center;
         justify-content: center;
         user-select: none;
     }
     .floating-email-btn:hover {
-        transform: scale(1.08) translateY(-3px);
-        box-shadow: 0 12px 36px rgba(244, 63, 94, 0.85);
+        transform: scale(1.12) translateY(-3px);
+        box-shadow: 0 12px 32px rgba(244, 63, 94, 0.85);
     }
     .pulse-ring-email {
         position: absolute;
-        top: -6px; left: -6px; right: -6px; bottom: -6px;
-        border-radius: 9999px;
-        border: 2.5px solid #f43f5e;
+        top: -5px; left: -5px; right: -5px; bottom: -5px;
+        border-radius: 50%;
+        border: 2px solid #f43f5e;
         animation: float-pulse-cat-anim 2s infinite;
         pointer-events: none;
     }
@@ -771,20 +771,7 @@
                 </div>
             </section>
 
-            <!-- 右侧栏新增 📧 博主联系邮箱与留言打卡组件 (针对图2右下角需求) -->
-            <section class="widget" style="border-top: 4px solid #f43f5e; margin-top:16px;">
-                <h3 class="widget-title" style="color:var(--text-primary); font-weight:800; display:flex; align-items:center; justify-content:space-between;">
-                    <span>📧 博主联系邮箱与留言</span>
-                    <span style="font-size:0.75rem; background:rgba(244,63,94,0.15); color:#f43f5e; padding:2px 8px; border-radius:4px; font-weight:800;">随时打卡</span>
-                </h3>
-                <div style="background:var(--bg-color); border:1px solid var(--border-color); padding:10px 12px; border-radius:8px; margin-bottom:10px;">
-                    <div style="font-size:0.78rem; color:var(--text-muted); font-weight:700; margin-bottom:2px;">📬 提问/商务官方邮箱</div>
-                    <div style="font-size:0.88rem; font-weight:800; color:#f43f5e; word-break:break-all; cursor:pointer;" onclick="copyContactEmail()" title="点击复制邮箱">lnqry8060610@outlook.com 📋</div>
-                </div>
-                <button onclick="openContactMessageModal()" style="width:100%; padding:10px; border-radius:9999px; background:linear-gradient(135deg, #f43f5e, #be123c); color:#fff; border:none; font-weight:800; font-size:0.88rem; cursor:pointer; box-shadow:0 4px 14px rgba(244,63,94,0.35);">
-                    ✍️ 点击打开在线留言板 & 发送信件 ➔
-                </button>
-            </section>
+
 
             <section class="widget" aria-labelledby="ranking-title">
                 <h3 class="widget-title" id="ranking-title" style="display:flex; justify-content:space-between; align-items:center;">
@@ -1161,12 +1148,11 @@
         </span>
     </div>
 
-    <!-- Floating Email Corner Button (右下角悬浮留言邮箱胶囊按钮 - 针对图2需求) -->
-    <div id="floating-email-corner-btn" class="floating-email-btn" onclick="openContactMessageModal()" title="点击查看博主邮箱与在线留言打卡">
+    <!-- Floating Email Corner Button (右下角小巧悬浮邮箱图标 - 点击直达留言打卡) -->
+    <div id="floating-email-corner-btn" class="floating-email-btn" onclick="openContactMessageModal()" title="点击直达博主邮箱与在线留言">
         <div class="pulse-ring-email"></div>
-        <span style="font-weight:800; font-size:0.92rem; color:#ffffff; display:flex; align-items:center; gap:6px;">
-            📧 在线留言与邮箱 ✉️
-        </span>
+        <span class="floating-email-badge" style="position:absolute; top:-4px; right:-4px; background:#ffffff; color:#be123c; font-weight:800; font-size:0.68rem; padding:2px 6px; border-radius:9999px; box-shadow:0 2px 6px rgba(0,0,0,0.25);">留言</span>
+        ✉️
     </div>
 
     <div id="toast-container" class="toast-container"></div>
