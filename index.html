@@ -3490,11 +3490,15 @@ function main(config) {<br>
 
     function showToast(msg) {
         const container = document.getElementById('toast-container');
+        if (!container) return;
         const toast = document.createElement('div');
         toast.className = 'toast';
         toast.innerText = msg;
         container.appendChild(toast);
-        // Category Drawer Modal JS & Filter Bar Drag/Swipe JS (解决图2滑动不了与图3图4手机悬浮按钮需求)
+        setTimeout(() => toast.remove(), 3000);
+    }
+
+    // Category Drawer Modal JS & Filter Bar Drag/Swipe JS (解决图2滑动不了与图3图4手机悬浮按钮需求)
     function openCategoryDrawer() {
         const modal = document.getElementById('category-drawer-modal');
         if (modal) modal.classList.add('active');
