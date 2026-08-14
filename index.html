@@ -60,21 +60,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
-    :root, [data-theme="dark"] {
-        --bg-color: #111827;
-        --card-bg: #1f2937;
+    :root {
+        --bg-color: #0f172a;
+        --card-bg: #1e293b;
         --card-border: rgba(255, 255, 255, 0.08);
-        --text-primary: #f9fafb;
-        --text-secondary: #d1d5db;
-        --text-muted: #9ca3af;
+        --text-primary: #f8fafc;
+        --text-secondary: #cbd5e1;
+        --text-muted: #94a3b8;
         
         --primary-accent: #3b82f6;
         --primary-hover: #2563eb;
         --primary-light: rgba(59, 130, 246, 0.15);
         
-        --pill-bg: #374151;
-        --pill-text: #d1d5db;
-        --pill-hover: #4b5563;
+        --pill-bg: #334155;
+        --pill-text: #f8fafc;
+        --pill-hover: #475569;
         
         --accent-cyan: #06b6d4;
         --accent-emerald: #10b981;
@@ -82,31 +82,48 @@
         --accent-purple: #8b5cf6;
         --accent-rose: #f43f5e;
         
-        --header-bg: rgba(31, 41, 55, 0.95);
-        --border-color: #374151;
-        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
-        --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
-        --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.4);
+        --header-bg: rgba(15, 23, 42, 0.95);
+        --border-color: #334155;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+        --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.6);
+        --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.7);
         
         --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         --font-mono: 'JetBrains Mono', monospace;
     }
 
-    [data-theme="light"] {
-        --bg-color: #F0F2F5;
-        --card-bg: #FFFFFF;
-        --card-border: #E5E7EB;
-        --text-primary: #1F2937;
-        --text-secondary: #4B5563;
-        --text-muted: #6B7280;
-        --primary-accent: #2563EB;
-        --primary-hover: #1D4ED8;
-        --primary-light: #DBEAFE;
-        --pill-bg: #E5E7EB;
-        --pill-text: #1F2937;
-        --pill-hover: #D1D5DB;
-        --header-bg: rgba(255, 255, 255, 0.95);
-        --border-color: #E5E7EB;
+    html[data-theme="light"], body[data-theme="light"] {
+        --bg-color: #F0F2F5 !important;
+        --card-bg: #FFFFFF !important;
+        --card-border: #E5E7EB !important;
+        --text-primary: #1F2937 !important;
+        --text-secondary: #4B5563 !important;
+        --text-muted: #6B7280 !important;
+        --primary-accent: #2563EB !important;
+        --primary-hover: #1D4ED8 !important;
+        --primary-light: #DBEAFE !important;
+        --pill-bg: #E5E7EB !important;
+        --pill-text: #1F2937 !important;
+        --pill-hover: #D1D5DB !important;
+        --header-bg: rgba(255, 255, 255, 0.95) !important;
+        --border-color: #E5E7EB !important;
+    }
+
+    html[data-theme="dark"], body[data-theme="dark"] {
+        --bg-color: #0f172a !important;
+        --card-bg: #1e293b !important;
+        --card-border: rgba(255, 255, 255, 0.08) !important;
+        --text-primary: #f8fafc !important;
+        --text-secondary: #cbd5e1 !important;
+        --text-muted: #94a3b8 !important;
+        --primary-accent: #3b82f6 !important;
+        --primary-hover: #2563eb !important;
+        --primary-light: rgba(59, 130, 246, 0.15) !important;
+        --pill-bg: #334155 !important;
+        --pill-text: #f8fafc !important;
+        --pill-hover: #475569 !important;
+        --header-bg: rgba(15, 23, 42, 0.95) !important;
+        --border-color: #334155 !important;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -650,6 +667,7 @@
                 <span id="theme-btn-icon">🌙</span> <span id="theme-btn-text">晚上模式 (点击切白天)</span>
             </button>
             <button onclick="filterByCategory('机场推荐')" class="register-link-btn" style="padding:7px 14px; font-size:0.85rem; background:linear-gradient(135deg, #ef4444, #f59e0b); color:#fff; cursor:pointer;" title="显示13大机场推荐库">✈️ 机场推荐 (13库)</button>
+            <button class="btn-icon" onclick="openContactMessageModal()" title="点击直达官方电子邮箱与留言板" style="background:linear-gradient(135deg, #f43f5e, #be123c); color:#ffffff; border:none; box-shadow:0 3px 10px rgba(244,63,94,0.35); font-weight:800; cursor:pointer;">✉️</button>
             <button class="btn-icon" onclick="showToast('已成功收藏全站知识库')" title="收藏页面">🔖</button>
         </div>
     </header>
@@ -797,6 +815,7 @@
                     <a href="javascript:void(0)" onclick="filterByCategory('科学上网')" class="sidebar-tag" style="background:linear-gradient(135deg, #0284c7, #0369a1); color:#ffffff !important; font-weight:800; cursor:pointer; border-radius:9999px; padding:8px 16px; box-shadow:0 4px 12px rgba(2,132,199,0.35);">📱 科学上网库 (4库)</a>
                     <a href="javascript:void(0)" onclick="filterByCategory('技术干货')" class="sidebar-tag" style="background:linear-gradient(135deg, #d97706, #b45309); color:#ffffff !important; font-weight:800; cursor:pointer; border-radius:9999px; padding:8px 16px; box-shadow:0 4px 12px rgba(217,119,6,0.35);">💻 技术干货库 (6库)</a>
                     <a href="javascript:void(0)" onclick="filterByCategory('实用工具')" class="sidebar-tag" style="background:linear-gradient(135deg, #ec4899, #be185d); color:#ffffff !important; font-weight:800; cursor:pointer; border-radius:9999px; padding:8px 16px; box-shadow:0 4px 12px rgba(236,72,153,0.35);">🛠️ 实用工具库 (4库)</a>
+                    <a href="javascript:void(0)" onclick="openContactMessageModal()" class="sidebar-tag" style="background:linear-gradient(135deg, #f43f5e, #be123c); color:#ffffff !important; font-weight:800; cursor:pointer; border-radius:9999px; padding:10px 18px; box-shadow:0 4px 14px rgba(244,63,94,0.4); width:100%; display:flex; align-items:center; justify-content:center; gap:8px; margin-top:8px;" title="点击直达官方电子邮箱与在线留言板">✉️ 官方电子邮箱与留言 (点击直达) ➔</a>
                 </div>
             </section>
 
@@ -3387,6 +3406,7 @@ ollama ps</code></pre>
     function applyTheme(theme) {
         state.theme = theme;
         document.documentElement.setAttribute('data-theme', theme);
+        if (document.body) document.body.setAttribute('data-theme', theme);
         localStorage.setItem('theme_preference', theme);
         
         const themeBtn = document.getElementById('theme-toggle-btn');
