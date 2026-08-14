@@ -418,16 +418,21 @@
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3) !important;
     }
 
-    /* Automatic Floating / Breathing Animation for Figures 2, 3, 4 & Action Buttons (针对需求：这里的按钮也是要可以自动跳动的那种) */
+    /* Automatic Floating / Breathing Animation Keyframes */
     @keyframes auto-float-gently {
         0%, 100% { transform: translateY(0px); }
         50% { transform: translateY(-5px); }
     }
 
-    /* All Action & Register Buttons Automatic Bouncing Animation */
-    .register-link-btn, .big-detail-pop-btn, .ai-action-btn, .tool-action-btn, .record-action-btn {
-        animation: auto-float-gently 3s ease-in-out infinite;
-        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    /* ONLY Flash Sale Buttons in Left Sidebar (Screenshot 1) Automatically Bounce! (针对需求) */
+    .sidebar-flash-btn {
+        animation: auto-float-gently 2.5s ease-in-out infinite !important;
+        transition: all 0.25s ease;
+    }
+
+    /* Main Feed Article Buttons (Screenshot 2) Do NOT Bounce! (针对需求：图2的不要跳动) */
+    .big-detail-pop-btn, .ai-action-btn, .tool-action-btn, .record-action-btn, .register-link-btn {
+        animation: none !important;
     }
 
     /* Main Content Feed - Generous Breathing Space & Clear Card Separator (针对需求：图2开始看起来很乱 空一个位置在继续下一个) */
@@ -707,7 +712,7 @@
                             <span style="color:var(--accent-gold);">lw888</span>
                         </div>
                         <div style="font-size:0.78rem; color:var(--text-muted); margin:4px 0 6px 0;">Ping 28ms • 320,000 Kbps • 解锁 AI/4K</div>
-                        <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" style="display:block; text-align:center; background:#10b981; color:#fff; font-weight:800; font-size:0.8rem; padding:5px; border-radius:4px; text-decoration:none;" rel="noopener noreferrer nofollow">🚀 直达官网注册 ➔</a>
+                        <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" class="sidebar-flash-btn" style="display:block; text-align:center; background:#10b981; color:#fff; font-weight:800; font-size:0.8rem; padding:6px; border-radius:6px; text-decoration:none;" rel="noopener noreferrer nofollow">🚀 直达官网注册 ➔</a>
                     </div>
 
                     <div style="background:rgba(255,255,255,0.03); padding:10px; border-radius:8px; border:1px solid var(--border-color);">
@@ -716,7 +721,7 @@
                             <span style="color:var(--accent-gold);">mm88</span>
                         </div>
                         <div style="font-size:0.78rem; color:var(--text-muted); margin:4px 0 6px 0;">Ping 34ms • 外服游戏优化 • 极少丢包</div>
-                        <a href="https://langwang3.twilightaff.com/#/?code=8YW2PdKT" target="_blank" style="display:block; text-align:center; background:#f59e0b; color:#000; font-weight:800; font-size:0.8rem; padding:5px; border-radius:4px; text-decoration:none;" rel="noopener noreferrer nofollow">🚀 直达官网注册 ➔</a>
+                        <a href="https://langwang3.twilightaff.com/#/?code=8YW2PdKT" target="_blank" class="sidebar-flash-btn" style="display:block; text-align:center; background:#f59e0b; color:#000; font-weight:800; font-size:0.8rem; padding:6px; border-radius:6px; text-decoration:none;" rel="noopener noreferrer nofollow">🚀 直达官网注册 ➔</a>
                     </div>
                 </div>
             </div>
