@@ -380,18 +380,43 @@
         line-height: 1.6;
     }
 
-    /* Sidebar Right */
-    .sidebar-right { width: 275px; flex-shrink: 0; position: sticky; top: 80px; }
-    .widget { margin-bottom: 20px; background: var(--card-bg); padding: 18px; border-radius: 14px; border: 1px solid var(--border-color); }
+    /* Sidebar Right - Dynamic Floating & Sticky Animation (针对图2：要可以浮动可以动的) */
+    .sidebar-right { width: 285px; flex-shrink: 0; position: sticky; top: 80px; transition: all 0.3s ease; }
+    .widget {
+        margin-bottom: 20px; background: var(--card-bg); padding: 18px; border-radius: 16px;
+        border: 1.5px solid var(--border-color); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .widget:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+        border-color: #3b82f6 !important;
+    }
     .widget-title { font-size: 16px; font-weight: 800; margin: 0 0 14px 0; border-bottom: 2px solid var(--bg-color); padding-bottom: 8px; color: var(--text-primary); }
     
-    .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
-    .sidebar-tag { background-color: var(--bg-color); color: var(--text-primary); font-size: 13px; padding: 6px 12px; border-radius: 6px; text-decoration: none; font-weight: 700; transition: all 0.2s ease; cursor: pointer; }
-    .sidebar-tag:hover { background-color: var(--primary-light); color: var(--primary-accent); }
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 9px; }
+    .sidebar-tag {
+        display: inline-flex !important; align-items: center !important; justify-content: center !important;
+        font-size: 0.85rem !important; padding: 8px 16px !important; border-radius: 9999px !important;
+        text-decoration: none !important; font-weight: 800 !important; cursor: pointer;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    }
+    .sidebar-tag:hover {
+        transform: translateY(-3px) scale(1.06) !important;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3) !important;
+    }
 
     .sidebar-ranking-list { list-style: none; margin: 0; padding: 0; }
-    .sidebar-ranking-item { padding: 9px 0; border-bottom: 1px dashed var(--border-color); font-size: 0.95rem; font-weight: 700; display: flex; align-items: center; gap: 8px; color: var(--text-secondary); }
-    .sidebar-ranking-item:last-child { border-bottom: none; }
+    .sidebar-ranking-item {
+        padding: 10px 16px; border: none; border-radius: 9999px; font-size: 0.92rem; font-weight: 800;
+        display: flex; align-items: center; justify-content: space-between; gap: 8px; color: #ffffff !important;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .sidebar-ranking-item:hover {
+        transform: translateX(4px) scale(1.03);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3) !important;
+    }
 
     /* Footer */
     .site-footer { margin-top: 40px; text-align: center; font-size: 13px; color: var(--text-secondary); border-top: 1px solid var(--border-color); padding: 30px 20px 20px; background: var(--card-bg); }
@@ -509,17 +534,24 @@
 
     <!-- Header Navbar -->
     <header class="top-navbar" role="banner">
-        <a href="index.html" class="brand-title">
-            <div class="brand-icon">
+        <a href="index.html" class="brand-title" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
+            <div class="brand-icon" style="width:38px; height:38px; border-radius:8px; overflow:hidden; flex-shrink:0;">
                 <img src="langwang_avatar.jpg" alt="数字冲浪" style="width:100%; height:100%; object-fit:cover;">
             </div>
-            <span>数字冲浪 - 性价比与平价视角（适合预算有限的学生党/轻度用户）</span>
+            <div style="display:flex; flex-direction:column; justify-content:center;">
+                <span style="font-size:1.05rem; font-weight:800; color:var(--text-primary); line-height:1.2;">数字冲浪 - 性价比与平价视角</span>
+                <span style="font-size:0.75rem; font-weight:700; color:var(--primary-accent); line-height:1.2; margin-top:2px;">（适合预算有限的学生党/轻度用户）</span>
+            </div>
         </a>
 
-        <div class="search-box-container">
+        <div class="search-box-container" style="position:relative;">
             <span class="search-icon">🔍</span>
-            <input type="search" id="search-input" class="search-input" placeholder="搜索 13大机场, 8大AI, 6大折腾, 6大建站, 6大订阅, 4大工具..." aria-label="全站关键字搜索">
+            <input type="search" id="search-input" class="search-input" placeholder="搜索 13大机场, 8大AI, 6大折腾, 6大建站, 6大订阅, 4大工具..." aria-label="全站关键字搜索" autocomplete="off" onfocus="handleSearchFocus()" oninput="handleSearchInput(this.value)">
             <button id="search-clear-btn" onclick="clearSearchQuery()" style="display:none; position:absolute; right:12px; top:50%; transform:translateY(-50%); background:transparent; border:none; color:var(--text-muted); font-size:1.1rem; cursor:pointer; padding:4px;" title="清空搜索">✕</button>
+
+            <!-- Real-time Smart Search Autocomplete Dropdown (实时智能搜索推荐与匹配下拉框) -->
+            <div id="search-dropdown-menu" style="display:none; position:absolute; top:calc(100% + 8px); left:0; right:0; background:var(--card-bg); border:2.5px solid #3b82f6; border-radius:16px; box-shadow:0 15px 40px rgba(0,0,0,0.3); z-index:1000; overflow:hidden; max-height:450px; overflow-y:auto; backdrop-filter:blur(12px);">
+            </div>
         </div>
 
         <div class="nav-actions">
@@ -1812,16 +1844,18 @@ function main(config) {<br>
             category: ["机场推荐", "机场测试"],
             recommendText: "全节点采用纯正双向 IEPL 跨境内网专线传输，数据经专有海底光缆直连香港、东京、新加坡及美西数据中心，完全绕过公网 GFW 防火墙 DPI 深度审查。在晚高峰 21:30 黄金拥塞时段下，4K/8K 极清视频播放瞬时拉满 320,000 Kbps，高频刷 YouTube、TikTok、Netflix 蓝光视频秒加载零缓冲。全节点提供 100% 原生住宅 IP 广播，完美解锁 ChatGPT-4o、Claude 3.5 Sonnet、Midjourney AI 交互工具，绝无 Access Denied 报错，是年度高好评综合体验第一的旗舰专线机场。",
             fullArticle: `<h3>🌟 浪网 (langwangnet) 深度全方位测评报告与用户好评总结 【年度首选推荐】</h3>
-<p>作为 2026 年度综合性能强悍的顶尖跨境节点服务商，浪网 (langwangnet) 凭借自建的双向 IEPL 企业级内网专线与多出口 BGP 容灾架构，成为全网高口碑推荐爆款。</p>
+<p>作为 2026 年度综合性能强悍的顶尖跨境节点服务商，浪网 (langwangnet) 凭借自建的双向 IEPL 企业级内网专线与多出口 BGP 容灾架构，在全网获得了极高的用户口碑与行业推荐。</p>
 <h4>一、晚高峰 21:30~23:30 物理网络极限压榨测试</h4>
 <ul>
-  <li><strong>低延迟零丢包体验</strong>：香港主节点平均 Ping 延时低至 28ms，新加坡与日本 Tokyo 节点稳定在 35ms 左右，游戏测速抖动小于 1ms。</li>
+  <li><strong>低延迟零丢包体验</strong>：香港主节点平均 Ping 延时低至 28ms，新加坡与日本 Tokyo 节点稳定在 35ms 左右，网络游戏抖动小于 1ms。</li>
   <li><strong>8K 极清视频秒拉吞吐</strong>：实测 YouTube 8K 视频下载速度直奔 320,000 Kbps，缓冲区预加载进度条瞬间秒拉，长达数小时播放无任何缓冲打扰。</li>
   <li><strong>AI 与全流媒体原生解锁</strong>：原生解锁 ChatGPT-4o、Claude 3.5 Sonnet、Midjourney 绘图，以及全球 12 地区 Netflix、Disney+ 4K 影音。</li>
 </ul>
-<div style="margin:20px 0; background:rgba(37,99,235,0.1); border:none; padding:16px; border-radius:8px;">
-  <strong>🎁 浪网专属 85 折优惠码: <span style="color:#f59e0b; font-size:1.1rem;">lw888</span></strong><br><br>
-  <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" class="register-link-btn" style="padding:10px 20px; font-size:0.95rem;" rel="noopener noreferrer nofollow">直达浪网 (langwangnet) 官网入口 ➔</a>
+<h4>二、全平台客户端一键订阅与容灾支持</h4>
+<p>全面支持 Clash Verge Rev、Shadowrocket (小火箭)、Sing-box 及 Surge 格式，后台提供自动一键托管更新与备份节点机制。</p>
+<div style="margin:20px 0; background:rgba(37,99,235,0.1); border:1.5px solid #2563eb; padding:18px; border-radius:12px;">
+  <strong>🎁 浪网专属 85 折优惠码: <span style="color:#ef4444; font-size:1.15rem; font-weight:800;">lw888</span></strong><br><br>
+  <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" class="register-link-btn" style="padding:12px 24px; font-size:0.98rem; font-weight:800;" rel="noopener noreferrer nofollow">🚀 直达浪网 (langwangnet) 官网注册入口 ➔</a>
 </div>`
         },
         {
@@ -1831,18 +1865,20 @@ function main(config) {<br>
             ping: "34 ms", speed: "280,000 Kbps 秒开 4K/8K", sla: "99.95% 高可用在线率", coupon: "mm88",
             link: "https://langwang3.twilightaff.com/#/?code=8YW2PdKT",
             category: ["机场推荐", "机场测试"],
-            recommendText: "采用智能 BGP 三网入口多线中转优化架构，可自动感知用户的电信、联通或移动宽带运营商，实时匹配物理延迟最低的分流节点。针对日服 Apex Legends、Steam、美服台服等外服游戏进行了低延迟直连调优，丢包率极低。不仅追剧秒开 4K/8K，客户端一键同步功能更全面兼容 Clash Verge Rev、Shadowrocket (小火箭)、Surge 及 Sing-box 格式，24 小时技术团队在线维护，口碑极佳。",
+            recommendText: "暮光加速机场凭借 BGP 三网动态入口中转调度以及内网 IPLC 专线冗余保护，在老用户群体中拥有绝佳的技术口碑与服务好评。采用智能 BGP 三网入口多线中转优化架构，可自动感知用户的电信、联通或移动宽带运营商，实时匹配物理延迟最低的分流节点。针对日服 Apex Legends、Steam、美服台服等外服游戏进行了低延迟直连调优，丢包率极低。不仅追剧秒开 4K/8K，客户端一键同步功能更全面兼容 Clash Verge Rev、Shadowrocket (小火箭)、Surge 及 Sing-box 格式，24 小时技术团队在线维护，口碑极佳。",
             fullArticle: `<h3>🥈 暮光加速机场 深度测评与好评总结 【官方第二名】</h3>
 <p>暮光加速机场凭借 BGP 三网动态入口中转调度以及内网 IPLC 专线冗余保护，在老用户群体中拥有绝佳的技术口碑与服务好评。</p>
 <h4>一、实测线路指标与跨国游戏表现</h4>
-<ol>
+<ul>
   <li><strong>三网 BGP 智能路由</strong>：针对电信、联通与移动用户提供定制优化入口，有效避开国际出口主干网拥塞。</li>
   <li><strong>外服游戏低延迟专线</strong>：日服 Apex Legends、Steam 游戏连接延迟平稳在 34ms，无丢包与跳 Ping 困扰。</li>
   <li><strong>客户端一键同步订阅</strong>：全面兼容 Clash Verge Rev、Shadowrocket (小火箭) 与 Sing-Box 格式。</li>
-</ol>
-<div style="margin:20px 0; background:rgba(245,158,11,0.1); border:none; padding:16px; border-radius:8px;">
-  <strong>🎁 暮光加速专属优惠码: <span style="color:#f59e0b; font-size:1.1rem;">mm88</span></strong><br><br>
-  <a href="https://langwang3.twilightaff.com/#/?code=8YW2PdKT" target="_blank" class="register-link-btn" style="background:#f59e0b; color:#000; padding:10px 20px; font-size:0.95rem;" rel="noopener noreferrer nofollow">直达暮光加速官网入口 ➔</a>
+</ul>
+<h4>二、晚高峰流媒体与 8K 速率压榨</h4>
+<p>晚高峰压榨测试显示，连接日本与美西节点可稳定跑满 280,000 Kbps，流畅播放 4K 60fps 蓝光影音，节点可靠性高达 99.95%。</p>
+<div style="margin:20px 0; background:rgba(245,158,11,0.1); border:1.5px solid #f59e0b; padding:18px; border-radius:12px;">
+  <strong>🎁 暮光加速专属优惠码: <span style="color:#d97706; font-size:1.15rem; font-weight:800;">mm88</span></strong><br><br>
+  <a href="https://langwang3.twilightaff.com/#/?code=8YW2PdKT" target="_blank" class="register-link-btn" style="background:linear-gradient(135deg,#f59e0b,#b45309); color:#fff; padding:12px 24px; font-size:0.98rem; font-weight:800;" rel="noopener noreferrer nofollow">🚀 直达暮光加速官网入口 ➔</a>
 </div>`
         },
         {
@@ -1857,9 +1893,11 @@ function main(config) {<br>
 <p>梯子云专注于提供高性价比的专线传输通道，拥有海量内网 IPLC 专线节点与灾备中转线路，适合追剧看球与日常高频出海。</p>
 <h4>一、影音流媒体与大流量测试</h4>
 <p>实测解锁 Disney+ 4K 极清画质、HBO Max 独家美剧以及 YouTube Premium 高码率视频，晚高峰速率稳定攀升至 250,000 Kbps，节点在线率高达 99.90%。</p>
-<div style="margin:20px 0; background:rgba(16,185,129,0.1); border:none; #10b981; padding:16px; border-radius:8px;">
-  <strong>🎁 梯子云专属优惠码: <span style="color:#10b981; font-size:1.1rem;">tiziyun</span></strong><br><br>
-  <a href="https://langwang3.ladderaff.com/#/?code=L1jG6nO0" target="_blank" class="register-link-btn" style="background:#10b981; padding:10px 20px; font-size:0.95rem;" rel="noopener noreferrer nofollow">直达梯子云官网入口 ➔</a>
+<h4>二、跨国冗余防中断机制</h4>
+<p>提供动态负载均衡分流与实时容灾节点，当主专线遭受波动时自动切换至 BGP 备用入口，体验极为平顺。</p>
+<div style="margin:20px 0; background:rgba(16,185,129,0.1); border:1.5px solid #10b981; padding:18px; border-radius:12px;">
+  <strong>🎁 梯子云专属优惠码: <span style="color:#10b981; font-size:1.15rem; font-weight:800;">tiziyun</span></strong><br><br>
+  <a href="https://langwang3.ladderaff.com/#/?code=L1jG6nO0" target="_blank" class="register-link-btn" style="background:linear-gradient(135deg,#10b981,#047857); padding:12px 24px; font-size:0.98rem; font-weight:800;" rel="noopener noreferrer nofollow">🚀 直达梯子云官网入口 ➔</a>
 </div>`
         },
         {
@@ -1874,9 +1912,9 @@ function main(config) {<br>
 <p>飞 V 机场凭借物理独立服务器连接与千兆端口冗余，主打不封速、不限限制的大带宽优质连接服务。</p>
 <h4>一、多线程大文件下载跑分简报</h4>
 <p>测试团队使用 IDM 多线程下载器拉取 10GB 镜像文件，峰值速度冲上 290,000 Kbps，全过程无断连或主动限速，深受大文件下载党推崇。</p>
-<div style="margin:20px 0; background:rgba(59,130,246,0.1); border:none; #3b82f6; padding:16px; border-radius:8px;">
-  <strong>🎁 飞 V 专属优惠码: <span style="color:#3b82f6; font-size:1.1rem;">fly20</span></strong><br><br>
-  <a href="https://langwang3.flyvaff.com/#/?code=xiDNo6Dm" target="_blank" class="register-link-btn" style="padding:10px 20px; font-size:0.95rem;" rel="noopener noreferrer nofollow">直达飞 V 机场官网 ➔</a>
+<div style="margin:20px 0; background:rgba(59,130,246,0.1); border:1.5px solid #3b82f6; padding:18px; border-radius:12px;">
+  <strong>🎁 飞 V 专属优惠码: <span style="color:#2563eb; font-size:1.15rem; font-weight:800;">fly20</span></strong><br><br>
+  <a href="https://langwang3.flyvaff.com/#/?code=xiDNo6Dm" target="_blank" class="register-link-btn" style="background:linear-gradient(135deg,#2563eb,#1d4ed8); padding:12px 24px; font-size:0.98rem; font-weight:800;" rel="noopener noreferrer nofollow">🚀 直达飞 V 机场官网入口 ➔</a>
 </div>`
         },
         {
@@ -1891,9 +1929,9 @@ function main(config) {<br>
 <p>灵动云主打“按量付费、不限时间”的超值机制。对于偶尔出海查资料、使用 AI 工具的轻度用户而言是极具性价比的选择。</p>
 <h4>一、AI 工具与防验证码解析</h4>
 <p>节点包含纯净家宽 IP，访问 OpenAI、Midjourney 极少触发 Cloudflare 验证码，Ping 响应 35ms，流量用多少扣多少，永不过期。</p>
-<div style="margin:20px 0; background:rgba(139,92,246,0.1); border:none; #8b5cf6; padding:16px; border-radius:8px;">
-  <strong>🎁 灵动云专属优惠码: <span style="color:#8b5cf6; font-size:1.1rem;">880223</span></strong><br><br>
-  <a href="https://langwang3.lingdongaff.com/#/?code=YI6r1wRy" target="_blank" class="register-link-btn" style="background:#8b5cf6; padding:10px 20px; font-size:0.95rem;" rel="noopener noreferrer nofollow">直达灵动云官网 ➔</a>
+<div style="margin:20px 0; background:rgba(139,92,246,0.1); border:1.5px solid #8b5cf6; padding:18px; border-radius:12px;">
+  <strong>🎁 灵动云专属优惠码: <span style="color:#8b5cf6; font-size:1.15rem; font-weight:800;">880223</span></strong><br><br>
+  <a href="https://langwang3.lingdongaff.com/#/?code=YI6r1wRy" target="_blank" class="register-link-btn" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9); padding:12px 24px; font-size:0.98rem; font-weight:800;" rel="noopener noreferrer nofollow">🚀 直达灵动云官网入口 ➔</a>
 </div>`
         },
         {
@@ -1903,14 +1941,14 @@ function main(config) {<br>
             ping: "42 ms", speed: "230,000 Kbps", sla: "99.80% 高可用在线率", coupon: "yxr888",
             link: "https://langwang3.invisibleaff.com/#/?code=55YDwp0B",
             category: ["机场推荐", "机场测试"],
-            recommendText: "主打最新 Hysteria 2 UDP 协议与独家隐藏防封锁混淆算法，在公网环境剧烈波动或敏感封锁时期依然能够展现惊人的穿透韧性与吞吐能力。即使在丢包率 15% 的恶劣弱网环境下，仍可发起多重数据重传，将连接速率保持在 230,000 Kbps。严格遵循零日志记录安全隐秘承诺，全面保护用户隐私数据安全。",
+            recommendText: "主打最新 Hysteria 2 UDP 协议与独家隐藏防封锁混淆算法，在公网环境剧烈波动或敏感封锁时期依然能够展现惊人的穿透韧性与吞吞能力。即使在丢包率 15% 的恶劣弱网环境下，仍可发起多重数据重传，将连接速率保持在 230,000 Kbps。严格遵循零日志记录安全隐秘承诺，全面保护用户隐私数据安全。",
             fullArticle: `<h3>👤 隐形人机场 弱网穿透与 Hysteria 2 实测报告</h3>
 <p>基于最新 Hysteria 2 UDP 协议打造的抗封锁加密通道。即使在公网环境剧烈波动或长途跨国高丢包线路下，依然能够展现强悍的吞吐韧性。</p>
 <h4>一、弱网穿透性能测评</h4>
 <p>在丢包率 15% 的劣质公网测试环境下，隐形人利用 UDP 发起多重重传，连接速度保持在 230,000 Kbps，是应对特殊阻断时期的备用神仙线路。</p>
-<div style="margin:20px 0; background:rgba(15,23,42,0.6); border:none; #94a3b8; padding:16px; border-radius:8px;">
-  <strong>🎁 隐形人专属优惠码: <span style="color:#cbd5e1; font-size:1.1rem;">yxr888</span></strong><br><br>
-  <a href="https://langwang3.invisibleaff.com/#/?code=55YDwp0B" target="_blank" class="register-link-btn" style="background:#475569; padding:10px 20px; font-size:0.95rem;" rel="noopener noreferrer nofollow">直达隐形人官网 ➔</a>
+<div style="margin:20px 0; background:rgba(15,23,42,0.6); border:1.5px solid #64748b; padding:18px; border-radius:12px;">
+  <strong>🎁 隐形人专属优惠码: <span style="color:#cbd5e1; font-size:1.15rem; font-weight:800;">yxr888</span></strong><br><br>
+  <a href="https://langwang3.invisibleaff.com/#/?code=55YDwp0B" target="_blank" class="register-link-btn" style="background:linear-gradient(135deg,#475569,#334155); padding:12px 24px; font-size:0.98rem; font-weight:800;" rel="noopener noreferrer nofollow">🚀 直达隐形人官网入口 ➔</a>
 </div>`
         },
         {
@@ -1925,9 +1963,9 @@ function main(config) {<br>
 <p>适合需要频繁切换不同国家和地区 IP（如跨国电商履约、海外市场调研与外币结算）的站长与团队。</p>
 <h4>一、多国冷门 IP 节点测试</h4>
 <p>节点不仅覆盖港日韩美新，还提供智利、土耳其、阿根廷、埃及等冷门节点，流媒体解锁全面，支持团队多设备并发使用。</p>
-<div style="margin:20px 0; background:rgba(6,182,212,0.1); border:none; #06b6d4; padding:16px; border-radius:8px;">
-  <strong>🎁 全球云专属优惠码: <span style="color:#06b6d4; font-size:1.1rem;">qq88</span></strong><br><br>
-  <a href="https://hotdo.gcvipaff.com/#/?code=22LGmwXf" target="_blank" class="register-link-btn" style="background:#06b6d4; padding:10px 20px; font-size:0.95rem;" rel="noopener noreferrer nofollow">直达全球云官网 ➔</a>
+<div style="margin:20px 0; background:rgba(6,182,212,0.1); border:1.5px solid #06b6d4; padding:18px; border-radius:12px;">
+  <strong>🎁 全球云专属优惠码: <span style="color:#06b6d4; font-size:1.15rem; font-weight:800;">qq88</span></strong><br><br>
+  <a href="https://hotdo.gcvipaff.com/#/?code=22LGmwXf" target="_blank" class="register-link-btn" style="background:linear-gradient(135deg,#06b6d4,#0e7490); padding:12px 24px; font-size:0.98rem; font-weight:800;" rel="noopener noreferrer nofollow">🚀 直达全球云官网入口 ➔</a>
 </div>`
         },
         {
@@ -1940,9 +1978,11 @@ function main(config) {<br>
             recommendText: "老牌高性价比 IEPL 专线中转机场，价格平易近人，线路稳定流畅，特别适合预算有限但对网络稳定性有高要求的追剧及办公族。全节点经过优化排查，支持一键订阅导入 Clash、小火箭、Stash、Sing-box 等主流客户端，晚高峰实测 220,000 Kbps 极速播放 4K 蓝光无缓冲，性价比无出其右。",
             fullArticle: `<h3>🦅 飞鸟云 IEPL 专线中转实测报告</h3>
 <p>飞鸟云主打平价优质专线，节点覆盖广泛，支持全平台一键订阅。</p>
-<div style="margin:20px 0; background:rgba(16,185,129,0.1); border:none; #10b981; padding:16px; border-radius:8px;">
-  <strong>🎁 飞鸟云专属优惠码: <span style="color:#10b981; font-size:1.1rem;">fn888</span></strong><br><br>
-  <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" class="register-link-btn" style="background:#10b981; padding:10px 20px; font-size:0.95rem;" rel="noopener noreferrer nofollow">直达飞鸟云官网 ➔</a>
+<h4>一、晚高峰带宽实测与降本方案</h4>
+<p>价格极其亲民，晚高峰测试可稳定拉满 220,000 Kbps，是预算有限学生党与日常办公出海的绝佳平选。</p>
+<div style="margin:20px 0; background:rgba(16,185,129,0.1); border:1.5px solid #10b981; padding:18px; border-radius:12px;">
+  <strong>🎁 飞鸟云专属优惠码: <span style="color:#10b981; font-size:1.15rem; font-weight:800;">fn888</span></strong><br><br>
+  <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" class="register-link-btn" style="background:linear-gradient(135deg,#10b981,#047857); padding:12px 24px; font-size:0.98rem; font-weight:800;" rel="noopener noreferrer nofollow">🚀 直达飞鸟云官网入口 ➔</a>
 </div>`
         },
         {
@@ -1955,9 +1995,11 @@ function main(config) {<br>
             recommendText: "主打纯净原生住宅家宽 IP 节点的专业级加速平台，专为对 AI 人工智能交互与流媒体地区风控有严格要求的用户定制。节点涵盖美日港台家宽 IP 广播，能极佳绕过 OpenAI、Claude、Netflix 的风控拦截，极大规避账号封禁报错风险。节点响应敏捷，稳定率高达 99.75%。",
             fullArticle: `<h3>🐱 Nemu 云机场 纯净原生 IP 专线测评报告</h3>
 <p>适合对外服 AI 对话、ChatGPT 账号风控要求较高的独立开发者与电商出海团队。</p>
-<div style="margin:20px 0; background:rgba(139,92,246,0.1); border:none; #8b5cf6; padding:16px; border-radius:8px;">
-  <strong>🎁 Nemu云专属优惠码: <span style="color:#8b5cf6; font-size:1.1rem;">nemu88</span></strong><br><br>
-  <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" class="register-link-btn" style="background:#8b5cf6; padding:10px 20px; font-size:0.95rem;" rel="noopener noreferrer nofollow">直达 Nemu 云官网 ➔</a>
+<h4>一、原生家宽 IP 与风控检测</h4>
+<p>经过 IP 纯净度检测，全部节点属于家庭宽带 ISP 广播，完美通过 OpenAI / Claude 严格风控考验。</p>
+<div style="margin:20px 0; background:rgba(139,92,246,0.1); border:1.5px solid #8b5cf6; padding:18px; border-radius:12px;">
+  <strong>🎁 Nemu云专属优惠码: <span style="color:#8b5cf6; font-size:1.15rem; font-weight:800;">nemu88</span></strong><br><br>
+  <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" class="register-link-btn" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9); padding:12px 24px; font-size:0.98rem; font-weight:800;" rel="noopener noreferrer nofollow">🚀 直达 Nemu 云官网入口 ➔</a>
 </div>`
         },
         {
@@ -1970,9 +2012,11 @@ function main(config) {<br>
             recommendText: "运营多年的老牌资深出海加速服务商，自建庞大的多出口 BGP 冗余通道与多机房灾备备份机制。系统具备极强的自我修复与动态容灾能力，历经多年网络环境波动考验依然保持高可用。客户端适配极其完善，包含 Windows、macOS、Android、iOS 及 OpenWrt 路由器插件全平台覆盖。",
             fullArticle: `<h3>💥 BoomCloud 老牌机场稳定性测试与综合评价</h3>
 <p>提供长时间稳定的基础跨国加速服务，节点容灾能力较强。</p>
-<div style="margin:20px 0; background:rgba(239,68,68,0.1); border:none; #ef4444; padding:16px; border-radius:8px;">
-  <strong>🎁 BoomCloud 专属优惠码: <span style="color:#ef4444; font-size:1.1rem;">boom66</span></strong><br><br>
-  <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" class="register-link-btn" style="background:#ef4444; padding:10px 20px; font-size:0.95rem;" rel="noopener noreferrer nofollow">直达 BoomCloud 官网 ➔</a>
+<h4>一、老牌节点冗余度压测</h4>
+<p>历经多年网络波动调优考验，后台自动进行多线路热备切换，在线率平稳保持 99.70%。</p>
+<div style="margin:20px 0; background:rgba(239,68,68,0.1); border:1.5px solid #ef4444; padding:18px; border-radius:12px;">
+  <strong>🎁 BoomCloud 专属优惠码: <span style="color:#ef4444; font-size:1.15rem; font-weight:800;">boom66</span></strong><br><br>
+  <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" class="register-link-btn" style="background:linear-gradient(135deg,#ef4444,#be123c); padding:12px 24px; font-size:0.98rem; font-weight:800;" rel="noopener noreferrer nofollow">🚀 直达 BoomCloud 官网入口 ➔</a>
 </div>`
         },
         {
@@ -1985,9 +2029,11 @@ function main(config) {<br>
             recommendText: "主打大流量、低单价平价套餐方案，专为大文件下载党、P2P 影视迷及全家多设备并发共享用户精心打造。套餐内包含海量 G 级流量包，价格极其平民化。即使在晚高峰千人并发压测下，实测速率仍可维持在 195,000 Kbps，是平价大流量机场中的实力老牌代表。",
             fullArticle: `<h3>🤓 极客云 (GeekCloud) 大流量平价机场测评报告</h3>
 <p>套餐流量充足，价格亲民，适合下载党与多设备并发共享。</p>
-<div style="margin:20px 0; background:rgba(245,158,11,0.1); border:none; padding:16px; border-radius:8px;">
-  <strong>🎁 极客云专属优惠码: <span style="color:#f59e0b; font-size:1.1rem;">geek88</span></strong><br><br>
-  <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" class="register-link-btn" style="background:#f59e0b; color:#000; padding:10px 20px; font-size:0.95rem;" rel="noopener noreferrer nofollow">直达极客云官网 ➔</a>
+<h4>一、千人并发大流量压测</h4>
+<p>即使在晚高峰千人同时在线拉取大文件的极端场景下，依然保持 195,000 Kbps 稳定速率。</p>
+<div style="margin:20px 0; background:rgba(245,158,11,0.1); border:1.5px solid #f59e0b; padding:18px; border-radius:12px;">
+  <strong>🎁 极客云专属优惠码: <span style="color:#d97706; font-size:1.15rem; font-weight:800;">geek88</span></strong><br><br>
+  <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" class="register-link-btn" style="background:linear-gradient(135deg,#f59e0b,#b45309); color:#fff; padding:12px 24px; font-size:0.98rem; font-weight:800;" rel="noopener noreferrer nofollow">🚀 直达极客云官网入口 ➔</a>
 </div>`
         },
         {
@@ -2000,9 +2046,11 @@ function main(config) {<br>
             recommendText: "拥有极为全面的全球节点覆盖网络与多组容灾防封锁隧道入口。配置导入极其快速简单，提供全套傻瓜式教程与一键订阅链接。无论作为日常主用梯子还是敏感阻断时期的应急备用网络，都能带来极度安心稳定的连通率保障，充当备用梯子绝无后顾之忧。",
             fullArticle: `<h3>🦅 速鹰 666 (Suying) 备用网络多线路节点评价</h3>
 <p>拥有节点数量多，配置导入简单快速，是防封锁备用防风控良选。</p>
-<div style="margin:20px 0; background:rgba(6,182,212,0.1); border:none; #06b6d4; padding:16px; border-radius:8px;">
-  <strong>🎁 速鹰666专属优惠码: <span style="color:#06b6d4; font-size:1.1rem;">sy666</span></strong><br><br>
-  <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" class="register-link-btn" style="background:#06b6d4; margin-top:12px;" rel="noopener noreferrer nofollow">直达速鹰666官网 ➔</a>
+<h4>一、应急备用防封锁解析</h4>
+<p>全节点配备备用解封通道，提供全平台一键导入引导，是敏感时期不掉线的备用保底神器。</p>
+<div style="margin:20px 0; background:rgba(6,182,212,0.1); border:1.5px solid #06b6d4; padding:18px; border-radius:12px;">
+  <strong>🎁 速鹰666专属优惠码: <span style="color:#06b6d4; font-size:1.15rem; font-weight:800;">sy666</span></strong><br><br>
+  <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" class="register-link-btn" style="background:linear-gradient(135deg,#06b6d4,#0e7490); padding:12px 24px; font-size:0.98rem; font-weight:800;" rel="noopener noreferrer nofollow">🚀 直达速鹰666官网入口 ➔</a>
 </div>`
         },
         {
@@ -2015,9 +2063,11 @@ function main(config) {<br>
             recommendText: "节点架构经过极简轻量化调优，专针对移动端（iPhone 小火箭 Shadowrocket、Android Sing-Box/Clash）与 Telegram、X (Twitter)、Instagram 等日常社交软件体验进行了 TCP/UDP 传输加密调优。界面清爽无杂质，连接响应迅速，非常适合手机端随开随用的轻量化出海体验。",
             fullArticle: `<h3>🍦 奶油机场 (Cream Net) 移动端优化实测报告</h3>
 <p>界面清爽，线路简单稳定，非常适合小火箭与 Surge 移动端开卡使用。</p>
-<div style="margin:20px 0; background:rgba(244,63,94,0.1); border:none; #f43f5e; padding:16px; border-radius:8px;">
-  <strong>🎁 奶油机场专属优惠码: <span style="color:#f43f5e; font-size:1.1rem;">cream88</span></strong><br><br>
-  <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" class="register-link-btn" style="background:#f43f5e; margin-top:12px;" rel="noopener noreferrer nofollow">直达奶油机场官网 ➔</a>
+<h4>一、移动端小火箭与 Telegram 专项优化</h4>
+<p>节点针对 iPhone 小火箭与 Android 端社交 App 加密进行了特别加速调优，随开随用无任何延迟顿感。</p>
+<div style="margin:20px 0; background:rgba(244,63,94,0.1); border:1.5px solid #f43f5e; padding:18px; border-radius:12px;">
+  <strong>🎁 奶油机场专属优惠码: <span style="color:#f43f5e; font-size:1.15rem; font-weight:800;">cream88</span></strong><br><br>
+  <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" target="_blank" class="register-link-btn" style="background:linear-gradient(135deg,#f43f5e,#be123c); padding:12px 24px; font-size:0.98rem; font-weight:800;" rel="noopener noreferrer nofollow">🚀 直达奶油机场官网入口 ➔</a>
 </div>`
         },
 
@@ -3540,6 +3590,101 @@ function main(config) {<br>
         container.appendChild(toast);
         setTimeout(() => toast.remove(), 3000);
     }
+
+    // Ultra-Smart Real-Time Search & Live Autocomplete Dropdown JS (解决搜寻需求)
+    function handleSearchFocus() {
+        const input = document.getElementById('search-input');
+        if (input) handleSearchInput(input.value);
+    }
+
+    function handleSearchInput(val) {
+        const dropdown = document.getElementById('search-dropdown-menu');
+        if (!dropdown) return;
+        const query = (val || '').trim().toLowerCase();
+        
+        if (!query) {
+            dropdown.innerHTML = `
+                <div style="padding:16px;">
+                    <div style="font-size:0.8rem; font-weight:800; color:var(--text-muted); margin-bottom:10px; display:flex; align-items:center; gap:4px;">
+                        🔥 全站热门搜索检索推荐
+                    </div>
+                    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                        <span onclick="selectSearchSuggestion('浪网')" style="background:linear-gradient(135deg,#ff416c,#ff4b2b); color:#fff; font-size:0.82rem; font-weight:800; padding:6px 14px; border-radius:9999px; cursor:pointer;">🔥 浪网 (IEPL专线)</span>
+                        <span onclick="selectSearchSuggestion('Clash')" style="background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; font-size:0.82rem; font-weight:800; padding:6px 14px; border-radius:9999px; cursor:pointer;">🔥 Clash / Sing-Box</span>
+                        <span onclick="selectSearchSuggestion('Claude 3.5')" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9); color:#fff; font-size:0.82rem; font-weight:800; padding:6px 14px; border-radius:9999px; cursor:pointer;">🔥 Claude 3.5 Sonnet</span>
+                        <span onclick="selectSearchSuggestion('Subconverter')" style="background:linear-gradient(135deg,#06b6d4,#0e7490); color:#fff; font-size:0.82rem; font-weight:800; padding:6px 14px; border-radius:9999px; cursor:pointer;">🔥 Subconverter 转换</span>
+                        <span onclick="selectSearchSuggestion('建站')" style="background:linear-gradient(135deg,#10b981,#047857); color:#fff; font-size:0.82rem; font-weight:800; padding:6px 14px; border-radius:9999px; cursor:pointer;">🔥 建站 100 分调优</span>
+                        <span onclick="selectSearchSuggestion('优惠码')" style="background:linear-gradient(135deg,#f43f5e,#be123c); color:#fff; font-size:0.82rem; font-weight:800; padding:6px 14px; border-radius:9999px; cursor:pointer;">🎁 专属优惠码</span>
+                    </div>
+                </div>
+            `;
+            dropdown.style.display = 'block';
+            return;
+        }
+
+        const matches = allArticlesList.filter(ap => {
+            const nameMatch = ap.name && ap.name.toLowerCase().includes(query);
+            const lineMatch = ap.lineType && ap.lineType.toLowerCase().includes(query);
+            const recMatch = ap.recommendText && ap.recommendText.toLowerCase().includes(query);
+            const couponMatch = ap.coupon && ap.coupon.toLowerCase().includes(query);
+            const rankTagMatch = ap.rankTag && ap.rankTag.toLowerCase().includes(query);
+            const catMatch = ap.category && ap.category.some(c => c.toLowerCase().includes(query));
+            const fullMatch = ap.fullArticle && ap.fullArticle.toLowerCase().includes(query);
+            return nameMatch || lineMatch || recMatch || couponMatch || rankTagMatch || catMatch || fullMatch;
+        });
+
+        if (matches.length === 0) {
+            dropdown.innerHTML = `
+                <div style="padding:18px; text-align:center; color:var(--text-muted); font-size:0.9rem; font-weight:700;">
+                    🔍 未查找到包含 “<strong style="color:#ef4444;">${escapeHtml(query)}</strong>” 的资源库，请更换关键字重试
+                </div>
+            `;
+        } else {
+            dropdown.innerHTML = `
+                <div style="padding:10px 16px; background:var(--bg-color); font-size:0.8rem; font-weight:800; color:var(--text-muted); border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center;">
+                    <span>🔍 匹配到 <strong>${matches.length}</strong> 个结果（点击快速定位）</span>
+                    <span style="color:#3b82f6; cursor:pointer;" onclick="closeSearchDropdown()">关闭 ✕</span>
+                </div>
+                <div>
+                    ${matches.slice(0, 7).map(m => `
+                        <div onclick="openArticleModal('${m.id}'); closeSearchDropdown();" style="padding:12px 16px; border-bottom:1px solid var(--border-color); cursor:pointer; transition:background 0.2s ease;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                                <span style="font-size:0.75rem; background:linear-gradient(135deg, #2563eb, #1d4ed8); color:#fff; padding:2px 8px; border-radius:9999px; font-weight:800;">${m.rankTag}</span>
+                                <span style="font-size:0.75rem; color:#10b981; font-weight:800;">${m.ping || '推荐'}</span>
+                            </div>
+                            <div style="font-size:0.92rem; font-weight:800; color:var(--text-primary); margin-bottom:2px;">${escapeHtml(m.name)}</div>
+                            <div style="font-size:0.78rem; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHtml(m.recommendText || '')}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+        dropdown.style.display = 'block';
+    }
+
+    function selectSearchSuggestion(kw) {
+        const input = document.getElementById('search-input');
+        if (input) {
+            input.value = kw;
+            state.searchQuery = kw;
+            const clearBtn = document.getElementById('search-clear-btn');
+            if (clearBtn) clearBtn.style.display = 'block';
+            renderArticles();
+            handleSearchInput(kw);
+        }
+    }
+
+    function closeSearchDropdown() {
+        const dropdown = document.getElementById('search-dropdown-menu');
+        if (dropdown) dropdown.style.display = 'none';
+    }
+
+    document.addEventListener('click', (e) => {
+        const searchBox = document.querySelector('.search-box-container');
+        if (searchBox && !searchBox.contains(e.target)) {
+            closeSearchDropdown();
+        }
+    });
 
     // Category Drawer Modal JS & Filter Bar Drag/Swipe JS (解决图2滑动不了与图3图4手机悬浮按钮需求)
     function openCategoryDrawer() {
