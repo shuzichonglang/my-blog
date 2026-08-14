@@ -2415,13 +2415,36 @@ ollama ps</code></pre>
             lineType: "React / Next.js 15", ping: "SSR 极速", speed: "秒开渲染", sla: "SEO 友好极致架构", coupon: "Next15 指南",
             link: "https://nextjs.org",
             category: ["建站优化", "技术干货"],
-            recommendText: "针对大型 React 前端项目在 SSR 渲染下的瓶颈问题，系统梳理 Next.js 15 App Router 的 Cache 机制、ISR (Incremental Static Regeneration) 增量静态生成、Font/Image 组件优化及打包体积瘦身技巧。",
-            fullArticle: `<h3>⚡ Next.js 15 App Router 全栈架构性能优化实战</h3>
-<p>深入分析服务端组件 (Server Components) 与客户端组件 (Client Components) 的合理拆分边界。</p>
-<h4>一、利用 ISR 实现毫秒级数据更新</h4>
-<p>在页面中设置 export const revalidate = 3600，既能保障高并发下的静态页面秒开，又能兼顾后台数据的定时增量更新。</p>
-<h4>二、动态导入 (Dynamic Import) 瘦身 Bundle 体积</h4>
-<p>对重型图表库与富文本编辑器采用 next/dynamic 延迟加载，使首屏 JavaScript 资源下载体积减少 70%。</p>`
+            recommendText: "针对大型 React 19 全栈前端项目在 SSR 渲染下的瓶颈与水合 (Hydration) 性能问题，系统梳理 Next.js 15 App Router 的 Cache 机制、ISR (Incremental Static Regeneration) 增量静态生成、React Server Components 与 Client Components 架构解耦边界、Font/Image 组件瘦身及打包 Bundle 体积优化技巧，助力 Core Web Vitals 跑分突破 100 分满分。",
+            fullArticle: `<h3>⚡ Next.js 15 App Router 全栈架构性能极限调优实战指南</h3>
+<p style="font-size:1.02rem; line-height:1.8; color:var(--text-secondary);">
+  Next.js 15 App Router 引入了全新的 React 19 Server Components 与粒度极细的多级 Caching 机制。然而在大型商业项目中，若组件边界划分不当或依赖臃肿的客户端第三方库，极易导致首屏 HTML 体积膨胀、首字节时间 (TTFB) 延长以及客户端水合 (Hydration) 阻塞。
+</p>
+
+<h4>一、Server Components 与 Client Components 架构严苛拆分规约</h4>
+<p>优化 Next.js 性能的关键核心在于<strong>“尽可能将代码留在服务端执行”</strong>。仅将有状态交互 (useState, useEffect, onClick) 的最末端叶子节点标记为 <code>'use client'</code>：</p>
+<ul>
+  <li><strong>数据获取层 (Data Fetching)</strong>：直接在 Server Components 中调用轻量数据库 SDK 或原生 <code>fetch()</code>，避免将大体积 API 库发送至浏览器。</li>
+  <li><strong>打包瘦身 (Bundle Analyzer)</strong>：配置 <code>@next/bundle-analyzer</code> 分析，利用 <code>next/dynamic</code> 对富文本编辑器、Heavy Chart 图表库等实施延迟懒加载，使首屏 JavaScript 资源包体积直降 70%。</li>
+</ul>
+
+<h4>二、ISR (增量静态生成) 与 On-Demand 实时按需重刷新</h4>
+<p>利用 ISR 机制打破传统的“完全静态”与“动态 SSR”对立：</p>
+<pre><code>// 针对更新频次较低的内容页，配置 1 小时增量缓存
+export const revalidate = 3600;
+
+// 当后台 CMS 发生更新时，通过 Webhook 触发按需精准失效
+import { revalidatePath } from 'next/cache';
+export async function POST() {
+    revalidatePath('/blog/[slug]', 'page');
+    return Response.json({ revalidated: true });
+}</code></pre>
+
+<h4>三、Core Web Vitals (LCP, CLS, INP) 跑分升满技巧</h4>
+<ol>
+  <li><strong>零 CLS 累积布局偏移字体加载</strong>：改用 <code>next/font/google</code>，在构建期自动下载字体并内联 CSS 声明，实现零闪烁与零网络阻塞。</li>
+  <li><strong>next/image 自动 WebP/AVIF 转换与边缘 CDN 缓存</strong>： mandatory 显式指定 <code>width</code> 与 <code>height</code>，配合 Cloudflare / Vercel Edge 自动提供现代图片格式。</li>
+</ol>`
         },
         {
             id: "sub-7", type: "sub",
@@ -2430,13 +2453,33 @@ ollama ps</code></pre>
             lineType: "Rule-Set / Mihomo", ping: "秒级解析", speed: "智能分流", sla: "防止流量跑漏", coupon: "Mihomo 配置",
             link: "https://github.com/MetaCubeX/mihomo",
             category: ["订阅转换", "实用工具"],
-            recommendText: "讲解最新 Mihomo 内核在分流匹配上的核心升级！教会读者如何弃用沉重的传统 YAML 域名列表，改用高二进制性能的 MRS 格式 Rule-Set 规则集，实现国内流量走直连、AI 与外服走专线节点的智能精准调度。",
-            fullArticle: `<h3>🔄 Mihomo (Clash Meta) 精准分流与 Rule-Set 进阶指南</h3>
-<p>Mihomo 作为 Clash 社区活跃的继承者，支持更丰富的分流规则与传输协议。</p>
-<h4>一、配置高质量 Rule-Set 外部规则集</h4>
-<p>从 Loyalsoldier 或 MetaCubeX 规则仓库一键引入 rule-providers，域名匹配效率提升 5 倍。</p>
-<h4>二、DNS 防污染与 FakeIP / Redir-Host 模式解析</h4>
-<p>在配置文件中启用 enhanced-mode: fake-ip，避免本地 DNS 污染的同时大幅加快首次 TCP 握手连接时间。</p>`
+            recommendText: "系统讲解最新 Mihomo (Clash Meta) 内核在分流匹配算法上的核心升级！教会读者如何彻底弃用沉重膨胀的传统 YAML 域名列表，改用高二进制性能的 MRS 格式 Rule-Set 外部规则集，实现国内流量秒级直连、ChatGPT / Claude / Netflix 走专属专线节点的智能精准调度。",
+            fullArticle: `<h3>🔄 Mihomo (Clash Meta) 精准分流与 Rule-Set 外部规则集挂载指南</h3>
+<p style="font-size:1.02rem; line-height:1.8; color:var(--text-secondary);">
+  Mihomo 作为 Clash 社区最为活跃且性能最强悍的继承者，支持更丰富的加密传输协议 (Hysteria 2, VLESS Reality, TUIC v5) 以及极其高效的二进制 Rule-Set 规则集。通过弃用沉重的传统 YAML 文本规则，能够让百兆规则匹配下的 CPU 内存开销下降 80%。
+</p>
+
+<h4>一、配置高二进制性能 MRS 格式 Rule-Set 规则集</h4>
+<p>在 Mihomo 配置文件中引入 <code>rule-providers</code>，自动定时拉取 MetaCubeX 或 Loyalsoldier 的最新规则编译产物：</p>
+<pre><code>rule-providers:
+  ai-services:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta-rules-dat/geo/geosite/ai.mrs"
+    path: ./rules/ai.mrs
+    interval: 86400
+
+rules:
+  - RULE-SET,ai-services,🤖 AI大模型节点池
+  - GEOIP,CN,DIRECT
+  - MATCH,🐟 漏网之鱼节点池</code></pre>
+
+<h4>二、FakeIP 模式与 DNS 防污染架构解析</h4>
+<p>在配置文件中启用 <code>enhanced-mode: fake-ip</code>，客户端直接向操作系统返回 <code>198.18.0.0/16</code> 段的虚拟 IP。此举能够彻底跳过本地 DNS 递归解析过程，避免本地运营商 DNS 污染投毒，同时大幅加快 TCP 首次握手的建立连接效率。</p>
+
+<h4>三、Proxy-Providers 动态代理节点池健康检测试验</h4>
+<p>通过配置 <code>health-check</code>，系统将每隔 300 秒对专线节点发起真实 HTTP 请求包探针。一旦主节点发生短路或断连，流量将在 1 秒内自动平滑无缝漂移转移至备用内网专线节点。</p>`
         },
         {
             id: "sub-8", type: "sub",
@@ -2445,13 +2488,43 @@ ollama ps</code></pre>
             lineType: "Subconverter / Docker", ping: "本地转换", speed: "数据防泄漏", sla: "100% 节点安全", coupon: "转换自建",
             link: "https://github.com/tindy2013/subconverter",
             category: ["订阅转换", "科学上网"],
-            recommendText: "教你如何利用 Docker 部署属于自己的订阅转换后端！彻底解决公网公共转换平台可能泄露机场订阅 Token 与节点密码的隐患风险。附带一键脚本与自定义过滤规则编写范例。",
-            fullArticle: `<h3>🔒 100% 安全自建 Subconverter 订阅转换私有节点库</h3>
-<p>绝不将机场订阅链接提交给不知名的第三方公共转换网站，保护个人账号资产安全。</p>
-<h4>一、一键运行 Docker 镜像</h4>
-<pre><code>docker run -d --name subconverter -p 25500:25500 tindy2013/subconverter:latest</code></pre>
-<h4>二、结合 Sub-Web 制作专属可视化前端界面</h4>
-<p>将转换服务限制在内网或绑定自建 HTTPS 域名，实现随时随地快捷转换且完全隐私自主安全。</p>`
+            recommendText: "详细教你如何利用 Docker 与 Docker Compose 部署属于自己的订阅转换后端！彻底解决不知名第三方公共转换网站可能私自记录、泄露机场订阅 Token、节点密码与敏感 IP 的重大隐患风险。附带完整一键部署脚本、Sub-Web 前端集成与自定义正则节点过滤规则。",
+            fullArticle: `<h3>🔒 100% 隐私安全：自建 Docker 私有化 Subconverter 订阅转换中枢</h3>
+<p style="font-size:1.02rem; line-height:1.8; color:var(--text-secondary);">
+  许多科学上网玩家习惯将机场提供的原始订阅链接直接粘贴到网上的第三方“公共订阅转换网站”中。殊不知，不法站长随时可以在转换后端配置日志抓包，将您的付费 Token、节点服务器 IP 与落地明文密码记录下来，导致账号被偷盗盗刷或被他人共享滥用。
+</p>
+
+<h4>一、Docker Compose 一键启动私有转换后端与 Web 可视化前端</h4>
+<p>创建 <code>docker-compose.yml</code> 文件，将 Subconverter 核心引擎与前端 UI 隔离在私有 Docker 网段中：</p>
+<pre><code>version: '3.8'
+services:
+  subconverter:
+    image: tindy2013/subconverter:latest
+    container_name: subconverter
+    restart: always
+    ports:
+      - "25500:25500"
+    environment:
+      - SUBPATH=sub
+  
+  subweb:
+    image: careywang/sub-web:latest
+    container_name: subweb
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      - BACKEND_URL=http://your-domain.com:25500/sub</code></pre>
+
+<h4>二、编写正则节点过滤器 (Node Filters) 保护账号安全</h4>
+<p>在自定义 <code>pref.ini</code> 中添加筛选规则，自动屏蔽机场广告节点或过期的试用节点：</p>
+<ul>
+  <li><code>include_remarks = "(专线|IPLC|IEPL|香港|日本|美国|新加坡)"</code> — 只保留经过验证的高质量物理专线节点。</li>
+  <li><code>exclude_remarks = "(官网|过期|群|剩余流量|客服|重置)"</code> — 智能过滤掉含有宣传垃圾信息的节点提示词。</li>
+</ul>
+
+<h4>三、绑定 Nginx 反向代理与 SSL 证书加密</h4>
+<p>通过 Nginx 配置 HTTPS 强加密传输与 IP 访问白名单，打造专属您个人与家庭成员使用的 100% 绝对安全订阅转换工具。</p>`
         },
         {
             id: "cli-7", type: "client",
@@ -2460,13 +2533,34 @@ ollama ps</code></pre>
             lineType: "iOS / macOS Premium", ping: "极致流畅", speed: "脚本覆写", sla: "高颜值界面", coupon: "Stash 指南",
             link: "https://stash.app",
             category: ["科学上网", "实用工具"],
-            recommendText: "Stash 作为 iOS 上媲美 Surge 的顶级代理工具，支持强大的 Override 脚本复写功能。本文提供一套完整的进阶配置文件，包含脚本自动重定向、去广告规则以及可视化图形网络面板部署。",
-            fullArticle: `<h3>📱 Stash 代理软件全功能高阶配置全集</h3>
-<p>Stash 完美兼容 Clash 规则体系，同时支持灵活的 JavaScript 脚本插件扩展。</p>
-<h4>一、利用 Override 动态注入自定义节点</h4>
-<p>无需重新下载整个订阅文件，直接通过 URL 注入自定义专线节点与本地分流策略。</p>
-<h4>二、实时流量图表与网络连接日志分析</h4>
-<p>内置控制面板可实时查看当前所有设备并发连接的域名、目标 IP 及对应代理节点，排查故障一目了然。</p>`
+            recommendText: "Stash 作为 Apple 生态 iOS 与 macOS 平台上媲美 Surge 的顶级代理中枢，深度支持 Clash 规则体系与强大的 Override 脚本复写功能。本文系统讲解如何编写 JavaScript 脚本进行网页广告拦截、解除 App 区域风控阻断、自建高颜值可视化网络仪表盘 (Dashboard)，以及通过 URL 动态注入实现专线节点与本地分流规则的无缝挂载。",
+            fullArticle: `<h3>📱 Stash for iOS / macOS 全功能高阶配置与 Override 脚本实战</h3>
+<p style="font-size:1.02rem; line-height:1.8; color:var(--text-secondary);">
+  Stash 不仅完美兼容 Clash 的全套配置文件，更加入了极其强大的 Override（覆写）与 JavaScript 脚本扩展机制。用户无需反复手动重新修改主订阅文件，即可在本地动态覆盖节点、注入重写脚本与挂载可视化仪表盘小组件。
+</p>
+
+<h4>一、Override 覆写机制原理与核心范例</h4>
+<p>在 Stash 中新建 Override 文件，注入以下脚本即可实现特定请求头的动态修饰与广告屏蔽：</p>
+<pre><code>name: 极客自定义 Override 脚本
+desc: 自动去广告与注入自定义专线节点
+
+http:
+  script:
+    - match: ^https?:\/\/.*\.example\.com\/api
+      name: modify_header
+      type: request
+      require-body: false
+
+script-providers:
+  modify_header:
+    url: https://raw.githubusercontent.com/user/repo/main/script.js
+    interval: 86400</code></pre>
+
+<h4>二、自建图形化仪表盘 (Dashboard) 与实时流量探针</h4>
+<p>Stash 内置了极为惊艳的网络控制台界面。您可以实时监控当前所有并发 TCP/UDP Socket 连接的目标 IP、域名自治域 AS 编号、使用的分流规则名称以及出站节点的实时 RTT 延迟跑分。</p>
+
+<h4>三、iOS 快捷指令 (Shortcuts) 自动化联动</h4>
+<p>结合 iOS 系统自带的快捷指令 App，实现“当连接家中的 Wi-Fi 时自动关闭 Stash 代理；当切换至 5G 移动网络时自动开启 TUN 全局代理并选择最快 IEPL 专线节点”的极客自动化体验。</p>`
         },
         {
             id: "cli-8", type: "client",
@@ -2475,13 +2569,23 @@ ollama ps</code></pre>
             lineType: "Windows / Mac / Linux", ping: "跨平台", speed: "极简动画", sla: "完全开源免费", coupon: "Flclash 下载",
             link: "https://github.com/chen08209/FlClash",
             category: ["科学上网", "实用工具"],
-            recommendText: "全面介绍基于 Flutter 打造的现代新一代代理客户端 Flclash 与 Clash Nyanpasu！支持 Windows、macOS、Linux 及 Android 四大平台，界面美观优雅，内置高颜值主题与极速一键订阅更新。",
-            fullArticle: `<h3>💻 Flclash & Clash Nyanpasu 极简开箱使用指南</h3>
-<p>告别老旧的开源界面，迎接基于 Flutter / Tauri 打造的高性能现代代理工具。</p>
-<h4>一、四大平台二进制程序极速下载</h4>
-<p>提供 Windows 免安装便携版、macOS Apple Silicon 原生芯片版及 Android APK 文件下载地址，开箱即用。</p>
-<h4>二、智能健康检查与一键节点测速</h4>
-<p>支持对所有专线节点发起真连接延迟 (HTTP RTT) 批量测速，自动筛选当前可用节点。</p>`
+            recommendText: "全面深入对比基于 Flutter 框架打造的 Flclash 与基于 Tauri 框架打造的 Clash Nyanpasu！支持 Windows 11、macOS Apple Silicon、Linux 及 Android 14 四大平台。相比传统 Electron 客户端，具备极度优雅的现代流体 UI 界面、低内存占用开销、极速一键订阅解析、全自动 HTTP RTT 节点真连接延迟测速，以及极客喜爱的 TUN 全局虚拟网卡透明代理模式。",
+            fullArticle: `<h3>💻 Flclash & Clash Nyanpasu 现代跨平台代理客户端终极指南</h3>
+<p style="font-size:1.02rem; line-height:1.8; color:var(--text-secondary);">
+  告别老旧、臃肿且频繁占用数 GB 内存的 Electron 时代！基于 Flutter 渲染引擎的 <strong>Flclash</strong> 与基于 Rust + Tauri 架构的 <strong>Clash Nyanpasu</strong> 正引领着代理客户端的现代化革新。它们不仅拥有如丝般顺滑的动画过渡与高颜值主题，更在底层将 CPU 与内存消耗压缩到了极致。
+</p>
+
+<h4>一、Flutter / Tauri 现代架构与硬件加速渲染对比</h4>
+<ul>
+  <li><strong>极低资源开销</strong>：后台静默运行时，内存占用仅为 30MB 到 60MB，大幅提升笔记本电池续航。</li>
+  <li><strong>四大平台全覆盖</strong>：提供 Windows 免安装便携版 (.zip)、macOS ARM64 原生芯片版 (.dmg)、Linux AppImage 及 Android APK 客户端包。</li>
+</ul>
+
+<h4>二、智能健康检查与 HTTP RTT 真连接延迟批量测速</h4>
+<p>摒弃传统的 ICMP 握手欺骗，采用真实的 HTTP RTT（网页首字节响应时间）对专线节点进行批量高并发连通性拨测，秒级自动挑选出当前延迟最低、带宽最充裕的节点。</p>
+
+<h4>三、一键开启 TUN (系统全局虚拟网卡) 模式</h4>
+<p>在设置菜单中开启系统 TUN 模式后，软件将在操作系统底层接管所有网络流量。不管是 Windows UWP 应用、Steam 游戏客户端、Android 后台应用，还是终端 Bash / Git / Docker 命令行，均可无缝享受透明代理带来的极速畅快体验。</p>`
         },
         {
             id: "tech-7", type: "tech",
@@ -2490,13 +2594,38 @@ ollama ps</code></pre>
             lineType: "Golang / Microservices", ping: "高并发", speed: "10万+ QPS", sla: "微服务弹性扩缩", coupon: "Go 实战",
             link: "https://go-zero.dev",
             category: ["技术干货", "折腾记录"],
-            recommendText: "基于 Go-Zero 开源微服务框架，从 Proto3 接口定义、代码自动生成，到 JWT 鉴权、限流降级及 ETCD 服务发现，全方位展现高并发架构设计落地过程。",
-            fullArticle: `<h3>💻 Go 语言微服务架构设计与高并发治理随笔</h3>
-<p>Go 语言以其天生高并发与极低内存消耗，成为构建现代云原生后台的黄金选择。</p>
-<h4>一、Protobuf 协议定义与自动生成工具</h4>
-<p>使用 goctl 工具一键生成优雅的项目工程结构、数据库 CRUD 代码及 API HTTP 路由。</p>
-<h4>二、熔断降级与分布式链路追踪</h4>
-<p>集成 Jaeger 链路追踪与 Prometheus 监控，轻松定位分布式调用链中的时延瓶颈。</p>`
+            recommendText: "基于 Go 语言与 Go-Zero 开源微服务框架，打造高并发、高弹性、低延迟的现代云原生架构！详细剖析 gRPC / Protocol Buffers 3 接口协议定义、goctl 代码工程脚手架生成、ETCD 分布式服务发现与注册、JWT 安全鉴权、Sentinel/Asynq 限流降级与异步队列，以及 Jaeger 全链路追踪落地。",
+            fullArticle: `<h3>💻 Go 语言高并发微服务架构与云原生治理实战随笔</h3>
+<p style="font-size:1.02rem; line-height:1.8; color:var(--text-secondary);">
+  Go 语言凭借其轻量级 Goroutine 协程机制、Channel 原生通道并发范式与极低的内存消耗，已成为构建现代 QPS 破 10 万+ 微服务后台的首选语言。Go-Zero 框架以其“缩短从需求到生产环境距离”的设计哲学，内置了完善的高并发治理组件。
+</p>
+
+<h4>一、Protobuf 3 协议定义与 goctl 代码极速生成</h4>
+<p>在 <code>user.proto</code> 中定义 RPC 服务接口，利用 <code>goctl</code> 自动生成符合微服务最佳实践的分层代码目录：</p>
+<pre><code>syntax = "proto3";
+package user;
+option go_package = "./user";
+
+message UserReq {
+    int64 id = 1;
+}
+message UserResp {
+    string name = 1;
+    string email = 2;
+}
+
+service User {
+    rpc GetUser(UserReq) returns (UserResp);
+}</code></pre>
+
+<h4>二、ETCD 服务发现与 gRPC 客户端自动负载均衡</h4>
+<p>微服务节点启动时将自动注册至 ETCD 集群；gRPC 客户端通过内置的 Builder 动态感知节点上线与下线，实现无锁的 Round-Robin 轮询负载均衡。</p>
+
+<h4>三、Sentinel 分布式限流、熔断与 Jaeger 链路追踪</h4>
+<ul>
+  <li><strong>高并发限流降级</strong>：配置滑块窗口算法，当单机 QPS 超过 5,000 时自动拒绝多余请求，保障 Core DB 不被冲垮。</li>
+  <li><strong>Distributed Tracing (全链路追踪)</strong>：透传 OpenTelemetry TraceID，在 Jaeger UI 仪表盘中精准定位跨服务调用延迟异常节点。</li>
+</ul>`
         },
         {
             id: "tech-8", type: "tech",
@@ -2505,13 +2634,25 @@ ollama ps</code></pre>
             lineType: "PostgreSQL / DB", ping: "读写分离", speed: "高吞吐 SQL", sla: "数据 0 丢失", coupon: "PG 调优",
             link: "https://www.postgresql.org",
             category: ["技术干货", "建站优化"],
-            recommendText: "深入探讨开源数据库之王 PostgreSQL 16 的生产环境部署避坑指南！详细拆解流复制 (Streaming Replication) 主从搭建、PgBouncer 事务级连接池复用及 WAL 日志归档备份。",
-            fullArticle: `<h3>🗄️ PostgreSQL 16 高可用主从集群与连接池优化实战</h3>
-<p>PostgreSQL 在复杂查询、JSONB 扩展及并发稳定性上拥有极高的口碑。</p>
-<h4>一、配置流复制实现秒级热备份</h4>
-<p>通过配置 primary_conninfo 建立从库实时增量拉取，实现故障时的秒级主从无缝切换。</p>
-<h4>二、PgBouncer 连接池缓解 CPU 线程竞争</h4>
-<p>在并发量破万的业务场景下，开启 PgBouncer 事务级连接复用，使数据库 CPU 占用下降 80%。</p>`
+            recommendText: "深入探讨开源关系型数据库之王 PostgreSQL 16 的生产环境高可用架构与性能调优指南！系统讲解流复制 (Streaming Replication) 主从热备、Patroni 自动故障转移集群、PgBouncer 事务级高并发连接池、WAL 日志归档与 PITR 任意时间点恢复，以及 JSONB / GIN 索引在百亿级大表下的查询优化。",
+            fullArticle: `<h3>🗄️ PostgreSQL 16 高可用主从集群与 PgBouncer 连接池调优</h3>
+<p style="font-size:1.02rem; line-height:1.8; color:var(--text-secondary);">
+  PostgreSQL 在 complex SQL 查询、JSONB 强类型半结构化存储、MVCC 并发控制以及 ACID 事务一致性上拥有业界无可匹敌的口碑。然而在高并发连接下，每一个 Backend 进程均会消耗 2MB-5MB 内存，引发剧烈的 CPU 上下文切换。
+</p>
+
+<h4>一、配置流复制 (Streaming Replication) 秒级热备</h4>
+<p>主库配置 <code>postgresql.conf</code> 开启 WAL 归档：</p>
+<pre><code>wal_level = replica
+max_wal_senders = 10
+archive_mode = on
+archive_command = 'cp %p /var/lib/postgresql/wal_archive/%f'</code></pre>
+<p>从库通过 <code>pg_basebackup</code> 实时拉取增量 WAL 日志，实现 RPO 接近 0 的高可靠数据同步。</p>
+
+<h4>二、PgBouncer 事务级连接池复用解耦</h4>
+<p>在后端服务与 PG 数据库之间挂载 PgBouncer，将模式切换为 <code>pool_mode = transaction</code>。使 10,000+ 客户端连接复用 50 个真实数据库连接，CPU 上下文切换开销骤降 80%，吞吐量飙升 3 倍。</p>
+
+<h4>三、JSONB 字段与 GIN 倒排索引的高效查询</h4>
+<p>对于非结构化日志或扩展配置，采用 <code>jsonb</code> 格式存储并创建 GIN 倒排索引：<code>CREATE INDEX idx_gin_data ON user_logs USING gin (payload);</code>，实现百亿级 JSON 深度检索毫秒响应。</p>`
         },
         {
             id: "tool-5", type: "tool",
@@ -2520,13 +2661,38 @@ ollama ps</code></pre>
             lineType: "Mac Utility / Raycast", ping: "快捷键 0.1s", speed: "瞬间呼出", sla: "替代 Spotlight", coupon: "Raycast 插件",
             link: "https://raycast.com",
             category: ["实用工具", "技术干货"],
-            recommendText: "教你使用 TypeScript + React 编写属于自己的 Raycast 扩展插件！实现通过快捷键瞬间呼出机场节点状态、查询当前公网 IP 纯净度以及一键刷新订阅节点。",
-            fullArticle: `<h3>🛠️ Raycast 自定义插件开发极速入门指南</h3>
-<p>Raycast 已经全面超越原生 Spotlight 与 Alfred，成为 Mac 极客的首选效率中枢。</p>
-<h4>一、初始化 Raycast Extension 脚手架</h4>
-<pre><code>npm ray dev</code></pre>
-<h4>二、接入 Node.js Fetch 接口展示状态列表</h4>
-<p>通过简洁的 React UI 声明式开发，几行代码即可做出美观强大的 Mac 原生级效率小工具。</p>`
+            recommendText: "详细讲解 Mac 极客必选的效率中枢 Raycast 的自定义 Extension 扩展开发！教你使用 TypeScript + React + Node.js 编写属于自己的控制台插件。实现通过全局快捷键 0.1 秒呼出系统剪贴板历史、查询 API 节点纯净度、控制 Docker 容器状态、一键启动工作流以及集成 DeepSeek/OpenAI 大模型对话助手。",
+            fullArticle: `<h3>🛠️ Raycast 自定义 Extension 插件开发与 Mac 效率重构</h3>
+<p style="font-size:1.02rem; line-height:1.8; color:var(--text-secondary);">
+  Raycast 凭借极其惊艳的现代 UI 设计、毫秒级呼出速度以及全 JavaScript / TypeScript 开发者生态，全面超越了老牌的 Spotlight 与 Alfred。通过构建自定义插件，可将日常频繁操作一键集成进键盘快捷键中。
+</p>
+
+<h4>一、初始化 Raycast 脚手架与 React 声明式开发</h4>
+<p>运行官方 CLI 生成扩展骨架文件：</p>
+<pre><code>npx @raycast/api@latest init my-first-extension</code></pre>
+
+<h4>二、接入 Raycast API 渲染原生 List & ActionPanel</h4>
+<pre><code>import { List, ActionPanel, Action } from "@raycast/api";
+
+export default function Command() {
+  return (
+    <List isLoading={false} searchBarPlaceholder="搜索节点或 API 状态...">
+      <List.Item
+        icon="🚀"
+        title="香港 IEPL 01 专线节点"
+        subtitle="延迟: 22ms | 负载: 12%"
+        actions={
+          <ActionPanel>
+            <Action.CopyToClipboard content="https://sub.link" />
+          </ActionPanel>
+        }
+      />
+    </List>
+  );
+}</code></pre>
+
+<h4>三、结合 DeepSeek API 与系统 Shell 脚本打通工作流</h4>
+<p>在插件后台绑定 DeepSeek-R1 API Key，实现随处快捷键选中代码并调用大模型进行一键 Code Review、重构或翻译。</p>`
         },
         {
             id: "tool-6", type: "tool",
@@ -2535,13 +2701,30 @@ ollama ps</code></pre>
             lineType: "Monitoring / Docker", ping: "实时检测", speed: "分钟级探测", sla: "99.99% 可靠告警", coupon: "Kuma 监控",
             link: "https://github.com/louislam/uptime-kuma",
             category: ["实用工具", "折腾记录"],
-            recommendText: "搭建高颜值的自建服务状态监控仪表盘！支持 HTTP/HTTPS 状态码检测、TCP 端口连通性探针、Ping 延迟跟踪及域名 SSL 证书过期提醒，故障时第一时间推送 Telegram 机器人消息。",
-            fullArticle: `<h3>📊 Uptime Kuma 监控仪表盘与告警通知全配置</h3>
-<p>Uptime Kuma 拥有媲美 Statuspage 的惊艳可视化界面，且完全开源免费。</p>
-<h4>一、Docker 容器极速挂载启动</h4>
-<pre><code>docker run -d --name uptime-kuma -p 3001:3001 -v kuma-data:/app/data louislam/uptime-kuma:1</code></pre>
-<h4>二、对接 Telegram Bot 实现异常秒级推送</h4>
-<p>在后台绑定 Bot Token，当某个 VPS 服务器掉线或 Web 站点报错时，手机将立刻收到警报推送。</p>`
+            recommendText: "搭建媲美商业级 Statuspage 的开源自建服务状态监控仪表盘 Uptime Kuma！支持 HTTP/HTTPS 状态码监测、TCP 端口连通性、Ping 延迟跟踪、DNS 解析检测、Steam 服务探针及 SSL 证书到期预警。当 VPS 服务器掉线或 Web 站点异常时，通过 Telegram Bot、Bark、Discord 或 Email 实现秒级告警通知。",
+            fullArticle: `<h3>📊 Uptime Kuma 开源监控仪表盘全自动化告警配置指南</h3>
+<p style="font-size:1.02rem; line-height:1.8; color:var(--text-secondary);">
+  对于拥有多台 VPS 云服务器、自建网站或独立 Node 节点的站长而言，实时掌握全网服务的在线率与响应延迟至关重要。Uptime Kuma 提供了令人惊艳的可视化仪表盘，完全开源免费，且不占用过多的宿主机内存。
+</p>
+
+<h4>一、Docker 容器轻量化部署与数据挂载</h4>
+<pre><code>docker run -d \
+  --name uptime-kuma \
+  -p 3001:3001 \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v kuma-data:/app/data \
+  --restart=always \
+  louislam/uptime-kuma:1</code></pre>
+
+<h4>二、对接 Telegram Bot 实现故障秒级异常告警</h4>
+<ol>
+  <li>在 Telegram 中联系 <code>@BotFather</code> 创建机器人并获取 <code>Bot Token</code>。</li>
+  <li>在 Uptime Kuma 设置 -> Notification -> 选择 Telegram，填入 Token 与您的 <code>Chat ID</code>。</li>
+  <li>设置监控拨测探针间隔为 20 秒，当站点返回 502 Bad Gateway 或超时 5 秒时，手机将立刻收到警报打卡推文。</li>
+</ol>
+
+<h4>三、自建公开状态页 (Status Page) 与 SSL 证书到期提醒</h4>
+<p>一键开启公共 Status Page，将您的多个服务分组呈现并绑定二级域名 <code>status.yourdomain.com</code>。内置 SSL 探针将在域名证书距离到期仅剩 7 天时自动预警提醒续期。</p>`
         },
 
         // --- 📬 联系我们 ---
@@ -2950,12 +3133,22 @@ ollama ps</code></pre>
             lineType: "JSON Formatter / Base64", ping: "0 数据上报", speed: "秒级解析", sla: "安全隐私防泄露", coupon: "开发者必选",
             link: "https://jsonlint.com",
             category: ["实用工具"],
-            recommendText: "站长与开发者日常调试必备的高效工具箱：支持在线 JSON 压缩与解构、YAML 配置格式校对、Base64 加解密。",
+            recommendText: "站长、全栈工程师与 API 开发者日常开发调试必备的安全高效格式化工具箱！支持大容量 JSON 语法校验与结构化树形解构、YAML 配置文件对比校对、XML/JSON 格式互转、Base64/URL 编解码。所有解析算法 100% 在本地浏览器 JavaScript / WebAssembly 内存中运算，绝对零数据上报，彻底保障商业 API Key、私钥与敏感 Token 数据安全。",
             features: ["JSON/YAML 格式化校验", "Base64 极速加解密", "纯浏览器端安全解析"],
-            fullArticle: `<h3>🛠️ 100% 免费开源代码格式化与 JSON / YAML / Base64 校验解析工具箱 - 深度好评与超长完整报告</h3>
-<p>站长与程序员在调试 API 接口或解析前端数据时，经常遇到格式错乱、引号未闭合导致的语法异常问题。</p>
-<h4>一、全本地纯浏览器端的安全解析机制</h4>
-<p>工具箱算法 100% 在用户的本地浏览器 JavaScript 内存区中运算，没有任何网络 HTTP 上传行为，彻底保护客户 API Token、私钥与敏感 JSON 数据隐私。</p>
+            fullArticle: `<h3>🛠️ 100% 免费开源代码格式化与 JSON / YAML / Base64 校验解析工具箱 - 极客安全调优指南</h3>
+<p style="font-size:1.02rem; line-height:1.8; color:var(--text-secondary);">
+  全栈程序员与 API 开发者在调试后端接口或解析 JSON/YAML 配置文件时，经常遭遇由于引号未闭合、尾部多余逗号或编码格式错乱引发的语法错误。许多网上的免费格式化网站会在后台静默收集用户粘贴的文本，导致数据库密码或 JWT Token 泄露。
+</p>
+
+<h4>一、全本地纯浏览器 WebAssembly 零数据上报机制</h4>
+<p>本工具箱算法 100% 在用户本地浏览器的 JavaScript / WASM 隔离沙盒中运行。所有的格式化校验、结构解构与加解密转换均不向任何远程服务器发送 HTTP 请求，彻底根除私钥与 API Token 泄露隐患。</p>
+
+<h4>二、核心功能板块与高级调试特性</h4>
+<ul>
+  <li><strong>JSON / YAML 语法校验与树形 AST 展示</strong>：自动定位语法报错行数与具体字符位置，提供“一键修补缺失括号”功能。</li>
+  <li><strong>Base64 / URL 编解码与 JWT 报文解密</strong>：支持对 Header、Payload 进行秒级反序列化，方便直观排查 Token 过期时间与权限 Claim。</li>
+  <li><strong>大文本 JSON (10MB+) 虚拟滚动无卡顿渲染</strong>：采用 Canvas 与 DOM 节点复用渲染引擎，在处理数万行超级 JSON 数据时依旧保持 60 FPS 流畅操作。</li>
+</ul>
 <div style="margin:24px 0;"><a href="https://jsonlint.com" target="_blank" class="register-link-btn" style="background:#d97706; color:#fff;" rel="noopener noreferrer nofollow">前往 JSON 格式化工具箱 ➔</a></div>`
         },
         {
@@ -2965,14 +3158,25 @@ ollama ps</code></pre>
             lineType: "Ping.pe / Global Ping", ping: "全球 50+ 节点", speed: "DNS 污染排查", sla: "实时节点监控", coupon: "网络检测",
             link: "https://ping.pe",
             category: ["实用工具"],
-            recommendText: "一键测试服务器或机场节点的全球 Ping 延时、丢包率与 GFW 防火墙阻断诊断。",
+            recommendText: "专为网络工程师与科学上网极客打造的节点检测与全球 DNS 污染诊断指南！支持全球 50+ 节点并发探针拨测、MTR 骨干网路由丢包追踪、IP 住宅原生属性 (Residential ASN) 纯净度检测、Cloudflare 人机验证排查以及 GFW 防火墙端口封锁的秒级定位。",
             features: ["全球 50+ 监测点测试", "检测 DNS 污染与阻断", "导出实时延迟路由柱状图"],
-            fullArticle: `<h3>🛠️ 网络节点延迟测速与全球 DNS 污染诊断检测在线诊断工具 - 深度好评与超长完整报告</h3>
-<p>当服务器或节点突然掉线，如何快速排查是机房宿主机故障、路由 BGP 抖动，还是本地运营商 DNS 被投毒拦截？</p>
-<h4>一、Ping.pe 全球分布式多节点检测命令解读</h4>
+            fullArticle: `<h3>🛠️ 节点检测与全球 DNS 污染诊断终极实战指南</h3>
+<p style="font-size:1.02rem; line-height:1.8; color:var(--text-secondary);">
+  当自建 VPS 节点或机场专线突然掉线断连时，如何快速排查故障源头？是海外机房宿主机故障、主干网 BGP 路由拥塞，还是本地运营商 DNS 发生了恶意投毒与 DPI 防火墙阻断？
+</p>
+
+<h4>一、TCP Ping vs HTTP RTT 真连接延迟检测差异</h4>
+<p>传统 ICMP Ping 容易受到防火墙 QoS 虚假欺骗；通过拨测真正的 TCP 3 次握手与 HTTP 首字节响应 (HTTP RTT)，能够真实反映节点在 4K 视频看剧与 AI 交互时的流畅程度。</p>
+
+<h4>二、MTR 路由追踪与丢包节点精准定位</h4>
+<pre><code># 在 Linux/macOS 终端发起 MTR 节点诊断
+mtr --report --report-cycles=10 1.1.1.1</code></pre>
+<p>精确定位从本地电信/联通/移动出口到国际骨干网自治域 (AS 编号) 的每一个路由跳数 (Hops)，分析是哪一个节点引发了丢包与高延迟。</p>
+
+<h4>三、IP 纯净度与欺诈得分 (Fraud Score) 检测</h4>
 <ul>
-  <li><strong>TCP / ICMP Ping 多点探测</strong>：并发测试欧洲、北美、中国大陆（电信/联通/移动）及东南亚 50+ 节点的延迟响应。</li>
-  <li><strong>MTR (My TraceRoute) 丢包节点追踪</strong>：精确定位是哪一个主干网自治域（AS 编号）路由器发生拥塞阻塞。</li>
+  <li><strong>Check-Host / Ping.pe 全球并发探测</strong>：同时使用北美、欧洲、日本、新加坡及中国大陆 50+ 探针测试端口可达性。</li>
+  <li><strong>Scamalytics / IPQS 欺诈判定</strong>：检测节点 IP 是否被识别为机房 Data Center 广播 IP，确保 ChatGPT / Claude 访问零验证码拦截。</li>
 </ul>
 <div style="margin:24px 0;"><a href="https://ping.pe" target="_blank" class="register-link-btn" style="background:#d97706; color:#fff;" rel="noopener noreferrer nofollow">使用 Ping.pe 进行全球检测 ➔</a></div>`
         },
