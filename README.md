@@ -47,10 +47,11 @@
 
 | 推荐梯队 | 线路架构 | 特色优势 | 评测详情 |
 | :--- | :--- | :--- | :---: |
-| 🥇 **梯队一：企业级专线** | 纯 IPLC/IEPL 内网专线 | 不过墙 / 晚高峰 0 丢包 / AI 原生解锁 | [🔗 查看实测](https://shuzichonglang.com) |
-| 🥈 **梯队二：高性价比中继** | 优质隧道中继架构 | 价格亲民 / 流媒体全解锁 / 大带宽 | [🔗 查看实测](https://shuzichonglang.com) |
-| 🥉 **梯队三：容灾备用方案** | 多入口智能负载均衡 | 节点冗余度高 / 适合轻度备用 | [🔗 查看实测](https://shuzichonglang.com) |
-
+| 推荐梯队 | 线路架构 | 特色优势 | 官网通道 |
+| :--- | :--- | :--- | :---: |
+| 🥇 **梯队一：企业级专线** | 纯 IPLC/IEPL 内网专线 | 不过墙 / 晚高峰 0 丢包 / AI 原生解锁 | <a href="https://taishan.cloud" rel="nofollow" target="_blank">🔗 直达官网</a> |
+| 🥈 **梯队二：高性价比中继** | 优质隧道中继架构 | 价格亲民 / 流媒体全解锁 / 大带宽 | <a href="https://mojie.link" rel="nofollow" target="_blank">🔗 直达官网</a> |
+| 🥉 **梯队三：容灾备用方案** | 多入口智能负载均衡 | 节点冗余度高 / 适合轻度备用 | <a href="https://kuaichedao.cloud" rel="nofollow" target="_blank">🔗 直达官网</a> |
 ---
 
 ## 🔗 实用导航与资源聚合
