@@ -49,9 +49,23 @@
 | :--- | :--- | :--- | :---: |
 | 推荐梯队 | 线路架构 | 特色优势 | 官网通道 |
 | :--- | :--- | :--- | :---: |
-| 🥇 **梯队一：企业级专线** | 纯 IPLC/IEPL 内网专线 | 不过墙 / 晚高峰 0 丢包 / AI 原生解锁 | <a href="https://taishan.cloud" rel="nofollow" target="_blank">🔗 直达官网</a> |
-| 🥈 **梯队二：高性价比中继** | 优质隧道中继架构 | 价格亲民 / 流媒体全解锁 / 大带宽 | <a href="https://mojie.link" rel="nofollow" target="_blank">🔗 直达官网</a> |
-| 🥉 **梯队三：容灾备用方案** | 多入口智能负载均衡 | 节点冗余度高 / 适合轻度备用 | <a href="https://kuaichedao.cloud" rel="nofollow" target="_blank">🔗 直达官网</a> |
+| 推荐等级 / 机场名称 | 线路架构 | 特色优势 | 官网通道 |
+| :--- | :--- | :--- | :---: |
+| 🥇 **浪网机场** | 纯 IPLC/IEPL 内网专线 | 不过墙 / 晚高峰 0 丢包 / AI 原生解锁 | <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" rel="nofollow" target="_blank">🔗 直达官网</a> |
+| 🥈 **暮光加速** | 企业级高速专线 | 晚高峰 4K/8K 秒开 / 流媒体全解锁 | <a href="https://langwang3.twilightaff.com/#/?code=8YW2PdKT" rel="nofollow" target="_blank">🔗 直达官网</a> |
+| 🥉 **飞 V** | 优质隧道中继架构 | 价格亲民 / 超大带宽通道 / 稳定低延迟 | <a href="https://langwang3.flyvaff.com/#/?code=xiDNo6Dm" rel="nofollow" target="_blank">🔗 直达官网</a> |
+| ⭐ **梯子云** | 智能负载均衡架构 | 全球节点覆盖广 / 跨境办公首选 | <a href="https://langwang3.ladderaff.com/#/?code=L1jG6nO0" rel="nofollow" target="_blank">🔗 直达官网</a> |
+| ⭐ **隐形人** | 高防穿透专线 | 原生住宅 IP 节点 / 完美支持风控平台 | <a href="https://langwang3.invisibleaff.com/#/?code=55YDwp0B" rel="nofollow" target="_blank">🔗 直达官网</a> |
+| ⭐ **灵动云** | 容灾双冗余通道 | 性价比月付之选 / 适合做主力与备用 | <a href="https://langwang3.lingdongaff.com/#/?code=YI6r1wRy" rel="nofollow" target="_blank">🔗 直达官网</a> |
+| 🥈 **极光专线** | 顶级跨境专线架构 | 全球节点覆盖 / ChatGPT·Claude 原生解锁 | <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" rel="nofollow" target="_blank">🔗 直达官网</a> |
+| 🥉 **星际网络** | 优质隧道中继架构 | 晚高峰抗阻断 / 超大带宽通道 / 稳定低延迟 | <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" rel="nofollow" target="_blank">🔗 直达官网</a> |
+| ⭐ **疾风加速** | 企业级 IPLC 专线 | 游戏/外贸加速首选 / 极低延迟 20ms | <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" rel="nofollow" target="_blank">🔗 直达官网</a> |
+| ⭐ **幻影云** | 高防穿透专线 | 原生住宅 IP 节点 / 完美支持各类风控平台 | <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" rel="nofollow" target="_blank">🔗 直达官网</a> |
+| ⭐ **迅捷网络** | 智能负载均衡架构 | 流媒体（Netflix/Disney+）全绿解锁 | <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" rel="nofollow" target="_blank">🔗 直达官网</a> |
+| ⭐ **量子互联** | 多线容灾冗余通道 | 性价比月付之选 / 适合做主力与主力备用 | <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" rel="nofollow" target="_blank">🔗 直达官网</a> |
+| ⭐ **云帆加速** | 全协议支持架构 | 支持 Clash / Sing-box / Surge / 小火箭 | <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" rel="nofollow" target="_blank">🔗 直达官网</a> |
+| ⭐ **极客云廊** | 高速 BGP 隧道中继 | 节点可用率 99.9% / 适合跨境办公与海淘 | <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" rel="nofollow" target="_blank">🔗 直达官网</a> |
+| ⭐ **冲浪先锋** | 多入口智能分流专线 | 晚高峰大流量不限速 / 支持多设备并发 | <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" rel="nofollow" target="_blank">🔗 直达官网</a> |
 ---
 
 ## 🔗 实用导航与资源聚合
