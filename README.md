@@ -1,5 +1,13 @@
 # 🚨 2026 全网机场运行状态与风险避坑预警指南
 
+<div align="center">
+
+[![Website](https://img.shields.io/badge/官网博客-shuzichonglang.com-0078D4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://shuzichonglang.com)
+[![Telegram](https://img.shields.io/badge/TG频道-点击加入-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/+vR-Qm3CQ7IQ2ZDg1)
+[![Email](https://img.shields.io/badge/联系邮箱-lnqry8060610@outlook.com-0078D4?style=for-the-badge&logo=microsoftoutlook&logoColor=white)](mailto:lnqry8060610@outlook.com)
+
+</div>
+
 > **动态监测 · 每周复核 · 谨防跑路**  
 > 收集全网机场运营异动、节点断连与跑路风险情报，为翻墙与跨境办公用户提供真实客观的选购避坑参考。
 
@@ -41,6 +49,7 @@
 ## 🔗 实用导航与资源聚合
 
 * 🏠 **数字冲浪官方主站**：[https://shuzichonglang.com](https://shuzichonglang.com)
+* 📢 **官方 Telegram 频道**：[https://t.me/+vR-Qm3CQ7IQ2ZDg1](https://t.me/+vR-Qm3CQ7IQ2ZDg1)
 * 📊 **[2026 全网机场统一维度横向对比总表](https://shuzichonglang.com)**
 * 🛠️ **[全平台客户端配置与订阅转换教程 (Clash / Sing-box / 小火箭)](https://shuzichonglang.com)**
 
@@ -48,9 +57,12 @@
 
 ## 🤝 风险线索与情报反馈
 
-如果你发现某家机场出现长期失联、节点无法连接或疑似跑路现象，欢迎通过以下方式提交情报：
-* 在本仓库提交 **[Issue 反馈]**
-* 在官方博客 **[数字冲浪 (shuzichonglang.com)](https://shuzichonglang.com)** 留言交流
+如果你发现某家机场出现长期失联、节点无法连接或疑似跑路现象，欢迎通过以下渠道提交线索与交流：
+
+* 💬 **Telegram 官方频道**：[点击进入频道讨论交流](https://t.me/+vR-Qm3CQ7IQ2ZDg1)
+* 📮 **官方联络邮箱**：[lnqry8060610@outlook.com](mailto:lnqry8060610@outlook.com)
+* 🌐 **博客留言板**：[数字冲浪 (shuzichonglang.com)](https://shuzichonglang.com)
+* 📝 **GitHub Issue**：在本仓库直接提交 Issue
 
 <div align="center">
   <sub>© 2026 数字冲浪 (shuzichonglang.com) · 客观评测，理性选购</sub>
