@@ -46,11 +46,6 @@
 若你正在寻找经过长期晚高峰压力测试、稳定性高的替代方案，请参考统一评测数据：
 
 | 推荐梯队 | 线路架构 | 特色优势 | 评测详情 |
-| :--- | :--- | :--- | :---: |
-| 推荐梯队 | 线路架构 | 特色优势 | 官网通道 |
-| :--- | :--- | :--- | :---: |
-| 推荐等级 / 机场名称 | 线路架构 | 特色优势 | 官网通道 |
-| :--- | :--- | :--- | :---: |
 | 🥇 **浪网机场** | 纯 IPLC/IEPL 内网专线 | 不过墙 / 晚高峰 0 丢包 / AI 原生解锁 | <a href="https://langwang.wavenetaff.com/#/register?code=W6CVZLof" rel="nofollow" target="_blank">🔗 直达官网</a> |
 | 🥈 **暮光加速** | 企业级高速专线 | 晚高峰 4K/8K 秒开 / 流媒体全解锁 | <a href="https://langwang3.twilightaff.com/#/?code=8YW2PdKT" rel="nofollow" target="_blank">🔗 直达官网</a> |
 | 🥉 **飞 V** | 优质隧道中继架构 | 价格亲民 / 超大带宽通道 / 稳定低延迟 | <a href="https://langwang3.flyvaff.com/#/?code=xiDNo6Dm" rel="nofollow" target="_blank">🔗 直达官网</a> |
